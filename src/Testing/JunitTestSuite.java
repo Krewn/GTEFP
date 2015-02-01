@@ -4,8 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-   FIFOQTest.class,
-   LIFOQTest.class
+   SaveTest.class
 })
 public  class JunitTestSuite {   
 } 
