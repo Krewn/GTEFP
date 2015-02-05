@@ -46,15 +46,6 @@ public class trailer extends javax.swing.event.MouseInputAdapter{
 		_lastMouseLoc = new java.awt.Point();
 		_panel.repaint();
 	}
-	public void move(int dx, int dy){
-		for(int k=0;k<_x.length;k++){
-			_x[k]+=dx;
-			_y[k]+=dy;
-		}
-		_wheel.setLocation(_wheel.getX()+dx, _wheel.getY()+dy);
-		_trailer=new java.awt.Polygon(_x,_y,6);
-	}
-
 	public void paint(java.awt.Graphics aBrush){
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
@@ -65,6 +56,14 @@ public class trailer extends javax.swing.event.MouseInputAdapter{
 	}
 	public void mousePressed(java.awt.event.MouseEvent e){
 		_lastMouseLoc = e.getPoint();
+	}
+	public void move(int dx, int dy){
+		for(int k=0;k<_x.length;k++){
+			_x[k]+=dx;
+			_y[k]+=dy;
+		}
+		_wheel.setLocation(_wheel.getX()+dx, _wheel.getY()+dy);
+		_trailer=new java.awt.Polygon(_x,_y,6);
 	}
 	public void mouseDragged(java.awt.event.MouseEvent e){
 		if(_trailer.contains(_lastMouseLoc)){

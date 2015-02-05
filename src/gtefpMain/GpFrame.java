@@ -20,7 +20,6 @@ public class GpFrame extends JFrame {
 		this.setPreferredSize(new Dimension(950, 800));
 		this.add(_Cpanel);
 		this.add(_Wpanel);
-		this.repaint();
 		_Wpanel.setup();
 		this.repaint();
 		this.setVisible(true);
@@ -29,7 +28,7 @@ public class GpFrame extends JFrame {
 		return(_Wpanel);
 	}
 	public static void main (String [ ] args) { 
-		new GpFrame ("Gtefp");
+		GpFrame test = new GpFrame ("Gtefp");
 	}
 
 	/*
