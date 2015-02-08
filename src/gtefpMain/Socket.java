@@ -1,5 +1,7 @@
 package gtefpMain;
 
+import java.awt.event.MouseEvent;
+
 public class Socket extends CodePiece{
 	private CodePiece _plug;
 	private boolean _inUse;
@@ -20,11 +22,13 @@ public class Socket extends CodePiece{
 		_inUse = false;
 	}
 	public void insert(CodePiece plug){
-		_plug = plug;
-		_plug.setCp(this);
-		_inUse = true;
-		_wp.removeSocket(this);
-		Draw_p();
+		if(!_cp.isButton()){
+			_plug = plug;
+			_plug.setCp(this);
+			_inUse = true;
+			_wp.removeSocket(this);
+			Draw_p();
+		}
 	}
 	public CodePiece unsert(){
 		_inUse = false;
@@ -69,7 +73,15 @@ public class Socket extends CodePiece{
 	}
 	@Override
 	public void setCp(CodePiece cp) {
-		// TODO Auto-generated method stub
-		//stub;
+		_cp=cp;
+	}
+	@Override
+	public void mousePressed(java.awt.event.MouseEvent e){
+		_lastMouseLoc = e.getPoint();
+		if(_p.contains(_lastMouseLoc)){
+			_selected=true;
+			if(_isButton){
+			}
+		}
 	}
 }

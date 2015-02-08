@@ -16,8 +16,6 @@ public class SaveTest {
 	 *
 	 * @author user@example.com (John Doe)
 	 */
-	
-	public class saveTest {
 	//Usually, tests with JUnit4 do not need to extend anything
 
 	    @Test
@@ -33,4 +31,3 @@ public class SaveTest {
 	    public void thisIsIgnored() {
 	    }
 	}
-}

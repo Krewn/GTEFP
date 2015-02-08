@@ -1,6 +1,7 @@
 package gtefpMain;
 
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class kVar extends CodePiece implements Relative, Buttonable {
 	private CodePiece _cp;
@@ -13,6 +14,7 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 	private int [] _OGxs;
 	private int [] _OGys;
 	private boolean _isEditable;
+	private java.awt.Color _tColor;
 	public kVar(WorkspacePanel wp){
 		super(wp);
 		_isButton=false;
@@ -23,6 +25,15 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 		_OGys = new int[]{0,0,4,4};
 		_style="Arial";
 		_font = new java.awt.Font(_style,java.awt.Font.PLAIN,20);
+		_tColor= new java.awt.Color(0,0,0);
+	}
+	public void setTextColor(java.awt.Color tc){
+		_tColor = tc;
+	}
+	public kVar(WorkspacePanel wp,String s){
+		this(wp);
+		_text = s;
+		_inUse=true;
 	}
 	public void setCp(CodePiece cp){
 		_cp = cp;
@@ -34,11 +45,6 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 	}
 	public void setEditable(boolean b){
 		_isEditable = b ;
-	}
-	public kVar(WorkspacePanel wp,String s){
-		this(wp);
-		_text = s;
-		_inUse=true;
 	}
 	@Override
 	public void paint(Graphics aBrush){
@@ -54,7 +60,27 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 		if(_inUse){
 			//System.out.println("paintString");
 			//System.out.println(_text);
-			aBrush.setColor(Color.red);
+			aBrush.setColor(_tColor);
+			aBrush.setFont(_font);
+			setRel();
+			aBrush.drawString(_text,  _xpos , _ypos+_scale*3);
+			aBrush.setColor(oldColor);
+		}
+	}
+	public void paint(Graphics aBrush, Color c){
+		if(_sized==false){
+			prefHeight(aBrush,_scale*4);
+		}
+		Color oldColor = aBrush.getColor();
+		//java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
+		//betterBrush.setFont(_font);
+		Draw_p();
+		super.paint(aBrush);
+		//draw a polygon underneth?
+		if(_inUse){
+			//System.out.println("paintString");
+			//System.out.println(_text);
+			aBrush.setColor(c);
 			aBrush.setFont(_font);
 			setRel();
 			aBrush.drawString(_text,  _xpos , _ypos+_scale*3);
@@ -114,5 +140,10 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 	public void makeButton() {
 		// TODO Auto-generated method stub
 		_isButton=true;
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

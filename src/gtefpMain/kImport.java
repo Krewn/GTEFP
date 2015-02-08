@@ -3,25 +3,29 @@ package gtefpMain;
 public class kImport extends CodePiece{
 	private kVar _package;
 	private kVar _import;
-	kVar _sc;
-	private CodePiece _after;
-	private CodePiece _cp;
+	private kVar _sc;
+	public Socket _after;
 	public kImport(WorkspacePanel wp) {
 		super(wp);
-		_c=new java.awt.Color(0,0,0);
+		_c=new java.awt.Color(70,70,70);
 		_import = new kVar(wp,"Import ");
 		_import.setEditable(false);
 		_import.setCp(this);
 		_sc = new kVar(wp,";");
 		_sc.setEditable(false);
 		_sc.setCp(this);
-		_import.setCp(this);
 		_package = new kVar(wp);
 		_package.setEditable(false);
 		_package.setCp(this);
+		//This right here
+		_code.que(_import);_code.que(_package);_code.que(_sc);
+		//should make sense as the line of code " import package; "
+		//                                          # socket
 		_after = new Socket(wp);
 		_after.Place(_xpos,ysize());
+		_after.setCp(this);
 	}
+	@Override
 	public void setCp(CodePiece cp){
 		_cp = cp;
 		setRel(0,0);
@@ -33,24 +37,17 @@ public class kImport extends CodePiece{
 	public int ysize(){
 		return(4*_scale+_after.ysize());
 	}
-	public void setRel(int x, int y){
-		_xrel = x;_yrel = y;
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
-	}public void setRel(){
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
-	}
 	@Override
 	public void paint(java.awt.Graphics aBrush){
 		Draw_p();
 		super.paint(aBrush);
+		Draw_p();
 		//betterBrush.fillPolygon(_p);
 		//betterBrush.setColor(oldColor);
 		//super.paint(aBrush);
-		_import.paint(aBrush);
+		_import.paint(aBrush,new java.awt.Color(175,120,120));
 		_package.paint(aBrush);
-		_sc.paint(aBrush);
+		_sc.paint(aBrush,new java.awt.Color(175,120,120));
 		_after.paint(aBrush);
 	}
 	@Override
@@ -75,14 +72,11 @@ public class kImport extends CodePiece{
 		_after.Place(_xpos, _ypos+this.ysize());
 		Draw_p();
 	}
-	@Override
 	public void mousePressed(java.awt.event.MouseEvent e){
 		_lastMouseLoc = e.getPoint();
 		if(_p.contains(_lastMouseLoc)){
 			_selected=true;
 			if(_isButton){
-				System.out.println("kimprt mousePressed");
-				System.out.println("test");
 				kImport _temp = new kImport(_wp);
 				_temp.setCp(_temp);
 				_temp.Place(_xpos,_ypos);
@@ -97,17 +91,6 @@ public class kImport extends CodePiece{
 		}
 	}
 	@Override
-	public void mouseDragged(java.awt.event.MouseEvent e){
-		if(_selected){
-			if(_p.contains(_lastMouseLoc)){
-				int dx = e.getX()-_lastMouseLoc.x;
-				int dy = e.getY()-_lastMouseLoc.y;
-				Move(dx,dy);
-				_wp.repaint();
-			}
-		}
-		_lastMouseLoc = e.getPoint();
-	}
 	public void mouseReleased(java.awt.event.MouseEvent e){
 		if(_selected){
 			java.awt.geom.Area testa = new java.awt.geom.Area(_p);
@@ -129,16 +112,5 @@ public class kImport extends CodePiece{
 		_wp.repaint();
 	}
 	@Override
-	public void clicked(){
-		
-	}
-	@Override
-	public void mouseClicked(java.awt.event.MouseEvent e){
-		if(_p.contains(_lastMouseLoc)){
-			clicked();
-		}
-		_wp.repaint();
-	}
-	
-
+	public void clicked(){}
 }

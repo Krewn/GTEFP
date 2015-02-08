@@ -14,15 +14,18 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	public int _scale;
 	protected boolean _sized;
 	protected boolean _isButton;
-	protected kVec<kVar> code;
+	protected kVec<kVar> _code;
 	protected java.awt.Point _lastMouseLoc;
 	private App _App;
 	public abstract void setCp(CodePiece cp);
 	public WorkspacePanel _wp;
 	public boolean _selected;
+	protected CodePiece _cp;
 	public CodePiece(WorkspacePanel wp){
 		wp.addMouseListener(this);
 		wp.addMouseMotionListener(this);
+		_code=new kVec<kVar>();
+		_cp = this;
 		_lastMouseLoc = new java.awt.Point();
 		_xs=new int []{0};
 		_ys=new int []{0};
@@ -33,6 +36,8 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		_scale = _wp.getScale();
 		_sized=false;
 		_selected=false;
+		_xpos=0;
+		_ypos=0;
 	}
 	public void paint(java.awt.Graphics aBrush){
 		//System.out.println("CodePiecePrint");
@@ -50,6 +55,10 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	public void makeButton(){
 		_isButton=true;
 	}
+	public boolean isButton(){
+		boolean r = _isButton;
+		return(r);
+	}
 	public int getScale(){
 		int r = _scale;
 		return(r);
@@ -66,6 +75,18 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 			ys[k]=_ypos+_ys[k]*_scale;
 		}
 		_p = new CompPoly(xs,ys,xs.length,this);
+	}
+	public void setRel(int x, int y){
+		_xrel = x;_yrel = y;
+		System.out.println(_cp);
+		System.out.println("CPsetRel");
+		System.out.println(_cp._xpos);
+		System.out.println(_xrel);
+		_xpos = _cp._xpos+_xrel;
+		_ypos = _cp._ypos+_yrel;
+	}public void setRel(){
+		_xpos = _cp._xpos+_xrel;
+		_ypos = _cp._ypos+_yrel;
 	}
 	public WorkspacePanel getWp(){
 		WorkspacePanel r = _wp;
@@ -91,10 +112,11 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		_scale=s;
 		//scale comppolys
 	}
-	public void mousePressed(java.awt.event.MouseEvent e){
-		_lastMouseLoc = e.getPoint();
-		if(_p.contains(_lastMouseLoc )){_selected=true;}
-	}
+	//public void mousePressed(java.awt.event.MouseEvent e){
+	//	_lastMouseLoc = e.getPoint();
+	//	if(_p.contains(_lastMouseLoc )){_selected=true;}
+	//}
+	public abstract void mousePressed(java.awt.event.MouseEvent e);
 	public void mouseReleased(java.awt.event.MouseEvent e){
 		_selected=false;
 	}
