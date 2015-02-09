@@ -112,7 +112,10 @@ public class kIf extends Closure
 		_selected=false;
 		_wp.repaint();
 	}
-
+	@Override
+	public int ysize(){
+		return(super.ysize()+_after.ysize());
+	}
 	@Override
 	public int width() {
 		// TODO Auto-generated method stub
