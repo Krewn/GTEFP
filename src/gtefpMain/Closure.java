@@ -32,7 +32,7 @@ public abstract class Closure extends CodePiece{
 		int[] h = new int[]{_curly.ysize()/_scale,(_curly.ysize()+_inside.ysize())/_scale,(_curly.ysize()+_inside.ysize()+_ylruc.ysize())/_scale};
 		//System.out.println(_import.width());
 		_curly.setRel();
-		_ylruc.setRel(0,ysize()+_ylruc.ysize());
+		_ylruc.setRel(0,ysize());
 		_inside.Place(_xpos+30,_ypos+_curly.ysize());
 		_xs = new int []{0,w[0],w[0],w[1],w[1],w[2],w[2],0};
 		_ys = new int []{0,0,h[0],h[0],h[1],h[1],h[2],h[2]};
@@ -45,7 +45,7 @@ public abstract class Closure extends CodePiece{
 		//System.out.println(_import.width());
 		_curly.setRel();
 		_ylruc.setRel(0,_curly.ysize()+_inside.ysize());
-		_inside.Place(_xpos+16,_ypos+_curly.ysize());
+		_inside.setRel(8,_curly.ysize());
 		_xs = new int []{0,w[0],w[0],w[1],w[1],w[2],w[2],0};
 		_ys = new int []{0,0,h[0],h[0],h[1],h[1],h[2],h[2]};
 		super.Draw_p();
@@ -66,7 +66,7 @@ public abstract class Closure extends CodePiece{
 	public void Move(int dx,int dy){
 		super.Move(dx, dy);
 		_curly.setRel();
-		_inside.setRel(16,_curly.ysize());
+		_inside.setRel(8,_curly.ysize());
 		_ylruc.setRel(0,_curly.ysize()+_inside.ysize());
 		Draw_p();
 	}

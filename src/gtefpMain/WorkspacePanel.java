@@ -34,10 +34,13 @@ public class WorkspacePanel extends javax.swing.JPanel{
 		_temp = null;
 		kImport _IMPORT = new kImport(this);
 		kclass _CLASS = new kclass(this);
+		kIf _IF = new kIf(this);
 		_buttonSocket.insert(_IMPORT);
-		_IMPORT._after.insert(_CLASS);
+		_IMPORT._after.insert(_IF);
+		_IF._after.insert(_CLASS);
 		_IMPORT.makeButton();
 		_CLASS.makeButton();
+		_IF.makeButton();
 		this.repaint();
 	}
 	public WorkspacePanel(){

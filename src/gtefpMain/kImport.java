@@ -58,7 +58,7 @@ public class kImport extends CodePiece{
 		_package.setRel(_import.width(),0);
 		_sc.setRel(_import.width()+_package.width(),0);
 		_after.Place(_xpos,_ypos+ysize()-_after.ysize());
-		_xs = new int []{0,l/_scale,l/_scale,0};
+		_xs = new int []{0,l,l,0};
 		_ys = new int []{0,0,4,4};
 		super.Draw_p();
 		_after.Draw_p();
@@ -113,4 +113,9 @@ public class kImport extends CodePiece{
 	}
 	@Override
 	public void clicked(){}
+	@Override
+	public int width() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

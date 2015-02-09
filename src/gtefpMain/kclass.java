@@ -60,4 +60,9 @@ public class kclass extends Closure{
 			}
 		}
 	}
+	@Override
+	public int width() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

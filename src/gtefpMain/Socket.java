@@ -62,6 +62,12 @@ public class Socket extends CodePiece{
 			//_p = new java.awt.Polygon({0},{0},1);
 		}
 	}
+	public int width(){
+		if(_inUse){
+			return(_plug.width());
+		}
+		return(4);
+	}
 	@Override
 	public int ysize() {
 		if (_inUse){return (_plug.ysize());}else{return 4;}

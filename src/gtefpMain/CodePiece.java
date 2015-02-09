@@ -18,6 +18,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	protected java.awt.Point _lastMouseLoc;
 	private App _App;
 	public abstract void setCp(CodePiece cp);
+	public abstract int width();
 	public WorkspacePanel _wp;
 	public boolean _selected;
 	protected CodePiece _cp;
@@ -45,6 +46,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		betterBrush.setColor(_c);
 		this.Draw_p();
+		betterBrush.setColor(_c);
 		betterBrush.fillPolygon(_p);
 		betterBrush.setColor(oldColor);
 	}
@@ -78,22 +80,18 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	}
 	public void setRel(int x, int y){
 		_xrel = x;_yrel = y;
-		System.out.println(_cp);
-		System.out.println("CPsetRel");
-		System.out.println(_cp._xpos);
-		System.out.println(_xrel);
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
+		_xpos = _cp._xpos+_xrel*_scale;
+		_ypos = _cp._ypos+_yrel*_scale;
 	}public void setRel(){
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
+		_xpos = _cp._xpos+_xrel*_scale;
+		_ypos = _cp._ypos+_yrel*_scale;
 	}
 	public WorkspacePanel getWp(){
 		WorkspacePanel r = _wp;
 		return(r);
 	}
 	public int ysize(){
-		return(4*_scale);
+		return(4);
 	}
 	@Override
 	public void Move(int dx, int dy) {

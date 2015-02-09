@@ -4,7 +4,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 
 public class kVar extends CodePiece implements Relative, Buttonable {
-	private CodePiece _cp;
 	private String _text;
 	private String _style;
 	private java.awt.Font _font;
@@ -42,6 +41,9 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 	public String getText(){
 		String r = _text;
 		return(r);
+	}
+	public void setText(String text){
+		_text=text;
 	}
 	public void setEditable(boolean b){
 		_isEditable = b ;
@@ -87,14 +89,6 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 			aBrush.setColor(oldColor);
 		}
 	}
-	public void setRel(int x, int y){
-		_xrel = x;_yrel = y;
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
-	}public void setRel(){
-		_xpos = _cp._xpos+_xrel;
-		_ypos = _cp._ypos+_yrel;
-	}
 	public void prefHeight(java.awt.Graphics g,int h){
 		int s= 1;
 		_font = new java.awt.Font(_style,java.awt.Font.PLAIN,s);
@@ -105,10 +99,10 @@ public class kVar extends CodePiece implements Relative, Buttonable {
 			_font = new java.awt.Font(_style,java.awt.Font.PLAIN,s);
 			g.setFont(_font);
 		}metrics = g.getFontMetrics(_font);
-		_width = metrics.stringWidth(_text);
+		_width = metrics.stringWidth(_text)/_scale;
 		_height= metrics.getHeight();
 		_sized = true;
-		System.out.println("sized");
+		//System.out.println("sized");
 	}
 	public int width(){
 		int r = _width;
