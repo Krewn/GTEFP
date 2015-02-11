@@ -65,6 +65,14 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		int r = _scale;
 		return(r);
 	}
+	public int getXPos()
+	{
+		return _xpos;
+	}
+	public int getYPos()
+	{
+		return _ypos;
+	}
 	public void setposition(int x,int y){
 		_xpos = x; _ypos=y;
 	}
