@@ -6,6 +6,8 @@ import org.junit.Test;
 import org.junit.Ignore;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
+
+import util.App;
 import gtefpMain.*;
 public class SaveTest {
 	//Do not use any classes in junit.framework or junit.extensions

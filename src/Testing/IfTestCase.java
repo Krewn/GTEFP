@@ -1,8 +1,8 @@
 package Testing;
 
 import junit.framework.TestCase;
+import gtefpBlocks.kIf;
 import gtefpMain.WorkspacePanel;
-import gtefpMain.kIf;
 
 public class IfTestCase extends TestCase
 {

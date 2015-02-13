@@ -1,4 +1,5 @@
 package gtefpMain;
+import util.App;
 import gpBase.kVec;
 
 public class ClassesPanel extends javax.swing.JPanel{

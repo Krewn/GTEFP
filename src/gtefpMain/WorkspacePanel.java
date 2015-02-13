@@ -1,5 +1,13 @@
 package gtefpMain;
 
+import util.App;
+import util.kVec;
+import gtefpBlocks.CodePiece;
+import gtefpBlocks.Socket;
+import gtefpBlocks.kIf;
+import gtefpBlocks.kImport;
+import gtefpBlocks.kclass;
+
 public class WorkspacePanel extends javax.swing.JPanel{
 	private java.awt.Polygon _templateTray;
 	public App _app;
