@@ -55,9 +55,19 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		betterBrush.fillPolygon(_p);
 		betterBrush.setColor(oldColor);
 	}
+	public void unplug(){
+		_cp = (Socket) _cp;
+		_cp.unsert();
+		_wp.setTemp(this);
+	}
+	public void unsert(){//special method only for the socket.
+	}
 	public void select(){
 		System.out.println("truth");
 		_selected = true;
+	}
+	public void insert(CodePiece plug){
+		
 	}
 	public void makeButton(){
 		_isButton=true;
@@ -134,6 +144,11 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	public void mouseDragged(java.awt.event.MouseEvent e){
 		if(_selected){
 			if(_p.contains(_lastMouseLoc)){
+				if(_cp!=this){
+					if(_isButton == false){
+						unplug();
+						}
+				}
 				int dx = e.getX()-_lastMouseLoc.x;
 				int dy = e.getY()-_lastMouseLoc.y;
 				Move(dx,dy);

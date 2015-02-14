@@ -27,7 +27,14 @@ public class kIf extends Closure
 		_curly.setRel(_pIf.width() + _eval.width() , 0);
 		_c= new java.awt.Color(50,50,50);
 	}
-	
+	@Override
+	public void unplug(){
+		super.unplug();
+		if(_after.inUse()){
+			_cp.insert(_after.getPulg());}
+		_after.unsert();
+		setCp(this);
+	}
 	@Override
 	public void setCp(CodePiece cp)
 	{

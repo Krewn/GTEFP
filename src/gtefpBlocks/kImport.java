@@ -28,6 +28,14 @@ public class kImport extends CodePiece{
 		_after.setCp(this);
 	}
 	@Override
+	public void unplug(){
+		super.unplug();
+		if(_after.inUse()){
+			_cp.insert(_after.getPulg());}
+		_after.unsert();
+		setCp(this);
+	}
+	@Override
 	public void setCp(CodePiece cp){
 		_cp = cp;
 		setRel(0,0);

@@ -19,6 +19,11 @@ public class kclass extends Closure{
 		_curly.setRel(_pClass.width()+_name.width(),0);
 	}
 	@Override
+	public void unplug(){
+		super.unplug();
+		setCp(this);
+	}
+	@Override
 	public void setCp(CodePiece cp){
 		super.setCp(cp);
 		_curly.setRel(_pClass.width()+_name.width(),0);
@@ -39,8 +44,8 @@ public class kclass extends Closure{
 	}
 	@Override
 	public void Draw_p(){
-		int[] w = new int[]{(_curly.width()+_pClass.width()+_name.width())/_scale,16,_ylruc.width()};
-		int[] h = new int[]{_curly.ysize()/_scale,(_curly.ysize()+_inside.ysize())/_scale,(_curly.ysize()+_inside.ysize()+_ylruc.ysize())/_scale};
+		int[] w = new int[]{(_curly.width()+_pClass.width()+_name.width()),8 , _ylruc.width()};
+		int[] h = new int[]{_curly.ysize(),(_curly.ysize()+_inside.ysize()),(_curly.ysize()+_inside.ysize()+_ylruc.ysize())};
 		super.Draw_p(w,h);
 	}
 	@Override

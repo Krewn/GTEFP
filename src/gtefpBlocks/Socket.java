@@ -25,6 +25,11 @@ public class Socket extends CodePiece{
 		_scale = wp.getScale();
 		_inUse = false;
 	}
+	public boolean inUse(){
+		boolean b = _inUse;
+		return(b);
+	}
+	@Override
 	public void insert(CodePiece plug){
 		if(!_cp.isButton()){
 			_plug = plug;
@@ -34,11 +39,15 @@ public class Socket extends CodePiece{
 			Draw_p();
 		}
 	}
-	public CodePiece unsert(){
+	@Override
+	public void unsert(){
 		_inUse = false;
 		Draw_p();
 		_wp.addSocket(this);
-		return(_plug);
+	}
+	public CodePiece getPulg(){
+		CodePiece p=_plug;
+		return (p);
 	}
 	@Override
 	public void paint(java.awt.Graphics aBrush){
@@ -93,5 +102,9 @@ public class Socket extends CodePiece{
 			if(_isButton){
 			}
 		}
+	}
+	@Override
+	public void unplug() {
+		// Auto-generated method stub
 	}
 }
