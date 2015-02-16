@@ -17,7 +17,7 @@ public class kImport extends CodePiece{
 		_sc.setEditable(false);
 		_sc.setCp(this);
 		_package = new kVar(wp);
-		_package.setEditable(false);
+		_package.setEditable(true);
 		_package.setCp(this);
 		//This right here
 		_code.que(_import);_code.que(_package);_code.que(_sc);
@@ -45,7 +45,7 @@ public class kImport extends CodePiece{
 	}
 	@Override
 	public int ysize(){
-		return(4*_scale+_after.ysize());
+		return(_import.ysize()+_after.ysize());
 	}
 	@Override
 	public void paint(java.awt.Graphics aBrush){
@@ -62,14 +62,15 @@ public class kImport extends CodePiece{
 	}
 	@Override
 	public void Draw_p(){
-		int l = _import.width()+_package.width();
+		int l = _import.width();
+		int h = ysize()-_after.ysize();
 		//System.out.println(_import.width());
 		_import.setRel();
 		_package.setRel(_import.width(),0);
 		_sc.setRel(_import.width()+_package.width(),0);
-		_after.Place(_xpos,_ypos+ysize()-_after.ysize());
+		_after.setRel(0,h);
 		_xs = new int []{0,l,l,0};
-		_ys = new int []{0,0,4,4};
+		_ys = new int []{0,0,h,h};
 		super.Draw_p();
 		_after.Draw_p();
 	}

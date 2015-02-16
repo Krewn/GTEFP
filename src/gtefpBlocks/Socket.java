@@ -12,6 +12,7 @@ public class Socket extends CodePiece{
 	private int[] _OGxs;
 	private int[] _OGys;
 	private WorkspacePanel _wp;
+	private boolean _dontDraw;
 	public Socket(WorkspacePanel wp){
 		super(wp);
 		wp.addSocket(this);
@@ -24,10 +25,17 @@ public class Socket extends CodePiece{
 		_OGys = new int[]{0,2,4,2,0,1,2,3,2,1};
 		_scale = wp.getScale();
 		_inUse = false;
+		_dontDraw = false;
+	}
+	public void setDD(boolean b){
+		_dontDraw = b;
 	}
 	public boolean inUse(){
 		boolean b = _inUse;
 		return(b);
+	}
+	public void setInUse(boolean b){
+		_inUse=b;
 	}
 	@Override
 	public void insert(CodePiece plug){
@@ -62,7 +70,7 @@ public class Socket extends CodePiece{
 	}
 	@Override
 	public void Draw_p(){
-		if(_inUse==false){
+		if(_inUse==false && _dontDraw == false ){
 			_xs=_OGxs;
 			_ys=_OGys;
 			super.Draw_p();
@@ -70,8 +78,10 @@ public class Socket extends CodePiece{
 			_xs=new int [] {0};
 			_ys=new int [] {0};
 			super.Draw_p();
-			_plug.Place(_xpos, _ypos);
-			_plug.Draw_p();
+			if(_inUse==true){
+				_plug.Place(_xpos, _ypos);
+				_plug.Draw_p();
+			}
 			//_p = new java.awt.Polygon({0},{0},1);
 		}
 	}
@@ -83,7 +93,13 @@ public class Socket extends CodePiece{
 	}
 	@Override
 	public int ysize() {
-		if (_inUse){return (_plug.ysize());}else{return 4;}
+		if (_inUse){
+			return (_plug.ysize());
+		}else{
+			if(_dontDraw){
+				return(0);
+				}else{return 4;}
+			}
 	}
 	@Override
 	public void clicked() {

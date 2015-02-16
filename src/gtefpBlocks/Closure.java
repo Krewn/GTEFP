@@ -31,7 +31,7 @@ public abstract class Closure extends CodePiece{
 	@Override
 	public void Draw_p(){
 		int[] w = new int[]{_curly.width(),16,_ylruc.width()};
-		int[] h = new int[]{_curly.ysize()/_scale,(_curly.ysize()+_inside.ysize())/_scale,(_curly.ysize()+_inside.ysize()+_ylruc.ysize())/_scale};
+		int[] h = new int[]{_curly.ysize(),(_curly.ysize()+_inside.ysize()),(_curly.ysize()+_inside.ysize()+_ylruc.ysize())};
 		//System.out.println(_import.width());
 		_curly.setRel();
 		_ylruc.setRel(0,ysize());

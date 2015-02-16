@@ -27,7 +27,7 @@ public class GpFrame extends JFrame {
 	public WorkspacePanel getWp(){
 		return(_Wpanel);
 	}
-	public static void main (String [ ] args) { 
+	public static void main (String [ ] args) {
 		GpFrame test = new GpFrame ("Gtefp");
 	}
 

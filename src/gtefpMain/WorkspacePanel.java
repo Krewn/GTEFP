@@ -1,14 +1,13 @@
 package gtefpMain;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+
 import util.App;
 import util.kVec;
-import gtefpBlocks.CodePiece;
-import gtefpBlocks.Socket;
-import gtefpBlocks.kIf;
-import gtefpBlocks.kImport;
-import gtefpBlocks.kclass;
+import gtefpBlocks.*;
 
-public class WorkspacePanel extends javax.swing.JPanel{
+public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event.ActionListener{
 	private java.awt.Polygon _templateTray;
 	public App _app;
 	public Socket _buttonSocket;
@@ -18,9 +17,21 @@ public class WorkspacePanel extends javax.swing.JPanel{
 	public int _codeYpos;
 	public int _scale;
 	public kVec<Socket> _sockets;
+	public java.awt.Color _blink;
+	private int _bc;
+	private long _ogT;
+	private boolean _bUp; // instructs weather the blinking is to go up or down;
+	private javax.swing.Timer timer;
+	
 	public int getScale(){
 		int r = _scale;
 		return(r);
+	}
+	public java.awt.Color blink(){//1000 miliseconds / second.
+		long t = System.currentTimeMillis();
+		_bc = (int) ((t - _ogT)%510)/2;
+		_bc = ( ((t - _ogT)%510) > 255) ? 255-_bc : _bc;	
+		return(new java.awt.Color(_bc,_bc,_bc));
 	}
 	public void addSocket(Socket s){
 		_sockets.add(s);
@@ -29,6 +40,11 @@ public class WorkspacePanel extends javax.swing.JPanel{
 		_sockets.remove(s);
 	}
 	public void init(){
+		this.setFocusable(true);
+		//this.setFocusTraversalKeysEnabled(false);
+		_bUp = true;
+		_bc = 5;
+		_ogT = System.currentTimeMillis();
 		this.setBackground(new java.awt.Color(200,200,201));
 		int [] xs ={0};
 		int [] ys ={0};
@@ -43,12 +59,17 @@ public class WorkspacePanel extends javax.swing.JPanel{
 		kImport _IMPORT = new kImport(this);
 		kclass _CLASS = new kclass(this);
 		kIf _IF = new kIf(this);
+		kVar _VAR = new kVar(this);
 		_buttonSocket.insert(_IMPORT);
 		_IMPORT._after.insert(_IF);
-		_IF._after.insert(_CLASS);
+		_IF._after.insert(_VAR);
+		_VAR._after.insert(_CLASS);
 		_IMPORT.makeButton();
-		_CLASS.makeButton();
 		_IF.makeButton();
+		_VAR.makeButton();
+		_CLASS.makeButton();
+		timer= new javax.swing.Timer(100, this);
+		timer.start();
 		this.repaint();
 	}
 	public WorkspacePanel(){
@@ -77,6 +98,7 @@ public class WorkspacePanel extends javax.swing.JPanel{
 		if(_temp!=null){_temp.paint(aBrush);}
 		_app.paint(aBrush);
 	}
+	
 	public void setTemp(CodePiece cp){
 		_temp=cp;
 	}
@@ -91,5 +113,11 @@ public class WorkspacePanel extends javax.swing.JPanel{
 	public int nClasses(){
 		int n = _app.getClasses().size();
 		return(n);
+	}
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		if(arg0.getSource()==timer){
+			repaint();
+		}
 	}
 }
