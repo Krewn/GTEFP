@@ -19,8 +19,8 @@ public class Socket extends CodePiece{
 		kVec<Integer> I =  new kVec<Integer>();
 		wp.addMouseListener(this);
 		_wp = wp;
-		_xpos = 0;
-		_ypos = 0;
+		_xPos = 0;
+		_yPos = 0;
 		_OGxs = new int[]{2,4,2,0,2,2,1,2,3,2};
 		_OGys = new int[]{0,2,4,2,0,1,2,3,2,1};
 		_scale = wp.getScale();
@@ -44,13 +44,13 @@ public class Socket extends CodePiece{
 			_plug.setCp(this);
 			_inUse = true;
 			_wp.removeSocket(this);
-			Draw_p();
+			draw_p();
 		}
 	}
 	@Override
 	public void unsert(){
 		_inUse = false;
-		Draw_p();
+		draw_p();
 		_wp.addSocket(this);
 	}
 	public CodePiece getPulg(){
@@ -69,18 +69,18 @@ public class Socket extends CodePiece{
 		}
 	}
 	@Override
-	public void Draw_p(){
+	public void draw_p(){
 		if(_inUse==false && _dontDraw == false ){
 			_xs=_OGxs;
 			_ys=_OGys;
-			super.Draw_p();
+			super.draw_p();
 		}else{
 			_xs=new int [] {0};
 			_ys=new int [] {0};
-			super.Draw_p();
+			super.draw_p();
 			if(_inUse==true){
-				_plug.Place(_xpos, _ypos);
-				_plug.Draw_p();
+				_plug.place(_xPos, _yPos);
+				_plug.draw_p();
 			}
 			//_p = new java.awt.Polygon({0},{0},1);
 		}
@@ -92,9 +92,9 @@ public class Socket extends CodePiece{
 		return(4);
 	}
 	@Override
-	public int ysize() {
+	public int ySize() {
 		if (_inUse){
-			return (_plug.ysize());
+			return (_plug.ySize());
 		}else{
 			if(_dontDraw){
 				return(0);

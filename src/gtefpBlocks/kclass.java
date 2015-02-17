@@ -30,8 +30,8 @@ public class kclass extends Closure{
 		_pClass.setRel(0,0);
 		_name.setRel(0,_pClass.width());
 	}
-	public void Move(int dx,int dy){
-		super.Move(dx, dy);
+	public void move(int dx,int dy){
+		super.move(dx, dy);
 		_name.setRel();
 		_pClass.setRel();
 	}
@@ -43,10 +43,10 @@ public class kclass extends Closure{
 		_curly.setRel(_pClass.width()+_name.width(),0);
 	}
 	@Override
-	public void Draw_p(){
+	public void draw_p(){
 		int[] w = new int[]{(_curly.width()+_pClass.width()+_name.width()),8 , _ylruc.width()};
-		int[] h = new int[]{_curly.ysize(),(_curly.ysize()+_inside.ysize()),(_curly.ysize()+_inside.ysize()+_ylruc.ysize())};
-		super.Draw_p(w,h);
+		int[] h = new int[]{_curly.ySize(),(_curly.ySize()+_inside.ySize()),(_curly.ySize()+_inside.ySize()+_ylruc.ySize())};
+		super.draw_p(w,h);
 	}
 	@Override
 	public void mousePressed(java.awt.event.MouseEvent e){
@@ -56,13 +56,13 @@ public class kclass extends Closure{
 			if(_isButton){
 				kclass _temp = new kclass(_wp);
 				_temp.setCp(_temp);
-				_temp.Place(_xpos,_ypos);
+				_temp.place(_xPos,_yPos);
 				_temp.setRel(0,0);
 				_temp.select();
 				_temp.mousePressed(e);
 				_wp.setTemp(_temp);
 				_wp.repaint();
-				_temp.Draw_p();
+				_temp.draw_p();
 				_wp.repaint();
 			}
 		}

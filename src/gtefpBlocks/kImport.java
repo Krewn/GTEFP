@@ -24,7 +24,7 @@ public class kImport extends CodePiece{
 		//should make sense as the line of code " import package; "
 		//                                          # socket
 		_after = new Socket(wp);
-		_after.Place(_xpos,ysize());
+		_after.place(_xPos,ySize());
 		_after.setCp(this);
 	}
 	@Override
@@ -44,14 +44,14 @@ public class kImport extends CodePiece{
 		_sc.setRel(_import.width()+_package.width(),0);
 	}
 	@Override
-	public int ysize(){
-		return(_import.ysize()+_after.ysize());
+	public int ySize(){
+		return(_import.ySize()+_after.ySize());
 	}
 	@Override
 	public void paint(java.awt.Graphics aBrush){
-		Draw_p();
+		draw_p();
 		super.paint(aBrush);
-		Draw_p();
+		draw_p();
 		//betterBrush.fillPolygon(_p);
 		//betterBrush.setColor(oldColor);
 		//super.paint(aBrush);
@@ -61,9 +61,9 @@ public class kImport extends CodePiece{
 		_after.paint(aBrush);
 	}
 	@Override
-	public void Draw_p(){
+	public void draw_p(){
 		int l = _import.width();
-		int h = ysize()-_after.ysize();
+		int h = ySize()-_after.ySize();
 		//System.out.println(_import.width());
 		_import.setRel();
 		_package.setRel(_import.width(),0);
@@ -71,17 +71,17 @@ public class kImport extends CodePiece{
 		_after.setRel(0,h);
 		_xs = new int []{0,l,l,0};
 		_ys = new int []{0,0,h,h};
-		super.Draw_p();
-		_after.Draw_p();
+		super.draw_p();
+		_after.draw_p();
 	}
 	@Override
-	public void Move(int dx,int dy){
-		super.Move(dx, dy);
+	public void move(int dx,int dy){
+		super.move(dx, dy);
 		_import.setRel();
 		_package.setRel();
 		_sc.setRel(_import.width()+_package.width(),0);
-		_after.Place(_xpos, _ypos+this.ysize());
-		Draw_p();
+		_after.place(_xPos, _yPos+this.ySize());
+		draw_p();
 	}
 	public void mousePressed(java.awt.event.MouseEvent e){
 		_lastMouseLoc = e.getPoint();
@@ -90,13 +90,13 @@ public class kImport extends CodePiece{
 			if(_isButton){
 				kImport _temp = new kImport(_wp);
 				_temp.setCp(_temp);
-				_temp.Place(_xpos,_ypos);
+				_temp.place(_xPos,_yPos);
 				_temp.setRel(0,0);
 				_temp.select();
 				_temp.mousePressed(e);
 				_wp.setTemp(_temp);
 				_wp.repaint();
-				_temp.Draw_p();
+				_temp.draw_p();
 				_wp.repaint();
 			}
 		}

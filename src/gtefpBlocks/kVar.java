@@ -37,7 +37,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		_tColor= new java.awt.Color(0,0,0);
 		_after = new Socket(wp);
 		_after.setCp(this);
-		_after.setRel(0,this.ysize()-_after.ysize());
+		_after.setRel(0,this.ySize()-_after.ySize());
 		//_after._dontDraw = true;
 		_focused = false;
 		_after.setDD(true);
@@ -69,9 +69,9 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		_isEditable = b ;
 	}
 	@Override
-	public void Move(int dx,int dy){
-		super.Move(dx, dy);
-		Draw_p();
+	public void move(int dx,int dy){
+		super.move(dx, dy);
+		draw_p();
 	}
 	@Override
 	public void paint(Graphics aBrush){
@@ -90,7 +90,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		if(_focused){
 			java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 			betterBrush.setColor(_wp.blink());
-			_cursor = new java.awt.Polygon(new int []{_xpos+_cursorPos,_xpos+_cursorPos+1,_xpos+_cursorPos+1,_xpos+_cursorPos},new int []{_ypos,_ypos,_ypos+ height(),_ypos+ height()},4);
+			_cursor = new java.awt.Polygon(new int []{_xPos+_cursorPos,_xPos+_cursorPos+1,_xPos+_cursorPos+1,_xPos+_cursorPos},new int []{_yPos,_yPos,_yPos+ height(),_yPos+ height()},4);
 			betterBrush.fillPolygon(_cursor);
 		}
 		//draw a polygon underneth?
@@ -100,7 +100,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		aBrush.setColor(_tColor);
 		aBrush.setFont(_font);
 		setRel();
-		aBrush.drawString(_text,  _xpos , _ypos+_scale*3);
+		aBrush.drawString(_text,  _xPos , _yPos+_scale*3);
 		aBrush.setColor(oldColor);
 		_width = metrics.stringWidth(_text)/_scale;
 		//}
@@ -112,7 +112,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		Color oldColor = aBrush.getColor();
 		//java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		//betterBrush.setFont(_font);
-		Draw_p();
+		draw_p();
 		super.paint(aBrush);
 		_after.paint(aBrush);
 		//draw a polygon underneth?
@@ -122,7 +122,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 			aBrush.setColor(c);
 			aBrush.setFont(_font);
 			setRel();
-			aBrush.drawString(_text,  _xpos , _ypos+_scale*3);
+			aBrush.drawString(_text,  _xPos , _yPos+_scale*3);
 			aBrush.setColor(oldColor);
 		}
 	}
@@ -151,14 +151,14 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		return(r);
 	}
 	@Override
-	public int ysize(){
-		return(super.ysize()+_after.ysize());
+	public int ySize(){
+		return(super.ySize()+_after.ySize());
 	}
-	public void Draw_p(){
+	public void draw_p(){
 		if(_inUse==false){
 			_xs=_OGxs;
 			_ys=_OGys;
-			super.Draw_p();
+			super.draw_p();
 			_width = 4;
 		}else{
 			if(_isEditable){
@@ -170,7 +170,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 				_xs=new int [] {0};
 				_ys=new int [] {0};
 			}
-			super.Draw_p();
+			super.draw_p();
 			//_p = new java.awt.Polygon({0},{0},1);
 		}
 	}
@@ -303,13 +303,13 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 			if(_isButton){
 				kVar _temp = new kVar(_wp);
 				_temp.setCp(_temp);
-				_temp.Place(_xpos,_ypos);
+				_temp.place(_xPos,_yPos);
 				_temp.setRel(0,0);
 				_temp.select();
 				_temp.mousePressed(e);
 				_wp.setTemp(_temp);
 				_wp.repaint();
-				_temp.Draw_p();
+				_temp.draw_p();
 				_wp.repaint();
 			}
 		}

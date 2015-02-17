@@ -37,18 +37,18 @@ public class CompPoly extends java.awt.Polygon implements Maluable{
 		return(C);
 	}
 	@Override
-	public void Draw_p() {
+	public void draw_p() {
 		// TODO Auto-generated method stub
 		
 	}
-	public void Move(int dx, int dy) {
-		_cp.Move(dx, dy);
+	public void move(int dx, int dy) {
+		_cp.move(dx, dy);
 	}
 	@Override
-	public void Place(int x, int y) {
+	public void place(int x, int y) {
 		_xpos=x;
 		_ypos=y;
-		Draw_p();
+		draw_p();
 	}
 	@Override
 	public void scale(int s) {

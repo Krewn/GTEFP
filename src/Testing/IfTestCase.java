@@ -28,7 +28,7 @@ public class IfTestCase extends TestCase
 	{
 		_wp = new WorkspacePanel();
 		_if = new kIf(_wp);
-		_if.Move(25, 125);
+		_if.move(25, 125);
 		assertEquals(_if.getXPos(), 25); // _if is moved to position 25, 125 -- test will pass.
 		assertEquals(_if.getYPos(), 125);
 	}

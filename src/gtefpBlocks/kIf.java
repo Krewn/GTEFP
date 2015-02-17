@@ -23,7 +23,7 @@ public class kIf extends Closure
 		_code.cut(_pIf);
 		_after = new Socket(wp);
 		_after.setCp(this);
-		_after.setRel(0,_pIf.ysize()+_inside.ysize());
+		_after.setRel(0,_pIf.ySize()+_inside.ySize());
 		_curly.setRel(_pIf.width() + _eval.width() , 0);
 		_c= new java.awt.Color(210,210,230);
 	}
@@ -44,9 +44,9 @@ public class kIf extends Closure
 		_eval.setRel(0, _pIf.width());
 	}
 	
-	public void Move(int dx, int dy)
+	public void move(int dx, int dy)
 	{
-		super.Move(dx, dy);
+		super.move(dx, dy);
 		_eval.setRel();
 		_pIf.setRel();
 		_curly.setRel();
@@ -65,15 +65,15 @@ public class kIf extends Closure
 	}
 	
 	@Override
-	public void Draw_p()
+	public void draw_p()
 	{
 		int[] w = new int[]{_curly.width() + _pIf.width() + _eval.width()+1, 8, _ylruc.width()};
-		int[] h = new int[]{_curly.ysize(), _curly.ysize() + _inside.ysize(), _curly.ysize() + _inside.ysize() + _ylruc.ysize()};
-		super.Draw_p(w, h);
+		int[] h = new int[]{_curly.ySize(), _curly.ySize() + _inside.ySize(), _curly.ySize() + _inside.ySize() + _ylruc.ySize()};
+		super.draw_p(w, h);
 		_eval.setRel(_pIf.width(),0);
 		_curly.setRel(_pIf.width()+_eval.width(),0);
 		_pIf.setRel();
-		_after.setRel(0,_pIf.ysize()+_inside.ysize()+_ylruc.ysize());
+		_after.setRel(0,_pIf.ySize()+_inside.ySize()+_ylruc.ySize());
 	}
 	
 	@Override
@@ -89,13 +89,13 @@ public class kIf extends Closure
 			{
 				kIf _temp = new kIf(_wp);
 				_temp.setCp(_temp);
-				_temp.Place(_xpos, _ypos);
+				_temp.place(_xPos, _yPos);
 				_temp.setRel(0, 0);
 				_temp.select();
 				_temp.mousePressed(e);
 				_wp.setTemp(_temp);
 				_wp.repaint();
-				_temp.Draw_p();
+				_temp.draw_p();
 				_wp.repaint();
 			}
 		}
@@ -122,8 +122,8 @@ public class kIf extends Closure
 		_wp.repaint();
 	}
 	@Override
-	public int ysize(){
-		return(super.ysize()+_after.ysize());
+	public int ySize(){
+		return(super.ySize()+_after.ySize());
 	}
 	@Override
 	public int width() {
