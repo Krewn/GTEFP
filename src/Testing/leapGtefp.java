@@ -7,7 +7,7 @@ import org.junit.Test;
 import junit.framework.TestCase;
 import static org.junit.Assert.*;
 
-public class leapGtefp {
+public class leapGtefp extends TestCase {
 	@Test
 	public void leap(){
 		GpFrame F1 = new GpFrame ("Gtefp");

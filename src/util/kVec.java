@@ -43,4 +43,8 @@ public class kVec<T> extends Vector<T>{
 		this.removeAllElements();
 	}
 	public void setCapacity(int i){/*pass*/}
+	public int size()
+	{
+		return back - front;
+	}
 }

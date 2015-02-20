@@ -9,7 +9,7 @@ import util.kVec;
 public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable{
 	private   App            _app;
 	protected Color          _c;
-	protected kVec<kVar>     _code;
+	protected kVec<Maluable> _code;
 	protected CodePiece      _cp;
 	protected boolean        _isButton;
 	protected java.awt.Point _lastMouseLoc;
@@ -29,7 +29,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	public CodePiece(WorkspacePanel wp){
 		wp.addMouseListener(this);
 		wp.addMouseMotionListener(this);
-		_code=new kVec<kVar>();
+		_code=new kVec<Maluable>();
 		_cp = this;
 		_lastMouseLoc = new java.awt.Point();
 		_xs=new int []{0};
@@ -183,6 +183,15 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	}
 	
 	public abstract int width();
+	
+	public String writeCode()
+	{
+		String s = "";
+		for (Maluable k : _code)
+			s += k.writeCode();
+		
+		return s;
+	}
 	
 	public int ySize(){
 		return(4);

@@ -55,4 +55,9 @@ public class CompPoly extends java.awt.Polygon implements Maluable{
 		_scale=s;
 		//scale comppolys
 	}
+	@Override
+	public String writeCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

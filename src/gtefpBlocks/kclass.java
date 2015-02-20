@@ -14,8 +14,11 @@ public class kclass extends Closure{
 		_pClass.setCp(this);
 		_name = new kVar(wp,"");
 		_name.setCp(this);
-		_code.cut(_pClass);
 		_code.cut(_name);
+		_code.cut(_pClass);
+		_code.que(_curly);
+		_code.que(_inside);
+		_code.que(_ylruc);
 		_curly.setRel(_pClass.width()+_name.width(),0);
 	}
 	@Override

@@ -28,4 +28,8 @@ public class JavaFile {
 		_imports.paint(aBrush);
 		_Class.paint(aBrush);
 	}
+	public String writeCode()
+	{
+		return _imports.writeCode() + _Class.writeCode();
+	}
 }

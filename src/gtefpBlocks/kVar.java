@@ -42,7 +42,12 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		_focused = false;
 		_after.setDD(true);
 	}
-	public void setDDA(boolean b){
+	@Override
+	public String writeCode()
+	{
+		return _text;
+	}
+	public void setDDA(boolean b){ // don't draw after (won't/will see socket)
 		_after.setDD(b);
 	}
 	public kVar(WorkspacePanel wp,String s){

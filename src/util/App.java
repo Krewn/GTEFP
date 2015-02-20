@@ -30,6 +30,17 @@ public class App {
 		boolean b =false;
 		return(b);
 	}
+	public String[] writeCode()
+	{
+		int k = 0;
+		String[] r = new String[_classes.size()]();
+		for (JavaFile k2 : _classes)
+		{
+			r[k] = k2.writeCode();
+			k++;
+		}
+		return null;
+	}
 }
 /*
 public void saveToFile() {
