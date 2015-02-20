@@ -4,7 +4,8 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
-   SaveTest.class
+	leapGtefp.class,
+	SaveTest.class
 })
-public  class JunitTestSuite {   
+public  class JunitTestSuite {
 } 

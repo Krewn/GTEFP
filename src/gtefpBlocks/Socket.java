@@ -59,6 +59,7 @@ public class Socket extends CodePiece{
 	}
 	@Override
 	public void paint(java.awt.Graphics aBrush){
+		draw_p();
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		super.paint(aBrush);

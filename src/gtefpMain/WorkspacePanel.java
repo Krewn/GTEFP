@@ -95,8 +95,8 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		betterBrush.setColor(new java.awt.Color(233,233,240));
 		betterBrush.fillPolygon(_templateTray);
 		_buttonSocket.paint(aBrush);
-		if(_temp!=null){_temp.paint(aBrush);}
 		_app.paint(aBrush);
+		if(_temp!=null){_temp.paint(aBrush);}
 	}
 	
 	public void setTemp(CodePiece cp){

@@ -155,6 +155,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		return(super.ySize()+_after.ySize());
 	}
 	public void draw_p(){
+		_after.setRel();
 		if(_inUse==false){
 			_xs=_OGxs;
 			_ys=_OGys;
@@ -229,48 +230,50 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 			int KeyCode = e.getKeyCode();
 			//System.out.println(KeyCode);
 			switch(KeyCode){
-			case 37://left arrow
-				if(_cursorPlace > 0){
-					_cursorPlace--;
-				}
-				break;
-			case 39://right arrow
-				if(_cursorPlace < _text.length()){
-					_cursorPlace++;
-				}
-				break;
-			case 8:
-				if(_cursorPlace > 0){
-					if(_text.length()>0){
-						if(_cursorPlace<_text.length()){
-							_text = _text.substring(0,_cursorPlace-1)+_text.substring(_cursorPlace,_text.length());
-						}else{
-							_text = _text.substring(0,_cursorPlace-1);
-						}
-						_cursorPlace-=1;
+				case 37://left arrow
+					if(_cursorPlace > 0){
+						_cursorPlace--;
 					}
-				}
-				break;
-			case 127:
-				if(_cursorPlace < _text.length()){
-					if(_text.length()>0){
-						if(_cursorPlace>0){
-							_text = _text.substring(0,_cursorPlace)+_text.substring(_cursorPlace+1,_text.length());
-						}else{
-							_text = _text.substring(1,_text.length());
+					break;
+				case 39://right arrow
+					if(_cursorPlace < _text.length()){
+						_cursorPlace++;
+					}
+					break;
+				case 8:
+					if(_cursorPlace > 0){
+						if(_text.length()>0){
+							if(_cursorPlace<_text.length()){
+								_text = _text.substring(0,_cursorPlace-1)+_text.substring(_cursorPlace,_text.length());
+							}else{
+								_text = _text.substring(0,_cursorPlace-1);
+							}
+							_cursorPlace-=1;
 						}
 					}
-				}
-				break;
+					break;
+				case 127:
+					if(_cursorPlace < _text.length()){
+						if(_text.length()>0){
+							if(_cursorPlace>0){
+								_text = _text.substring(0,_cursorPlace)+_text.substring(_cursorPlace+1,_text.length());
+							}else{
+								_text = _text.substring(1,_text.length());
+							}
+						}
+					}
+					break;
+				case KeyEvent.VK_ENTER:
+					setDDA(false);
+					System.out.print(_after.inUse());
+					break;
+			}
+			if(_text.length()>0){
+				_inUse=true;
+			}else{
+				_inUse=false;
+			}
 		}
-		if(_text.length()>0){
-			_inUse=true;
-		}else{
-			_inUse=false;
-		}
-		}
-		// TODO Auto-generated method stub
-		
 	}
 	@Override
 	public void keyReleased(KeyEvent arg0) {
@@ -290,7 +293,6 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 				_cursorPlace+=1;
 				_wp.repaint();
 			}
-			
 		}
 		// TODO Auto-generated method stub
 		
