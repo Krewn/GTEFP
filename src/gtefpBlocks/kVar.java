@@ -194,7 +194,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	public void unplug(){
 		super.unplug();
 		if(_after.inUse()){
-			_cp.insert(_after.getPulg());}
+			_cp.insert(_after.getPlug());}
 		_after.unsert();
 		setCp(this);
 	}

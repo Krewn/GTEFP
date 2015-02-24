@@ -2,23 +2,17 @@ package gtefpBlocks;
 
 import gtefpMain.WorkspacePanel;
 
-import java.awt.event.MouseEvent;
-
-public class kclass extends Closure{
+public class kClass extends Closure{
 	private kVar _pClass;
 	private kVar _name;
-	public kclass(WorkspacePanel wp){
+	public kClass(WorkspacePanel wp){
 		super(wp);
 		_pClass = new kVar(wp,"public class");
 		_pClass.setEditable(false);
 		_pClass.setCp(this);
 		_name = new kVar(wp,"");
 		_name.setCp(this);
-		_code.cut(_name);
-		_code.cut(_pClass);
-		_code.que(_curly);
-		_code.que(_inside);
-		_code.que(_ylruc);
+		_code.cut(_name); _code.cut(_pClass); _code.que(_curly); _code.que(_inside); _code.que(_ylruc);
 		_curly.setRel(_pClass.width()+_name.width(),0);
 	}
 	@Override
@@ -57,7 +51,7 @@ public class kclass extends Closure{
 		if(_p.contains(_lastMouseLoc)){
 			_selected=true;
 			if(_isButton){
-				kclass _temp = new kclass(_wp);
+				kClass _temp = new kClass(_wp);
 				_temp.setCp(_temp);
 				_temp.place(_xPos,_yPos);
 				_temp.setRel(0,0);

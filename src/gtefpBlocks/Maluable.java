@@ -1,8 +1,5 @@
 package gtefpBlocks;
 
-import java.awt.Color;
-import java.awt.Polygon;
-
 public interface Maluable {
 	
 	public void draw_p();

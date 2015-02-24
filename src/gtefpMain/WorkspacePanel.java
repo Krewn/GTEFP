@@ -57,7 +57,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_buttonSocket.place(0, 0);
 		_temp = null;
 		kImport _IMPORT = new kImport(this);
-		kclass _CLASS = new kclass(this);
+		kClass _CLASS = new kClass(this);
 		kIf _IF = new kIf(this);
 		kVar _VAR = new kVar(this);
 		_buttonSocket.insert(_IMPORT);

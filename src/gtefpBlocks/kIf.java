@@ -20,18 +20,19 @@ public class kIf extends Closure
 		_eval = new Socket(wp);
 		_eval.setCp(this);
 		_eval.setRel(_pIf.width(),0);
-		_code.cut(_pIf);
+		//_code.cut(_pIf);
 		_after = new Socket(wp);
 		_after.setCp(this);
 		_after.setRel(0,_pIf.ySize()+_inside.ySize());
 		_curly.setRel(_pIf.width() + _eval.width() , 0);
 		_c= new java.awt.Color(210,210,230);
+		_code.que(_pIf); _code.que(_eval); _code.que(_curly); _code.que(_ylruc); _code.que(_after);
 	}
 	@Override
 	public void unplug(){
 		super.unplug();
 		if(_after.inUse()){
-			_cp.insert(_after.getPulg());}
+			_cp.insert(_after.getPlug());}
 		_after.unsert();
 		setCp(this);
 	}

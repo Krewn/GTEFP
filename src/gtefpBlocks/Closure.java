@@ -39,6 +39,11 @@ public abstract class Closure extends CodePiece{
 		_inside.draw_p();
 	}
 	
+	public Socket getInside()
+	{
+		return _inside;
+	}
+	
 	public void draw_p(int[] w, int[] h){
 		//int[] w = new int[]{_curly.width(),16,_ylruc.width()};
 		//int[] h = new int[]{_curly.ysize(),_curly.ysize()+_inside.ysize(),_curly.ysize()+_inside.ysize()+_ylruc.ysize()};

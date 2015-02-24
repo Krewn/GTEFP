@@ -45,15 +45,17 @@ public class Socket extends CodePiece{
 			_inUse = true;
 			_wp.removeSocket(this);
 			draw_p();
+			_code.que(_plug);
 		}
 	}
 	@Override
 	public void unsert(){
+		_code.remove(0);
 		_inUse = false;
 		draw_p();
 		_wp.addSocket(this);
 	}
-	public CodePiece getPulg(){
+	public CodePiece getPlug(){
 		CodePiece p=_plug;
 		return (p);
 	}

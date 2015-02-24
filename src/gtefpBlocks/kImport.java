@@ -31,7 +31,7 @@ public class kImport extends CodePiece{
 	public void unplug(){
 		super.unplug();
 		if(_after.inUse()){
-			_cp.insert(_after.getPulg());}
+			_cp.insert(_after.getPlug());}
 		_after.unsert();
 		setCp(this);
 	}

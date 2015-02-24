@@ -1,6 +1,9 @@
 package gtefpMain;
+
+import gtefpBlocks.*;
 import java.awt.*;
 import javax.swing.*;
+
 public class GpFrame extends JFrame {
 	private ClassesPanel _Cpanel;
 	private WorkspacePanel _Wpanel;
@@ -28,7 +31,17 @@ public class GpFrame extends JFrame {
 		return(_Wpanel);
 	}
 	public static void main (String [ ] args) {
-		GpFrame test = new GpFrame ("Gtefp");
+		WorkspacePanel wp = new WorkspacePanel();
+		
+		// Test for writeCode:
+		Socket s = new Socket(wp);
+		kClass c = new kClass(wp);
+		kIf    i = new kIf(wp);
+		kElseIf e = new kElseIf(wp);
+		s.insert(c); c.getInside().insert(i); i.getInside().insert(e);
+		System.out.print(s.writeCode());
+		
+		//GpFrame test = new GpFrame ("Gtefp");
 	}
 
 	/*

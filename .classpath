@@ -8,6 +8,5 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="src/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="src/hamcrest-core-1.3.jar"/>
-	<classpathentry kind="lib" path="E:/LeapJava.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

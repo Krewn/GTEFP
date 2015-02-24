@@ -30,16 +30,12 @@ public class App {
 		boolean b =false;
 		return(b);
 	}
-	public String[] writeCode()
+	public kVec<String> writeCode()
 	{
-		int k = 0;
-		String[] r = new String[_classes.size()]();
+		kVec<String> r = new kVec<String>();
 		for (JavaFile k2 : _classes)
-		{
-			r[k] = k2.writeCode();
-			k++;
-		}
-		return null;
+			r.que(k2.writeCode());
+		return r;
 	}
 }
 /*
