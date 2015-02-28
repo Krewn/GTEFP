@@ -45,6 +45,21 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		_yPos=0;
 	}
 	
+	public boolean isCodeCompleted()
+	{
+		int size = _code.size();
+		
+		for (int i = 0; i < size; i++)
+		{
+			CodePiece cp = (CodePiece)_code.elementAt(i);
+			
+			if ((cp == null) || !cp.isCodeCompleted())
+				return false;
+		}
+		
+		return true;
+	}
+	
 	public abstract void clicked();
 	
 	public void draw_p(){

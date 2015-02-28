@@ -37,8 +37,8 @@ public class GpFrame extends JFrame {
 		Socket s = new Socket(wp);
 		kClass c = new kClass(wp);
 		kIf    i = new kIf(wp);
-		kElseIf e = new kElseIf(wp);
-		s.insert(c); c.getInside().insert(i); i.getInside().insert(e);
+		//kElseIf e = new kElseIf(wp);
+		s.insert(c); c.getInside().insert(i); //i.getInside().insert(e);
 		System.out.print(s.writeCode());
 		
 		//GpFrame test = new GpFrame ("Gtefp");
