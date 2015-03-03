@@ -41,7 +41,7 @@ public class GpFrame extends JFrame {
 		s.insert(c); c.getInside().insert(i); //i.getInside().insert(e);
 		System.out.print(s.writeCode());
 		
-		//GpFrame test = new GpFrame ("Gtefp");
+		GpFrame test = new GpFrame ("Gtefp");
 	}
 
 	/*

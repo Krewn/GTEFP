@@ -11,6 +11,7 @@ public class JavaFile {
 	public JavaFile(WorkspacePanel wp){
 		_wp = wp;
 		_scale=wp.getScale();
+		_wp.newJFile(this);
 		_imports = new Socket(wp);
 		_imports.place(wp._trayWidth, 0);
 		_imports.scale(_wp.getScale());

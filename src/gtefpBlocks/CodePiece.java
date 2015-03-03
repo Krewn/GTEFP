@@ -189,7 +189,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	}
 	
 	public void unplug(){
-		_cp = (Socket) _cp;
+		//_cp = (Socket) _cp;
 		_cp.unsert();
 		_wp.setTemp(this);
 	}

@@ -50,7 +50,7 @@ public class Socket extends CodePiece{
 	}
 	@Override
 	public void unsert(){
-		_code.remove(0);
+		_code.remove(_plug);
 		_inUse = false;
 		draw_p();
 		_wp.addSocket(this);

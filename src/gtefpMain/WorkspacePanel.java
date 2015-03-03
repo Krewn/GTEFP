@@ -3,9 +3,8 @@ package gtefpMain;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
-import util.App;
-import util.kVec;
 import gtefpBlocks.*;
+import util.*;
 
 public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event.ActionListener{
 	private java.awt.Polygon _templateTray;
@@ -16,7 +15,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public int _importsYPos;//imports and code are default x positioned at tray width.
 	public int _codeYpos;
 	public int _scale;
-	public kVec<Socket> _sockets;
+	public kVec<kVec<Socket>> _sockets;
 	public java.awt.Color _blink;
 	private int _bc;
 	private long _ogT;
@@ -27,6 +26,13 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		int r = _scale;
 		return(r);
 	}
+	public kVec<Socket> sockets(){
+		try{
+			return(_sockets.elementAt(_app.classIndex()));
+		}catch(java.lang.NullPointerException e){
+			return(_sockets.elementAt(0));
+		}
+	}
 	public java.awt.Color blink(){//1000 miliseconds / second.
 		long t = System.currentTimeMillis();
 		_bc = (int) ((t - _ogT)%510)/2;
@@ -34,10 +40,18 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		return(new java.awt.Color(_bc,_bc,_bc));
 	}
 	public void addSocket(Socket s){
-		_sockets.add(s);
+		try{
+			_sockets.elementAt(_app.classIndex()).add(s);
+		}catch(java.lang.NullPointerException e){
+			_sockets.elementAt(0).add(s);
+		}
+	}
+	public void newJFile(JavaFile j){
+		_app.AddFile(j);
+		_sockets.que(new kVec<Socket> ());
 	}
 	public void removeSocket(Socket s){
-		_sockets.remove(s);
+		sockets().remove(s);
 	}
 	public void init(){
 		this.setFocusable(true);
@@ -48,7 +62,8 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		this.setBackground(new java.awt.Color(200,200,201));
 		int [] xs ={0};
 		int [] ys ={0};
-		_sockets=new kVec<Socket>();
+		_sockets=new kVec<kVec<Socket>>();
+		_sockets.que(new kVec<Socket>());
 		_scale = 5 ;
 		_trayWidth = 250;
 		_templateTray = new java.awt.Polygon(xs ,ys, xs.length);
@@ -70,12 +85,14 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_CLASS.makeButton();
 		timer= new javax.swing.Timer(100, this);
 		timer.start();
+		_sockets = new kVec<kVec<Socket>>();
 		this.repaint();
 	}
 	public WorkspacePanel(){
 		super();
 		this.init();
 		_app = new App(this);
+		_app.NewJavaFile();
 		//this.addMouseListener(_trailer);
 		
 	}

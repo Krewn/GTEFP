@@ -106,7 +106,7 @@ public class kImport extends CodePiece{
 		if(_selected){
 			java.awt.geom.Area testa = new java.awt.geom.Area(_p);
 			Socket q = null;
-			for(Socket s: _wp._sockets){
+			for(Socket s: _wp.sockets()){
 				if(s!=this._after){
 					java.awt.geom.Area a =new java.awt.geom.Area(s._p);
 					a.intersect(testa);

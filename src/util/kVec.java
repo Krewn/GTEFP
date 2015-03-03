@@ -42,6 +42,12 @@ public class kVec<T> extends Vector<T>{
 	public void flush(){
 		this.removeAllElements();
 	}
+	@Override
+	public boolean remove(Object o){
+		boolean b = super.remove(o);
+		back--;
+		return(b);
+	}
 	public void setCapacity(int i){/*pass*/}
 	public int size()
 	{
