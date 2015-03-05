@@ -14,9 +14,6 @@ public class App {
 		//_classes.que(new JavaFile(wp)); # JavaFile Constructor ques the file into _classes.
 		_currentWsClass=0;
 	}
-	public void NewJavaFile(){
-		new JavaFile(_wp);
-	}
 	public void paint(java.awt.Graphics aBrush){
 		
 		java.awt.Color oldColor = aBrush.getColor();
@@ -41,6 +38,9 @@ public class App {
 		for (JavaFile k2 : _classes)
 			r.que(k2.writeCode());
 		return r;
+	}
+	public void NewJavaFile(){
+		 new JavaFile(_wp);
 	}
 	public void AddFile(JavaFile j) {
 		_classes.que(j);

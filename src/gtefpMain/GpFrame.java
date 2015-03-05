@@ -17,6 +17,7 @@ public class GpFrame extends JFrame {
 		_Cpanel.setMaximumSize(new Dimension(3000, 25));  // hardCoded sizing
 		_Cpanel.setMinimumSize(new Dimension(100, 20));  // hardCoded sizing
 		_Wpanel = new WorkspacePanel();
+		_Cpanel.setApp(_Wpanel.getApp());
 		_Wpanel.setPreferredSize(new Dimension(780, 800));// hardCoded sizing
 		_Wpanel.setMaximumSize(new Dimension(3000, 3000));  // hardCoded sizing
 		_Wpanel.setMinimumSize(new Dimension(100, 42));  // hardCoded sizing

@@ -47,8 +47,10 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		}
 	}
 	public void newJFile(JavaFile j){
+		_temp=null;
 		_app.AddFile(j);
 		_sockets.que(new kVec<Socket> ());
+		this.repaint();
 	}
 	public void removeSocket(Socket s){
 		sockets().remove(s);
@@ -137,4 +139,15 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 			repaint();
 		}
 	}
+	
+	public App getApp()
+	{
+		return _app;
+	}
+	
+	public void setApp(App a)
+	{
+		_app = a;
+	}
+	
 }
