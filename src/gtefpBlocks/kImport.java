@@ -4,7 +4,7 @@ import gtefpMain.WorkspacePanel;
 
 public class kImport extends CodePiece{
 	private kVar _package;
-	private kVar _import;
+	protected kVar _import;
 	private kVar _sc;
 	public Socket _after;
 	public kImport(WorkspacePanel wp) {
@@ -83,6 +83,7 @@ public class kImport extends CodePiece{
 		_after.place(_xPos, _yPos+this.ySize());
 		draw_p();
 	}
+	@Override
 	public void mousePressed(java.awt.event.MouseEvent e){
 		_lastMouseLoc = e.getPoint();
 		if(_p.contains(_lastMouseLoc)){

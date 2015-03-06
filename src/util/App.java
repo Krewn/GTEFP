@@ -1,13 +1,15 @@
 package util;
 import gpBase.kVec;
 import gtefpBlocks.Socket;
+import gtefpMain.Tab;
 import gtefpMain.WorkspacePanel;
+import gtefpMain.ClassesPanel;
 
 public class App {
 	public kVec<JavaFile> _classes;
 	private int _currentWsClass;
 	private WorkspacePanel _wp;
-	public App(WorkspacePanel wp){
+	public App(WorkspacePanel wp ){
 		_wp = wp;
 		_classes=new kVec<JavaFile>();
 		// new JavaFile(wp);
@@ -19,6 +21,7 @@ public class App {
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		_classes.elementAt(_currentWsClass).paint(aBrush);
+		
 	}
 	public int classIndex(){
 		int r = _currentWsClass;
