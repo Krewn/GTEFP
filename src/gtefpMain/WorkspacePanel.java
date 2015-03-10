@@ -10,6 +10,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	private java.awt.Polygon _templateTray;
 	public App _app;
 	public Socket _buttonSocket;
+	public ClassesPanel _cp;
 	public CodePiece _temp;
 	public int _trayWidth;
 	public int _importsYPos;//imports and code are default x positioned at tray width.
@@ -22,10 +23,21 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	private boolean _bUp; // instructs weather the blinking is to go up or down;
 	private javax.swing.Timer timer;
 	
+	public void setCp(ClassesPanel cp)
+	{
+		_cp = cp;
+	}
+	
 	public int getScale(){
 		int r = _scale;
 		return(r);
 	}
+	
+	public ClassesPanel getClassesPanel()
+	{
+		
+	}
+	
 	public kVec<Socket> sockets(){
 		try{
 			return(_sockets.elementAt(_app.classIndex()));
@@ -123,6 +135,11 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		if(_temp!=null){_temp.paint(aBrush);}
 	}
 	
+	public void setCurrentWsClass(int i)
+	{
+		_app.setCurrentWsClass(i);
+	}
+	
 	public void setTemp(CodePiece cp){
 		_temp=cp;
 	}
@@ -154,5 +171,4 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	{
 		_app = a;
 	}
-	
 }

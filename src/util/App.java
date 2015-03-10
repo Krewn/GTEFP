@@ -20,8 +20,11 @@ public class App {
 		
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
-		_classes.elementAt(_currentWsClass).paint(aBrush);
-		
+		try{
+			_classes.elementAt(_currentWsClass).paint(aBrush);
+		}catch(java.lang.ArrayIndexOutOfBoundsException e){
+			this.NewJavaFile();
+		}
 	}
 	public int classIndex(){
 		int r = _currentWsClass;
@@ -49,6 +52,16 @@ public class App {
 		_classes.que(j);
 		_currentWsClass = _classes.indexOf(j);
 		_wp.repaint();
+	}
+	
+	public int indexOfJavaFile(JavaFile jf)
+	{
+		return _classes.indexOf(jf);
+	}
+	
+	public void setCurrentWsClass(int i)
+	{
+		_currentWsClass = i;
 	}
 }
 /*

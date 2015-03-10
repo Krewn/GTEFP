@@ -1,6 +1,7 @@
 package util;
 
 import gtefpBlocks.Socket;
+import gtefpMain.ClassesPanel;
 import gtefpMain.WorkspacePanel;
 
 public class JavaFile {
@@ -21,7 +22,10 @@ public class JavaFile {
 		_Class.setRel(0,_imports.ySize()+10);
 		_Class.scale(_wp.getScale());
 		_Class.draw_p();
+		ClassesPanel cp = _wp.getClassesPanel();
+		cp.newTab();
 	}
+	
 	public void paint(java.awt.Graphics aBrush){
 		_Class.setRel(0,_imports.ySize()+10);
 		java.awt.Color oldColor = aBrush.getColor();

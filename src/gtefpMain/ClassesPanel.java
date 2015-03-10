@@ -8,7 +8,9 @@ public class ClassesPanel extends javax.swing.JPanel{
 	private App _app;
 	private NewClassButton _newClassButton;
 	private kVec<Tab> _tabs;
-	public ClassesPanel(){
+	private WorkspacePanel _wp;
+	private int _rowHeight;
+	public ClassesPanel(WorkspacePanel wp){
 		super();
 		_nrows = 1;
 		//this.addMouseListener(_trailer);
@@ -16,8 +18,10 @@ public class ClassesPanel extends javax.swing.JPanel{
 		_newClassButton = new NewClassButton(this);
 		_tabs = new kVec<Tab>();
 		this.repaint();
+		_wp = wp;
+		_rowHeight = 30;
 	}
-	public ClassesPanel(App app){
+	public ClassesPanel(App app, WorkspacePanel wp){
 		super();
 		_nrows = 1;
 		//this.addMouseListener(_trailer);
@@ -25,12 +29,16 @@ public class ClassesPanel extends javax.swing.JPanel{
 		this.setBackground(new java.awt.Color(90,90,90));
 		_newClassButton = new NewClassButton(this);
 		_tabs = new kVec<Tab>();
-		this.repaint();	
+		this.repaint();
+		_wp = wp;
+		_rowHeight = 30;
 	}
 	public void paintComponent (java.awt.Graphics aBrush){
 		super.paintComponent(aBrush);
 		_newClassButton.paint(aBrush);
-		if()		
+		
+		for (Tab t : _tabs)
+			t.paintComponent(aBrush);
 	}
 	public void newClass() {
 		_app.NewJavaFile();
@@ -38,5 +46,26 @@ public class ClassesPanel extends javax.swing.JPanel{
 	public void setApp(App a)
 	{
 		_app = a;
+	}
+	
+	public WorkspacePanel getWorkspacePanel()
+	{
+		return _wp;
+	}
+	
+	public void newTab()
+	{
+		_tabs.que(new Tab(this));
+	}
+	
+	public int getRowHeight()
+	{
+		return _rowHeight;
+	}
+	
+	public void drawTabs()
+	{
+		for (Tab t : _tabs)
+			t.draw_p();
 	}
 }
