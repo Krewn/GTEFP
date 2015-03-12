@@ -1,69 +1,84 @@
 package util;
-import gpBase.kVec;
-import gtefpBlocks.Socket;
-import gtefpMain.Tab;
-import gtefpMain.WorkspacePanel;
-import gtefpMain.ClassesPanel;
 
-public class App {
-	public kVec<JavaFile> _classes;
-	private int _currentWsClass;
+import gpBase.kVec;
+import gtefpMain.WorkspacePanel;
+
+public class App
+{
+	public  kVec<JavaFile> _classes;
+	private int            _currentWsClass;
 	private WorkspacePanel _wp;
-	public App(WorkspacePanel wp ){
-		_wp = wp;
-		_classes=new kVec<JavaFile>();
-		// new JavaFile(wp);
-		//_classes.que(new JavaFile(wp)); # JavaFile Constructor ques the file into _classes.
-		_currentWsClass=0;
-	}
-	public void paint(java.awt.Graphics aBrush){
-		
-		java.awt.Color oldColor = aBrush.getColor();
-		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
-		try{
-			_classes.elementAt(_currentWsClass).paint(aBrush);
-		}catch(java.lang.ArrayIndexOutOfBoundsException e){
-			this.NewJavaFile();
-		}
-	}
-	public int classIndex(){
-		int r = _currentWsClass;
-		return(r);
-	}
-	public kVec<JavaFile> getClasses(){
-		kVec<JavaFile>c = _classes;
-		return(c);
-	}
-	public boolean saveToFile(){
-		boolean b =false;
-		return(b);
-	}
-	public kVec<String> writeCode()
+	
+	public App(WorkspacePanel wp )
 	{
-		kVec<String> r = new kVec<String>();
-		for (JavaFile k2 : _classes)
-			r.que(k2.writeCode());
-		return r;
+		_wp             = wp;
+		_classes        = new kVec<JavaFile>();
+		_currentWsClass = 0;
 	}
-	public void NewJavaFile(){
-		 new JavaFile(_wp);
-	}
-	public void AddFile(JavaFile j) {
+	
+	public void addFile(JavaFile j)
+	{
 		_classes.que(j);
 		_currentWsClass = _classes.indexOf(j);
 		_wp.repaint();
 	}
 	
-	public int indexOfJavaFile(JavaFile jf)
+	public int classIndex()
+	{
+		int r = _currentWsClass;
+		return(r);
+	}
+	
+	public kVec<JavaFile> getClasses()
+	{
+		kVec<JavaFile> c = _classes;
+		return (c);
+	}
+	
+	public int getIndexOfJavaFile(JavaFile jf)
 	{
 		return _classes.indexOf(jf);
+	}
+	
+	public void newJavaFile()
+	{
+		 new JavaFile(_wp);
+	}
+	
+	public void paint(java.awt.Graphics aBrush)
+	{
+		try
+		{
+			_classes.elementAt(_currentWsClass).paint(aBrush);
+		}
+		catch(java.lang.ArrayIndexOutOfBoundsException e)
+		{
+			this.newJavaFile();
+		}
+	}
+	
+	public boolean saveToFile()
+	{
+		boolean b = false;
+		return(b);
 	}
 	
 	public void setCurrentWsClass(int i)
 	{
 		_currentWsClass = i;
 	}
+	
+	public kVec<String> writeCode()
+	{
+		kVec<String> r = new kVec<String>();
+		
+		for (JavaFile k2 : _classes)
+			r.que(k2.writeCode());
+		
+		return r;
+	}
 }
+
 /*
 public void saveToFile() {
 	fc=new javax.swing.JFileChooser();

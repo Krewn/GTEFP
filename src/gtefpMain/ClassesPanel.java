@@ -13,7 +13,6 @@ public class ClassesPanel extends javax.swing.JPanel{
 	public ClassesPanel(WorkspacePanel wp){
 		super();
 		_nrows = 1;
-		//this.addMouseListener(_trailer);
 		this.setBackground(new java.awt.Color(90,90,90));
 		_newClassButton = new NewClassButton(this);
 		_tabs = new kVec<Tab>();
@@ -24,7 +23,6 @@ public class ClassesPanel extends javax.swing.JPanel{
 	public ClassesPanel(App app, WorkspacePanel wp){
 		super();
 		_nrows = 1;
-		//this.addMouseListener(_trailer);
 		_app = app;
 		this.setBackground(new java.awt.Color(90,90,90));
 		_newClassButton = new NewClassButton(this);
@@ -41,7 +39,7 @@ public class ClassesPanel extends javax.swing.JPanel{
 			t.paintComponent(aBrush);
 	}
 	public void newClass() {
-		_app.NewJavaFile();
+		_app.newJavaFile();
 	}
 	public void setApp(App a)
 	{

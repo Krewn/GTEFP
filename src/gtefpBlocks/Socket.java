@@ -2,10 +2,6 @@ package gtefpBlocks;
 
 import gtefpMain.WorkspacePanel;
 
-import java.awt.event.MouseEvent;
-
-import util.kVec;
-
 public class Socket extends CodePiece{
 	private CodePiece _plug;
 	private boolean _inUse;
@@ -16,7 +12,6 @@ public class Socket extends CodePiece{
 	public Socket(WorkspacePanel wp){
 		super(wp);
 		wp.addSocket(this);
-		kVec<Integer> I =  new kVec<Integer>();
 		wp.addMouseListener(this);
 		_wp = wp;
 		_xPos = 0;
@@ -62,12 +57,8 @@ public class Socket extends CodePiece{
 	@Override
 	public void paint(java.awt.Graphics aBrush){
 		draw_p();
-		java.awt.Color oldColor = aBrush.getColor();
-		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		super.paint(aBrush);
-		//System.out.print("paint Socket");
 		if(_inUse){
-			//System.out.print("paint Plug");
 			_plug.paint(aBrush);
 		}
 	}

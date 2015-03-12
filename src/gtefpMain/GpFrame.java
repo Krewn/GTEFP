@@ -4,45 +4,44 @@ import gtefpBlocks.*;
 import java.awt.*;
 import javax.swing.*;
 
-public class GpFrame extends JFrame {
-	private ClassesPanel _Cpanel;
+public class GpFrame extends JFrame
+{
+	private ClassesPanel   _Cpanel;
 	private WorkspacePanel _Wpanel;
-	public GpFrame(String Title){
-		super(Title);
+	
+	public GpFrame(String title)
+	{
+		super(title);
+		
 		this.getContentPane().setLayout(new BoxLayout(this.getContentPane(),BoxLayout.Y_AXIS));
 		this.setSize(900,750);
 		this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE); 
+		
 		_Wpanel = new WorkspacePanel();
-		_Wpanel.setPreferredSize(new Dimension(780, 800));// hardCoded sizing
+		_Wpanel.setPreferredSize(new Dimension(780, 800));  // hardCoded sizing
 		_Wpanel.setMaximumSize(new Dimension(3000, 3000));  // hardCoded sizing
-		_Wpanel.setMinimumSize(new Dimension(100, 42));  // hardCoded sizing
-		_Cpanel = new ClassesPanel(_Wpanel);
-		_Cpanel.setPreferredSize(new Dimension(780,30));// hardCoded sizing
-		_Cpanel.setMaximumSize(new Dimension(3000, 25));  // hardCoded sizing
-		_Cpanel.setMinimumSize(new Dimension(100, 20));  // hardCoded sizing
+		_Wpanel.setMinimumSize(new Dimension(100, 42));     // hardCoded sizing
+		
+		_Cpanel = _Wpanel.getClassesPanel();
+		_Cpanel.setPreferredSize(new Dimension(780,30));    // hardCoded sizing
+		_Cpanel.setMaximumSize(new Dimension(3000, 25));    // hardCoded sizing
+		_Cpanel.setMinimumSize(new Dimension(100, 20));     // hardCoded sizing
 		_Cpanel.setApp(_Wpanel.getApp());
+		
 		_Wpanel.setCp(_Cpanel);
+		
 		this.setPreferredSize(new Dimension(950, 800));
 		this.add(_Cpanel);
 		this.add(_Wpanel);
+		
 		_Wpanel.setup();
+		
 		this.repaint();
 		this.setVisible(true);
 	}
-	public WorkspacePanel getWp(){
-		return(_Wpanel);
-	}
-	public static void main (String [ ] args) {
-		WorkspacePanel wp = new WorkspacePanel();
-		
-		// Test for writeCode:
-		Socket s = new Socket(wp);
-		kClass c = new kClass(wp);
-		kIf    i = new kIf(wp);
-		//kElseIf e = new kElseIf(wp);
-		s.insert(c); c.getInside().insert(i); //i.getInside().insert(e);
-		System.out.print(s.writeCode());
-		
+	
+	public static void main (String [ ] args)
+	{
 		GpFrame test = new GpFrame ("Gtefp");
 	}
 

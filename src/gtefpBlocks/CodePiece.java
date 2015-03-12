@@ -1,13 +1,11 @@
 package gtefpBlocks;
+
 import gtefpMain.WorkspacePanel;
-
-import java.awt.Polygon;
 import java.awt.Color;
-
-import util.App;
 import util.kVec;
-public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable{
-	private   App            _app;
+
+public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
+{
 	protected Color          _c;
 	protected kVec<Maluable> _code;
 	protected CodePiece      _cp;
