@@ -30,23 +30,27 @@ public class Tab extends MouseInputAdapter
 		_wp = _cp.getWorkspacePanel();
 		_app = _wp.getApp();
 		_Q = 10;
-		_c = new java.awt.Color(255, 255, 255);
+		_c = new java.awt.Color(255, 0, 0);
 		_fontColor = new java.awt.Color(1, 1, 1);
 		draw_p();
 		_sized = false;
 		_style = "Arial";
-		_poly = new Polygon();
+		//_poly = new Polygon();
 		_text = "SOMETHING GOES HERE!!!!";
 	}
 	
 	public void draw_p()
 	{
 		int i = _app.getIndexOfJavaFile(_file);
-		
 		_x = _cp.getWidth()/(i % _Q) + 5;
 		_y = _h * (i % _Q) + 5;
 		_w = (_cp.getWidth() - 40) / _Q;
 		_h = _cp.getRowHeight() - 10;
+		System.out.println("x:"+_x+"\t y:"+_y+"\t h:"+_h+"\t w:"+_w );
+		_w = 42 ;
+		int [] xs = new int []{_x,_x+_w,_x+_w,_x};
+		int [] ys = new int [] {_y,_y,_y+_h,_y+_h};
+		_poly = new Polygon(xs,ys,xs.length);
 	}
 	
 	@Override
@@ -59,6 +63,7 @@ public class Tab extends MouseInputAdapter
 	
 	public void paintComponent(java.awt.Graphics aBrush)
 	{
+		System.out.println("Bazinga");
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		betterBrush.setColor(_c);
