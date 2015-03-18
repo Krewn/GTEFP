@@ -64,8 +64,10 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		_after.setRel();
 	}
 	public String getText(){
-		String r = _text;
-		return(r);
+		//String r = _text;
+		//return(r);
+		
+		return _text;
 	}
 	public void setText(String text){
 		_text=text;
@@ -269,7 +271,8 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 					}
 					break;
 				case KeyEvent.VK_ENTER:
-					setDDA(false);
+					//setDDA(false);
+					setDDA(!getDDA());
 					System.out.print(_after.inUse());
 					break;
 			}
@@ -321,5 +324,10 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 			}
 		}
 		
+	}
+	
+	public boolean getDDA()
+	{
+		return _after.getDD();
 	}
 }

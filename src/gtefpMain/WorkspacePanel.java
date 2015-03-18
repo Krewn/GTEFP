@@ -13,30 +13,36 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public  App                _app;
 	private int                _bc;
 	public  Color              _blink;
-	private boolean            _bUp; // instructs weather the blinking is to go up or down
+	private boolean            _bUp; // instructs whether the blinking is to go up or down
 	public  Socket             _buttonSocket;
 	public  int                _codeYpos, _importsYPos, _scale, _trayWidth;
 	public  ClassesPanel       _cp;
+	private GpFrame            _frame;
 	private long               _ogT;
 	public  kVec<kVec<Socket>> _sockets;
 	public  CodePiece          _temp;
 	private Polygon            _templateTray;
 	private Timer              _timer;
 	
-	public WorkspacePanel()
+	public WorkspacePanel(GpFrame frame)
 	{
 		super();
 		this.init();
-		_cp = new ClassesPanel(this);
+		_cp = new ClassesPanel(this, frame);
 		_app = new App(this);
-		_app.newJavaFile();	
+		_frame = frame;
+		//_app.newJavaFile();
+		//_cp.newTab();
 	}
 	
-	public WorkspacePanel(App app)
+	public WorkspacePanel(App app, GpFrame frame)
 	{
 		super();
+		_cp = new ClassesPanel(this, frame);
 		_app = app;
 		this.init();
+		_frame = frame;
+		//_cp.newTab();
 	}
 	
 	@Override
@@ -161,6 +167,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_buttonSocket.paint(aBrush);
 		_app.paint(aBrush);
 		if(_temp!=null){_temp.paint(aBrush);}
+		//_cp.paintComponent(aBrush);
 	}
 	
 	public void removeSocket(Socket s)
@@ -181,6 +188,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public void setCurrentWsClass(int i)
 	{
 		_app.setCurrentWsClass(i);
+		setTemp(null);
 	}
 	
 	public void setTemp(CodePiece cp)

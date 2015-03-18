@@ -17,14 +17,14 @@ public class GpFrame extends JFrame
 		this.setSize(900,750);
 		this.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE); 
 		
-		_Wpanel = new WorkspacePanel();
+		_Wpanel = new WorkspacePanel(this);
 		_Wpanel.setPreferredSize(new Dimension(780, 800));  // hardCoded sizing
 		_Wpanel.setMaximumSize(new Dimension(3000, 3000));  // hardCoded sizing
 		_Wpanel.setMinimumSize(new Dimension(100, 42));     // hardCoded sizing
 		
 		_Cpanel = _Wpanel.getClassesPanel();
 		_Cpanel.setPreferredSize(new Dimension(780,30));    // hardCoded sizing
-		_Cpanel.setMaximumSize(new Dimension(3000, 25));    // hardCoded sizing
+		_Cpanel.setMaximumSize(new Dimension(3000, 300));   // hardCoded sizing
 		_Cpanel.setMinimumSize(new Dimension(100, 20));     // hardCoded sizing
 		_Cpanel.setApp(_Wpanel.getApp());
 		

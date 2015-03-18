@@ -25,6 +25,11 @@ public class Socket extends CodePiece{
 	public void setDD(boolean b){
 		_dontDraw = b;
 	}
+	
+	public boolean getDD()
+	{
+		return _dontDraw;
+	}
 	public boolean inUse(){
 		boolean b = _inUse;
 		return(b);

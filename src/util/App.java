@@ -9,7 +9,7 @@ public class App
 	private int            _currentWsClass;
 	private WorkspacePanel _wp;
 	
-	public App(WorkspacePanel wp )
+	public App(WorkspacePanel wp)
 	{
 		_wp             = wp;
 		_classes        = new kVec<JavaFile>();

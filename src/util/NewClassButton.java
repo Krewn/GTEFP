@@ -62,6 +62,7 @@ public class NewClassButton extends javax.swing.event.MouseInputAdapter
 		betterBrush.setColor(oldColor);
 	}
 	
+	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e){
 		java.awt.Point p = e.getPoint();
 		if(_plusButton.contains(p)){

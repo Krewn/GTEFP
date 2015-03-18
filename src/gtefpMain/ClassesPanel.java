@@ -1,5 +1,8 @@
 package gtefpMain;
+import java.awt.Dimension;
+
 import util.App;
+import util.JavaFile;
 import util.NewClassButton;
 import gpBase.kVec;
 
@@ -10,7 +13,9 @@ public class ClassesPanel extends javax.swing.JPanel{
 	private kVec<Tab> _tabs;
 	private WorkspacePanel _wp;
 	private int _rowHeight;
-	public ClassesPanel(WorkspacePanel wp){
+	private int _Q;
+	private GpFrame _frame;
+	public ClassesPanel(WorkspacePanel wp, GpFrame frame){
 		super();
 		_nrows = 1;
 		this.setBackground(new java.awt.Color(90,90,90));
@@ -19,8 +24,10 @@ public class ClassesPanel extends javax.swing.JPanel{
 		this.repaint();
 		_wp = wp;
 		_rowHeight = 30;
+		_Q = 10;
+		_frame = frame;
 	}
-	public ClassesPanel(App app, WorkspacePanel wp){
+	public ClassesPanel(App app, WorkspacePanel wp, GpFrame frame){
 		super();
 		_nrows = 1;
 		_app = app;
@@ -30,8 +37,15 @@ public class ClassesPanel extends javax.swing.JPanel{
 		this.repaint();
 		_wp = wp;
 		_rowHeight = 30;
+		_Q = 10;
+		_frame = frame;
 	}
 	public void paintComponent (java.awt.Graphics aBrush){
+		this.setPreferredSize(new Dimension(780, 30 * ((_tabs.size() / _Q) + 1)));
+		//this.setSize(new Dimension(this.getWidth(), 30 * ((_tabs.size() / _Q) + 1)));
+		//this.revalidate();
+		//_frame.pack();
+		_frame.getContentPane().revalidate();
 		super.paintComponent(aBrush);
 		_newClassButton.paint(aBrush);
 		
@@ -51,15 +65,21 @@ public class ClassesPanel extends javax.swing.JPanel{
 		return _wp;
 	}
 	
-	public void newTab()
+	public void newTab(JavaFile jf)
 	{
-		_tabs.que(new Tab(this));
+		_tabs.que(new Tab(this, jf));
 	}
 	
 	public int getRowHeight()
 	{
 		return _rowHeight;
 	}
+	
+	/*@Override
+	public int getWidth()
+	{
+		return _width;
+	}*/
 	
 	public void drawTabs()
 	{
