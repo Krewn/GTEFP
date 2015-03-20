@@ -9,6 +9,7 @@ import java.awt.Polygon;
 import javax.swing.event.MouseInputAdapter;
 import util.App;
 import util.JavaFile;
+import java.util.Random;
 
 public class Tab extends MouseInputAdapter
 {
@@ -23,6 +24,7 @@ public class Tab extends MouseInputAdapter
 	private String         _style, _text;
 	private WorkspacePanel _wp;
 	private int            _x, _y, _w, _h, _Q;
+	private Random         _rand;
 	
 	public Tab(ClassesPanel cp, JavaFile jf)
 	{
@@ -30,14 +32,19 @@ public class Tab extends MouseInputAdapter
 		_wp = _cp.getWorkspacePanel();
 		_app = _wp.getApp();
 		_Q = 10;
-		_c = new java.awt.Color(255, 0, 0);
-		_fontColor = new java.awt.Color(1, 1, 1);
+		_rand = new Random();
+		int [] Col = new int[]{ran255(), ran255(), ran255()};
+		_c = new java.awt.Color(Col[0], Col[1], Col[2]);
+		_fontColor = new java.awt.Color(255-Col[0], 255-Col[1], 255-Col[2]);
 		_file = jf;
 		draw_p();
 		_sized = false;
 		_style = "Arial";
 		_text = "tab";
 		_cp.addMouseListener(this);
+	}
+	private int ran255(){
+		return (int)(_rand.nextFloat()*255);
 	}
 	
 	public void draw_p()
@@ -80,7 +87,7 @@ public class Tab extends MouseInputAdapter
 		
 		if(_sized==false)
 			prefHeight(aBrush,_h);
-		
+		aBrush.setColor(_fontColor);
 		aBrush.drawString(_text,  _x , _y + _h);
 	}
 	

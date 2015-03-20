@@ -6,6 +6,8 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
+import util.JavaFile;
+
 public class kVar extends CodePiece implements Relative, Buttonable, java.awt.event.KeyListener{
 	private String _text;
 	private String _style;
@@ -22,8 +24,10 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	private java.awt.Polygon _cursor;
 	private int _cursorPos;
 	private int _cursorPlace;
+	private JavaFile _jf; 
 	public kVar(WorkspacePanel wp){
 		super(wp);
+		_jf = _wp.curJF();
 		_wp.addKeyListener(this);
 		_text = "";
 		//_c = new java.awt.Color(150,100,100);
@@ -202,7 +206,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	}
 	@Override
 	public void mouseReleased(java.awt.event.MouseEvent e){
-		if(_p.contains(e.getPoint())){
+		if(_p.contains(e.getPoint()) && _wp.curJF() == _jf){
 			if(_isEditable){
 				_focused = true;
 				_cursorPlace = 0; 

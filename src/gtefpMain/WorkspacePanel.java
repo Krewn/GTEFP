@@ -44,13 +44,21 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_frame = frame;
 		//_cp.newTab();
 	}
-	
+	public JavaFile curJF(){
+		try{ 
+			return(_app.curJF());
+		}catch(java.lang.NullPointerException e){
+			return(null);
+		}
+	}
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
 		if(arg0.getSource()==_timer)
 			repaint();
 	}
+	
+	
 	
 	public void addSocket(Socket s)
 	{

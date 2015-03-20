@@ -41,6 +41,7 @@ public class ClassesPanel extends javax.swing.JPanel{
 		_frame = frame;
 	}
 	public void paintComponent (java.awt.Graphics aBrush){
+		System.out.println("\n");
 		this.setPreferredSize(new Dimension(780, 30 * ((_tabs.size() / _Q) + 1)));
 		//this.setSize(new Dimension(this.getWidth(), 30 * ((_tabs.size() / _Q) + 1)));
 		//this.revalidate();

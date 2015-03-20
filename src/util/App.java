@@ -40,9 +40,14 @@ public class App
 		return _classes.indexOf(jf);
 	}
 	
+	public JavaFile curJF(){
+		return( _classes.get(_currentWsClass) );
+	}
+	
 	public void newJavaFile()
 	{
-		 new JavaFile(_wp);
+		JavaFile temp = new JavaFile(_wp);
+		temp.setup();
 	}
 	
 	public void paint(java.awt.Graphics aBrush)
