@@ -131,21 +131,20 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		kIf      _IF      = new kIf(this);
 		kVar     _VAR     = new kVar(this);
 		kPackage _PACKAGE = new kPackage(this);
+		kWhile   _WHILE   = new kWhile(this);
 
 		_buttonSocket.insert(_PACKAGE);
-		//_PACKAGE._after.insert(_IMPORT);
 		_PACKAGE.getAfter().insert(_IMPORT);
-		//_IMPORT._after.insert(_IF);
 		_IMPORT.getAfter().insert(_IF);
-		//_IF._after.insert(_VAR);
 		_IF.getAfter().insert(_VAR);
-		//_VAR._after.insert(_CLASS);
-		_VAR.getAfter().insert(_CLASS);
+		_VAR.getAfter().insert(_WHILE);
+		_WHILE.getAfter().insert(_CLASS);
 		
 		_PACKAGE.makeButton();
 		_IMPORT.makeButton();
 		_IF.makeButton();
 		_VAR.makeButton();
+		_WHILE.makeButton();
 		_CLASS.makeButton();
 		
 		_timer = new javax.swing.Timer(100, this);
