@@ -3,6 +3,7 @@ package Testing;
 import gtefpBlocks.Socket;
 import gtefpBlocks.kClass;
 import gtefpBlocks.kIf;
+import gtefpMain.GpFrame;
 import gtefpMain.WorkspacePanel;
 
 import org.junit.Test;
@@ -14,7 +15,8 @@ public class CodePieceTest extends TestCase
 	@Test
 	public void testForBracketMatching() throws Exception
 	{
-		WorkspacePanel wp      = new WorkspacePanel();
+		GpFrame        gf      = new GpFrame("CodePieceTest");
+		WorkspacePanel wp      = new WorkspacePanel(gf);
 		Socket         socket  = new Socket(wp);
 		kClass         kclass  = new kClass(wp);
 		kIf            kif     = new kIf(wp);
@@ -55,7 +57,8 @@ public class CodePieceTest extends TestCase
 	@Test
 	public void testForReturnType() throws Exception
 	{
-		WorkspacePanel wp = new WorkspacePanel();
+		GpFrame        gf = new GpFrame("CodePieceTest");
+		WorkspacePanel wp = new WorkspacePanel(gf);
 		kClass         c  = new kClass(wp);
 		String         s  = c.writeCode();
 		assertTrue(s instanceof String);
@@ -64,7 +67,8 @@ public class CodePieceTest extends TestCase
 	@Test
 	public void testSocketsForCodePieces() throws Exception
 	{
-		WorkspacePanel wp      = new WorkspacePanel();
+		GpFrame        gf      = new GpFrame("CodePieceTest");
+		WorkspacePanel wp      = new WorkspacePanel(gf);
 		Socket         socket  = new Socket(wp);
 		kClass         kclass  = new kClass(wp);
 		kIf            kif     = new kIf(wp);

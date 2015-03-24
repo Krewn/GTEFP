@@ -6,9 +6,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Polygon;
+
 import javax.swing.event.MouseInputAdapter;
+
 import util.App;
+import util.GlobalConsts;
 import util.JavaFile;
+
 import java.util.Random;
 
 public class Tab extends MouseInputAdapter
@@ -23,7 +27,7 @@ public class Tab extends MouseInputAdapter
 	private boolean        _sized;
 	private String         _style, _text;
 	private WorkspacePanel _wp;
-	private int            _x, _y, _w, _h, _Q;
+	private int            _x, _y, _w, _h;
 	private Random         _rand;
 	
 	public Tab(ClassesPanel cp, JavaFile jf)
@@ -31,7 +35,7 @@ public class Tab extends MouseInputAdapter
 		_cp = cp;
 		_wp = _cp.getWorkspacePanel();
 		_app = _wp.getApp();
-		_Q = 10;
+		//_Q = 10;
 		_rand = new Random();
 		int [] Col = new int[]{ran255(), ran255(), ran255()};
 		_c = new java.awt.Color(Col[0], Col[1], Col[2]);
@@ -51,9 +55,12 @@ public class Tab extends MouseInputAdapter
 	{
 		int cpw = _cp.getWidth() - 20;
 		int i = _app.getIndexOfJavaFile(_file);
-		_x = (cpw/_Q)*(i % _Q) + 5;
-		_y = _h * (i / _Q) + 5;
-		_w = (cpw - 40) / _Q;
+		//_x = (cpw/_Q)*(i % _Q) + 5;
+		_x = (cpw/GlobalConsts.TABS_PER_ROW)*(i % GlobalConsts.TABS_PER_ROW) + 5;
+		//_y = _h * (i / _Q) + 5;
+		_y = _h * (i / GlobalConsts.TABS_PER_ROW) + 5;
+		//_w = (cpw - 40) / _Q;
+		_w = (cpw - 40) / GlobalConsts.TABS_PER_ROW;
 		//System.out.println(_cp.getWidth());
 		_h = _cp.getRowHeight() - 10;
 		//System.out.println("x:"+_x+"\t y:"+_y+"\t h:"+_h+"\t w:"+_w );

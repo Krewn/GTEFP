@@ -19,7 +19,8 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	private int [] _OGys;
 	private boolean _isEditable;
 	private java.awt.Color _tColor;
-	public Socket _after;
+	//public Socket _after;
+	private Socket _after;
 	public boolean _focused;
 	private java.awt.Polygon _cursor;
 	private int _cursorPos;
@@ -333,5 +334,10 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	public boolean getDDA()
 	{
 		return _after.getDD();
+	}
+	
+	public Socket getAfter()
+	{
+		return _after;
 	}
 }

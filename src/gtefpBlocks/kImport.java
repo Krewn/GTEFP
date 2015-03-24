@@ -6,7 +6,8 @@ public class kImport extends CodePiece{
 	private kVar _package;
 	protected kVar _import;
 	private kVar _sc;
-	public Socket _after;
+	//public Socket _after;
+	private Socket _after;
 	public kImport(WorkspacePanel wp) {
 		super(wp);
 		_c=new java.awt.Color(70,70,70);
@@ -130,5 +131,10 @@ public class kImport extends CodePiece{
 	public int width() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public Socket getAfter()
+	{
+		return _after;
 	}
 }

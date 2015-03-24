@@ -9,7 +9,8 @@ public class kIf extends Closure
 {
 	private kVar _pIf;
 	private Socket _eval; // soemthing has to be evaluated in the iff ... if(_name){_inside}
-	public Socket _after;// add socket after because abstract class closure does not have one.
+	//public Socket _after;// add socket after because abstract class closure does not have one.
+	private Socket _after;
 	public kIf(WorkspacePanel wp)
 	{
 		super(wp);
@@ -130,5 +131,10 @@ public class kIf extends Closure
 	public int width() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public Socket getAfter()
+	{
+		return _after;
 	}
 }

@@ -9,7 +9,7 @@ public class kClass extends Closure{
 	private JavaFile _jf;
 	public kClass(WorkspacePanel wp){
 		super(wp);
-		_pClass = new kVar(wp,"public class");
+		_pClass = new kVar(wp,"public class ");
 		_pClass.setEditable(false);
 		_pClass.setCp(this);
 		_name = new kVar(wp);
