@@ -8,7 +8,7 @@ import gtefpMain.WorkspacePanel;
 public class kWhile extends Closure
 {
 	private Socket _after, _eval;
-	private kVar _pWhile;
+	protected kVar _pWhile;
 	
 	public kWhile(WorkspacePanel wp)
 	{
@@ -126,5 +126,9 @@ public class kWhile extends Closure
 	public int width()
 	{
 		return 0;
+	}
+	@Override
+	public int ySize(){
+		return(super.ySize()+_after.ySize());
 	}
 }
