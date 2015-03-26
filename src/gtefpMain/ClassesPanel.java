@@ -3,10 +3,16 @@ import java.awt.Dimension;
 
 import util.App;
 import util.JavaFile;
+import util.LoadButton;
 import util.NewClassButton;
+import util.SaveButton;
 import gpBase.kVec;
 
 public class ClassesPanel extends javax.swing.JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private int _nrows;
 	private App _app;
 	private NewClassButton _newClassButton;
@@ -15,6 +21,8 @@ public class ClassesPanel extends javax.swing.JPanel{
 	private int _rowHeight;
 	private int _Q;
 	private GpFrame _frame;
+	private SaveButton _saveButton;
+	private LoadButton _loadButton;
 	public ClassesPanel(WorkspacePanel wp, GpFrame frame){
 		super();
 		_nrows = 1;
@@ -42,13 +50,16 @@ public class ClassesPanel extends javax.swing.JPanel{
 	}
 	public void paintComponent (java.awt.Graphics aBrush){
 		System.out.println("\n");
-		this.setPreferredSize(new Dimension(780, 30 * ((_tabs.size() / _Q) + 1)));
-		//this.setSize(new Dimension(this.getWidth(), 30 * ((_tabs.size() / _Q) + 1)));
-		//this.revalidate();
-		//_frame.pack();
+		this.setPreferredSize(new Dimension(780, 30 * (((_tabs.size() - 1)/ _Q) + 1)));
 		_frame.getContentPane().revalidate();
 		super.paintComponent(aBrush);
 		_newClassButton.paint(aBrush);
+		
+		if (_saveButton != null)
+			_saveButton.paint(aBrush);
+		
+		if (_loadButton != null)
+			_loadButton.paint(aBrush);
 		
 		for (Tab t : _tabs)
 			t.paintComponent(aBrush);
@@ -76,15 +87,15 @@ public class ClassesPanel extends javax.swing.JPanel{
 		return _rowHeight;
 	}
 	
-	/*@Override
-	public int getWidth()
-	{
-		return _width;
-	}*/
-	
 	public void drawTabs()
 	{
 		for (Tab t : _tabs)
 			t.draw_p();
+	}
+	
+	public void makeSaveAndLoadButton(SaveLoadFrame slf)
+	{
+		_saveButton = new SaveButton(this, slf);
+		_loadButton = new LoadButton(this, slf);
 	}
 }

@@ -4,6 +4,10 @@ package gpBase;
 //import java.awt.Color;
 //import java.awt.event.*;
 public class MyPanel extends javax.swing.JPanel{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private truck _truck;
 	private trailer _trailer;
 	private truck _truck2;

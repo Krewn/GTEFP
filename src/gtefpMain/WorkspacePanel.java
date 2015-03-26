@@ -10,6 +10,10 @@ import util.*;
 
 public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event.ActionListener
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	public  App                _app;
 	private int                _bc;
 	public  Color              _blink;
@@ -31,8 +35,6 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_cp = new ClassesPanel(this, frame);
 		_app = new App(this);
 		_frame = frame;
-		//_app.newJavaFile();
-		//_cp.newTab();
 	}
 	
 	public WorkspacePanel(App app, GpFrame frame)
@@ -42,7 +44,6 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_app = app;
 		this.init();
 		_frame = frame;
-		//_cp.newTab();
 	}
 	public JavaFile curJF(){
 		try{ 

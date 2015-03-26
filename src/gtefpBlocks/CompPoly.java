@@ -1,6 +1,10 @@
 package gtefpBlocks;
 
 public class CompPoly extends java.awt.Polygon implements Maluable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	CodePiece _cp;
 	private int _xpos; //positions relative to the parent CodePiece.
 	private int _ypos;

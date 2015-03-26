@@ -1,29 +1,30 @@
 package util;
 
-import java.awt.Polygon;
-
-import gtefpBlocks.CompPoly;
 import gtefpMain.ClassesPanel;
+import gtefpMain.GpFrame;
+import gtefpMain.SaveLoadFrame;
 
-public class NewClassButton extends javax.swing.event.MouseInputAdapter
+public class SaveButton extends javax.swing.event.MouseInputAdapter
 {
 	public int _xPos;
 	public int _yPos;
 	public int _scale;
-	private int[] _xs;
-	private int[] _ys;
-	private ClassesPanel _cp;
+	protected int[] _xs;
+	protected int[] _ys;
+	protected ClassesPanel _cp;
 	private java.awt.Color _c;
+	protected java.awt.Polygon _plusButton;
+	protected SaveLoadFrame _slf;
 	
-	private java.awt.Polygon _plusButton;
-	public NewClassButton(ClassesPanel cp)
+	public SaveButton(ClassesPanel cp, SaveLoadFrame slf)
 	{
-		_xs = new int[]{0,1,1,2,2,3,3,2,2,1,1,0};
-		_ys = new int[]{1,1,0,0,1,1,2,2,3,3,2,2};
-		_scale = 5;
+		_slf = slf;
+		_xs = new int[]{0, 1, 1, 0};
+		_ys = new int[]{0, 0, 1, 1};
+		_scale = 15;
 		_cp = cp;
 		_yPos = 0;
-		_xPos = _cp.getWidth() - (_scale * 4);
+		_xPos = _cp.getWidth() - (_scale * 8);
 		draw_p();
 		_c = new java.awt.Color(0,210,35);
 		_cp.addMouseListener(this);
@@ -53,10 +54,7 @@ public class NewClassButton extends javax.swing.event.MouseInputAdapter
 	@Override
 	public void mouseClicked(java.awt.event.MouseEvent e){
 		java.awt.Point p = e.getPoint();
-		if(_plusButton.contains(p)){
-			_cp.newClass();
-		}
-		_cp.repaint();
+		if(_plusButton.contains(p))
+			_slf.saveToFile();
 	}
-
 }

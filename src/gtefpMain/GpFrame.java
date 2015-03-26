@@ -6,7 +6,12 @@ import javax.swing.*;
 
 public class GpFrame extends JFrame
 {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ClassesPanel   _Cpanel;
+	private GpFrame        _frame;
 	private WorkspacePanel _Wpanel;
 	
 	public GpFrame(String title)
@@ -40,43 +45,8 @@ public class GpFrame extends JFrame
 		this.setVisible(true);
 	}
 	
-	public static void main (String [ ] args)
+	public void makeSaveAndLoadButton(SaveLoadFrame slf)
 	{
-		GpFrame test = new GpFrame ("Gtefp");
+		_Cpanel.makeSaveAndLoadButton(slf);
 	}
-
-	/*
-	public void saveToFile() {
-    	fc=new javax.swing.JFileChooser();
-    	int returnVal = fc.showSaveDialog(this);
-    	if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
-    		file = fc.getSelectedFile();
-    	}else return;
-    	try{java.io.ObjectOutputStream os = new java.io.ObjectOutputStream(new java.io.FileOutputStream(file));
-    		os.writeObject(_circles);
-    		os.close();
-    	}
-    	catch(java.io.IOException e){
-    		System.out.println("IO Exception reading file");
-    	}
-	}
-	public void loadFromFile(){
-    	fc=new javax.swing.JFileChooser();
-    	int returnVal = fc.showOpenDialog(this);
-    	if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
-    		file = fc.getSelectedFile();
-    	}else return;
-    	try{java.io.ObjectInputStream is = new java.io.ObjectInputStream(new java.io.FileInputStream(file));
-    		_circles = (java.util.ArrayList<SmartEllipse>)is.readObject();
-    		is.close();
-    	}
-    	catch(java.io.IOException e){
-    		System.out.println("IO Exception reading file");
-    	}
-    	catch(ClassNotFoundException e){
-    		System.out.println("Class Not Found Exception");
-    	}
-    	repaint();
-    	}
-	*/ // useful for saving and loading classes from a file.
 }

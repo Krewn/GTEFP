@@ -10,7 +10,8 @@ public class kFor extends kWhile
 	public kFor(WorkspacePanel wp)
 	{
 		super(wp);
-		_pWhile.setText( "For(");
+		_pWhile.setText( "for(");
+		_c = new java.awt.Color(40, 170, 31);
 	}
 	
 	

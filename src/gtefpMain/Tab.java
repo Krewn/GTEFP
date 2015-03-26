@@ -35,7 +35,6 @@ public class Tab extends MouseInputAdapter
 		_cp = cp;
 		_wp = _cp.getWorkspacePanel();
 		_app = _wp.getApp();
-		//_Q = 10;
 		_rand = new Random();
 		int [] Col = new int[]{ran255(), ran255(), ran255()};
 		_c = new java.awt.Color(Col[0], Col[1], Col[2]);
@@ -55,15 +54,10 @@ public class Tab extends MouseInputAdapter
 	{
 		int cpw = _cp.getWidth() - 20;
 		int i = _app.getIndexOfJavaFile(_file);
-		//_x = (cpw/_Q)*(i % _Q) + 5;
 		_x = (cpw/GlobalConsts.TABS_PER_ROW)*(i % GlobalConsts.TABS_PER_ROW) + 5;
-		//_y = _h * (i / _Q) + 5;
 		_y = _h * (i / GlobalConsts.TABS_PER_ROW) + 5;
-		//_w = (cpw - 40) / _Q;
 		_w = (cpw - 40) / GlobalConsts.TABS_PER_ROW;
-		//System.out.println(_cp.getWidth());
 		_h = _cp.getRowHeight() - 10;
-		//System.out.println("x:"+_x+"\t y:"+_y+"\t h:"+_h+"\t w:"+_w );
 		int[] xs = new int[]{_x, _x+_w, _x+_w, _x};
 		int[] ys = new int[]{_y + 5, _y + 5, _y+_h, _y+_h};
 		_poly = new Polygon(xs,ys,xs.length);

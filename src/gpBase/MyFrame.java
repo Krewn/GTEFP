@@ -1,5 +1,9 @@
 package gpBase;
 public class MyFrame extends javax.swing.JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private MyPanel _panel;
 	public MyFrame(String Title){
 		super(Title);

@@ -5,7 +5,11 @@ package gpBase;
  * Same as the class defined in Chapter 7.
  */
 public class SmartEllipse extends java.awt.geom.Ellipse2D.Double {
-    private java.awt.Color _borderColor, _fillColor;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private java.awt.Color _borderColor, _fillColor;
     private int _rotation;
     private final int STROKE_WIDTH = 2;
 

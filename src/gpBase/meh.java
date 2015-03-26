@@ -9,7 +9,12 @@ import javax.swing.JPanel;
 
 public class meh extends JPanel {
 
-  public void paint(Graphics g) {
+  /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public void paint(Graphics g) {
     Dimension d = this.getPreferredSize();
     int fontSize = 20;
 

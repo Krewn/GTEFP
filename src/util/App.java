@@ -5,6 +5,7 @@ import gtefpMain.WorkspacePanel;
 
 public class App
 {
+	private static final long serialVersionUID = 1L;
 	public  kVec<JavaFile> _classes;
 	private int            _currentWsClass;
 	private WorkspacePanel _wp;
