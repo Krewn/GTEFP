@@ -1,12 +1,15 @@
 package util;
 
 import java.awt.Polygon;
+import java.io.IOException;
+import java.io.Serializable;
 
 import gtefpBlocks.CompPoly;
 import gtefpMain.ClassesPanel;
 
-public class NewClassButton extends javax.swing.event.MouseInputAdapter
+public class NewClassButton extends javax.swing.event.MouseInputAdapter implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	public int _xPos;
 	public int _yPos;
 	public int _scale;
@@ -58,5 +61,14 @@ public class NewClassButton extends javax.swing.event.MouseInputAdapter
 		}
 		_cp.repaint();
 	}
-
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
+	}
 }

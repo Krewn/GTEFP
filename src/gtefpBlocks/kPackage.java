@@ -1,9 +1,19 @@
 package gtefpBlocks;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpMain.WorkspacePanel;
 
-public class kPackage extends kImport
+public class kPackage extends kImport implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
+	public kPackage() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kPackage(WorkspacePanel wp)
 	{
 		super(wp);
@@ -28,5 +38,15 @@ public class kPackage extends kImport
 				_wp.repaint();
 			}
 		}
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

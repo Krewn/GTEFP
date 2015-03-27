@@ -1,18 +1,20 @@
 package gtefpMain;
 
 import gtefpBlocks.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.awt.Color;
 import java.awt.Polygon;
+import java.io.IOException;
+import java.io.Serializable;
+
 import javax.swing.Timer;
+
 import util.*;
 
-public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event.ActionListener
+public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event.ActionListener, Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	public  App                _app;
 	private int                _bc;
@@ -235,5 +237,17 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	{
 		int r = _trayWidth;
 		return(r);
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		//in.defaultReadObject();
+		in.readObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		//out.defaultWriteObject();
+		out.writeObject(this);
 	}
 }

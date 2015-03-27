@@ -1,9 +1,12 @@
 package gtefpMain;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class SaveLoadFrame
+public class SaveLoadFrame implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private GpFrame _current;
 	private javax.swing.JFileChooser fc;
 	private File _file;
@@ -32,6 +35,7 @@ public class SaveLoadFrame
     	}
     	catch(java.io.IOException e){
     		System.out.println("IO Exception reading file");
+    		e.printStackTrace();
     	}
 	}
 	public void loadFromFile(){
@@ -42,7 +46,10 @@ public class SaveLoadFrame
     	}else return;
     	try{
     		java.io.ObjectInputStream is = new java.io.ObjectInputStream(new java.io.FileInputStream(_file));
-    		_current = (GpFrame)is.readObject();
+    		_current.setVisible(false);
+    		GpFrame temp = (GpFrame)is.readObject();
+    		temp.setVisible(true);
+    		_current = temp;
     		is.close();
     		System.out.println("File Loaded");
     	}
@@ -53,7 +60,18 @@ public class SaveLoadFrame
     	catch(ClassNotFoundException e){
     		System.out.println("Class Not Found Exception");
     	}
+    	_current.revalidate();
     	_current.repaint();
     	}
 	 // useful for saving and loading classes from a file.
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
+	}
 }

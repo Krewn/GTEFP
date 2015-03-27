@@ -6,6 +6,8 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Polygon;
+import java.io.IOException;
+import java.io.Serializable;
 
 import javax.swing.event.MouseInputAdapter;
 
@@ -15,8 +17,9 @@ import util.JavaFile;
 
 import java.util.Random;
 
-public class Tab extends MouseInputAdapter
+public class Tab extends MouseInputAdapter implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private App            _app;
 	private Color          _c, _fontColor;
 	private ClassesPanel   _cp;
@@ -104,5 +107,15 @@ public class Tab extends MouseInputAdapter
 		}
 		metrics = g.getFontMetrics(_font);
 		_sized = true;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

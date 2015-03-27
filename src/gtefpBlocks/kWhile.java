@@ -2,13 +2,21 @@ package gtefpBlocks;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.Serializable;
 
 import gtefpMain.WorkspacePanel;
 
-public class kWhile extends Closure
+public class kWhile extends Closure implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private Socket _after, _eval;
 	protected kVar _pWhile;
+	
+	public kWhile() // necessary for deserialization
+	{
+		super();
+	}
 	
 	public kWhile(WorkspacePanel wp)
 	{
@@ -130,5 +138,15 @@ public class kWhile extends Closure
 	@Override
 	public int ySize(){
 		return(super.ySize()+_after.ySize());
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

@@ -1,5 +1,7 @@
 package gtefpMain;
 import java.awt.Dimension;
+import java.io.IOException;
+import java.io.Serializable;
 
 import util.App;
 import util.JavaFile;
@@ -8,10 +10,7 @@ import util.NewClassButton;
 import util.SaveButton;
 import gpBase.kVec;
 
-public class ClassesPanel extends javax.swing.JPanel{
-	/**
-	 * 
-	 */
+public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private int _nrows;
 	private App _app;
@@ -97,5 +96,15 @@ public class ClassesPanel extends javax.swing.JPanel{
 	{
 		_saveButton = new SaveButton(this, slf);
 		_loadButton = new LoadButton(this, slf);
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

@@ -4,13 +4,21 @@ import gtefpMain.WorkspacePanel;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.Serializable;
 
-public class kIf extends Closure
+public class kIf extends Closure implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	private kVar _pIf;
 	private Socket _eval; // soemthing has to be evaluated in the iff ... if(_name){_inside}
-	//public Socket _after;// add socket after because abstract class closure does not have one.
 	private Socket _after;
+	
+	public kIf() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kIf(WorkspacePanel wp)
 	{
 		super(wp);
@@ -136,5 +144,15 @@ public class kIf extends Closure
 	public Socket getAfter()
 	{
 		return _after;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

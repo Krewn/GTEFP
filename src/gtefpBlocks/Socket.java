@@ -1,14 +1,25 @@
 package gtefpBlocks;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpMain.WorkspacePanel;
 
-public class Socket extends CodePiece{
+public class Socket extends CodePiece implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 	private CodePiece _plug;
 	private boolean _inUse;
 	private int[] _OGxs;
 	private int[] _OGys;
 	private WorkspacePanel _wp;
 	private boolean _dontDraw;
+	
+	public Socket() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public Socket(WorkspacePanel wp){
 		super(wp);
 		wp.addSocket(this);
@@ -121,5 +132,15 @@ public class Socket extends CodePiece{
 	@Override
 	public void unplug() {
 		// Auto-generated method stub
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

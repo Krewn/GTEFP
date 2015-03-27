@@ -1,13 +1,24 @@
 package gtefpBlocks;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpMain.WorkspacePanel;
 
-public class kImport extends CodePiece{
+public class kImport extends CodePiece implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 	private kVar _package;
 	protected kVar _import;
 	private kVar _sc;
 	//public Socket _after;
 	private Socket _after;
+	
+	public kImport() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kImport(WorkspacePanel wp) {
 		super(wp);
 		_c=new java.awt.Color(70,70,70);
@@ -136,5 +147,15 @@ public class kImport extends CodePiece{
 	public Socket getAfter()
 	{
 		return _after;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

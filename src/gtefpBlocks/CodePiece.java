@@ -24,6 +24,8 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	protected int[]          _ys;
 	protected int            _yWidth;
 	
+	public CodePiece() {} // necessary for deserialization
+	
 	public CodePiece(WorkspacePanel wp){
 		wp.addMouseListener(this);
 		wp.addMouseMotionListener(this);

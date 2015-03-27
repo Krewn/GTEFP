@@ -5,10 +5,13 @@ import gtefpMain.WorkspacePanel;
 import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.Serializable;
 
 import util.JavaFile;
 
-public class kVar extends CodePiece implements Relative, Buttonable, java.awt.event.KeyListener{
+public class kVar extends CodePiece implements Relative, Buttonable, java.awt.event.KeyListener, Serializable{
+	private static final long serialVersionUID = 1L;
 	private String _text;
 	private String _style;
 	private java.awt.Font _font;
@@ -19,19 +22,23 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	private int [] _OGys;
 	private boolean _isEditable;
 	private java.awt.Color _tColor;
-	//public Socket _after;
 	private Socket _after;
 	public boolean _focused;
 	private java.awt.Polygon _cursor;
 	private int _cursorPos;
 	private int _cursorPlace;
-	private JavaFile _jf; 
+	private JavaFile _jf;
+	
+	public kVar() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kVar(WorkspacePanel wp){
 		super(wp);
 		_jf = _wp.curJF();
 		_wp.addKeyListener(this);
 		_text = "";
-		//_c = new java.awt.Color(150,100,100);
 		_isButton=false;
 		_isEditable = true;
 		_inUse=false;
@@ -339,5 +346,15 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	public Socket getAfter()
 	{
 		return _after;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

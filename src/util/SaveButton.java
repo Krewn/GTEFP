@@ -1,11 +1,15 @@
 package util;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpMain.ClassesPanel;
 import gtefpMain.GpFrame;
 import gtefpMain.SaveLoadFrame;
 
-public class SaveButton extends javax.swing.event.MouseInputAdapter
+public class SaveButton extends javax.swing.event.MouseInputAdapter implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	public int _xPos;
 	public int _yPos;
 	public int _scale;
@@ -56,5 +60,15 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter
 		java.awt.Point p = e.getPoint();
 		if(_plusButton.contains(p))
 			_slf.saveToFile();
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

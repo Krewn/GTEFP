@@ -1,9 +1,12 @@
 package util;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gpBase.kVec;
 import gtefpMain.WorkspacePanel;
 
-public class App
+public class App implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	public  kVec<JavaFile> _classes;
@@ -82,6 +85,16 @@ public class App
 			r.que(k2.writeCode());
 		
 		return r;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }
 

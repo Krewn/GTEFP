@@ -7,6 +7,8 @@ public abstract class Closure extends CodePiece{
 	protected Socket _inside; //    #
 	protected kVar _ylruc;// }
 	
+	public Closure() {} // necessary for deserialization
+	
 	public Closure(WorkspacePanel wp) {
 		super(wp);
 		_curly = new kVar(wp,"{");

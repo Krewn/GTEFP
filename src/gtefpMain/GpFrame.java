@@ -1,17 +1,17 @@
 package gtefpMain;
 
 import gtefpBlocks.*;
+
 import java.awt.*;
+import java.io.IOException;
+import java.io.Serializable;
+
 import javax.swing.*;
 
-public class GpFrame extends JFrame
+public class GpFrame extends JFrame implements Serializable
 {
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ClassesPanel   _Cpanel;
-	private GpFrame        _frame;
 	private WorkspacePanel _Wpanel;
 	
 	public GpFrame(String title)
@@ -48,5 +48,15 @@ public class GpFrame extends JFrame
 	public void makeSaveAndLoadButton(SaveLoadFrame slf)
 	{
 		_Cpanel.makeSaveAndLoadButton(slf);
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

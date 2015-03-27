@@ -2,18 +2,26 @@ package gtefpBlocks;
 
 import java.awt.Graphics;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+import java.io.Serializable;
 
 import gtefpMain.WorkspacePanel;
 
-public class kFor extends kWhile
+public class kFor extends kWhile implements Serializable
 {
+	private static final long serialVersionUID = 1L;
+	
+	public kFor() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kFor(WorkspacePanel wp)
 	{
 		super(wp);
-		_pWhile.setText( "for(");
+		_pWhile.setText("for(");
 		_c = new java.awt.Color(40, 170, 31);
 	}
-	
 	
 	@Override
 	public void mousePressed(MouseEvent e)
@@ -38,5 +46,15 @@ public class kFor extends kWhile
 				_wp.repaint();
 			}
 		}
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

@@ -1,12 +1,16 @@
 package util;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpBlocks.Socket;
 import gtefpBlocks.kClass;
 import gtefpMain.ClassesPanel;
 import gtefpMain.WorkspacePanel;
 
-public class JavaFile
+public class JavaFile implements Serializable
 {
+	private static final long serialVersionUID = 1L;
 	public  Socket         _imports;
 	private Socket         _class;
 	private kClass         _classBlock;
@@ -67,5 +71,15 @@ public class JavaFile
 	public String writeCode()
 	{
 		return _imports.writeCode() + _class.writeCode();
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }

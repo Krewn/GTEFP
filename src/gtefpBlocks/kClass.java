@@ -1,12 +1,23 @@
 package gtefpBlocks;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import util.JavaFile;
 import gtefpMain.WorkspacePanel;
 
-public class kClass extends Closure{
+public class kClass extends Closure implements Serializable
+{
+	private static final long serialVersionUID = 1L;
 	private kVar _pClass;
 	private kVar _name;
 	private JavaFile _jf;
+	
+	public kClass() // necessary for deserialization
+	{
+		super();
+	}
+	
 	public kClass(WorkspacePanel wp){
 		super(wp);
 		_pClass = new kVar(wp,"public class ");
@@ -85,5 +96,15 @@ public class kClass extends Closure{
 	public int width() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		in.defaultReadObject();
+	}
+	
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		out.defaultWriteObject();
 	}
 }
