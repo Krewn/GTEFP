@@ -14,10 +14,10 @@ public class kIf extends Closure implements Serializable
 	private Socket _eval; // soemthing has to be evaluated in the iff ... if(_name){_inside}
 	private Socket _after;
 	
-	public kIf() // necessary for deserialization
+/* (not)	public kIf() // necessary for deserialization
 	{
 		super();
-	}
+	}*/
 	
 	public kIf(WorkspacePanel wp)
 	{
@@ -146,13 +146,20 @@ public class kIf extends Closure implements Serializable
 		return _after;
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_pIf=(kVar)in.readObject();
+		_eval=(Socket)in.readObject();
+		_after=(Socket)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_pIf);
+		out.writeObject(_eval);
+		out.writeObject(_after);
+
 	}
 }

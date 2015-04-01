@@ -14,6 +14,10 @@ public class GpFrame extends JFrame implements Serializable
 	private ClassesPanel   _Cpanel;
 	private WorkspacePanel _Wpanel;
 	
+	public void setOkToPaint(boolean b){
+		_Wpanel.setOkToPaint(b);
+	}
+	
 	public GpFrame(String title)
 	{
 		super(title);
@@ -50,13 +54,15 @@ public class GpFrame extends JFrame implements Serializable
 		_Cpanel.makeSaveAndLoadButton(slf);
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		_Cpanel=(ClassesPanel)in.readObject();
+		_Wpanel=(WorkspacePanel)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		out.writeObject(_Cpanel);
+		out.writeObject(_Wpanel);
 	}
 }

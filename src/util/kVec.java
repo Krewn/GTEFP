@@ -1,5 +1,9 @@
 package util;
 
+import gtefpMain.WorkspacePanel;
+
+import java.io.IOException;
+import java.io.Serializable;
 import java.util.*;
 //Add a different implementation of LIFOQ
 public class kVec<T> extends Vector<T>{
@@ -8,7 +12,8 @@ public class kVec<T> extends Vector<T>{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	int front;int back;
+	private int front;
+	private int back;
 	public kVec(){super();front=0;back=0;
 	}
 	public boolean que(T a){

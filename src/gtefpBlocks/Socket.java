@@ -134,13 +134,25 @@ public class Socket extends CodePiece implements Serializable
 		// Auto-generated method stub
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_plug=(CodePiece)in.readObject();
+		_inUse=(boolean)in.readObject();
+		_OGxs=(int[])in.readObject();
+		_OGys=(int[])in.readObject();
+		_wp=(WorkspacePanel)in.readObject();
+		_dontDraw=(boolean)in.readObject();
 	}
-	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_plug);
+		out.writeObject(_inUse);
+		out.writeObject(_OGxs);
+		out.writeObject(_OGys);
+		out.writeObject(_wp);
+		out.writeObject(_dontDraw);
 	}
 }

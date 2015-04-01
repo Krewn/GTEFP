@@ -39,6 +39,7 @@ public class SaveLoadFrame implements Serializable
     	}
 	}
 	public void loadFromFile(){
+		_current.setOkToPaint(false);
     	fc=new javax.swing.JFileChooser();
     	int returnVal = fc.showOpenDialog(null);
     	if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
@@ -65,13 +66,13 @@ public class SaveLoadFrame implements Serializable
     	}
 	 // useful for saving and loading classes from a file.
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		_current = (GpFrame)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		_current.writeObject(out);
 	}
 }

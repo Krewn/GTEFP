@@ -40,13 +40,13 @@ public class kPackage extends kImport implements Serializable
 		}
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
 	}
 }

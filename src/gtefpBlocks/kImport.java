@@ -11,7 +11,6 @@ public class kImport extends CodePiece implements Serializable
 	private kVar _package;
 	protected kVar _import;
 	private kVar _sc;
-	//public Socket _after;
 	private Socket _after;
 	
 	public kImport() // necessary for deserialization
@@ -77,6 +76,7 @@ public class kImport extends CodePiece implements Serializable
 		int l = _import.width();
 		int h = ySize()-_after.ySize();
 		//System.out.println(_import.width());
+		System.out.println("bish");
 		_import.setRel();
 		_package.setRel(_import.width(),0);
 		_sc.setRel(_import.width()+_package.width(),0);
@@ -149,13 +149,21 @@ public class kImport extends CodePiece implements Serializable
 		return _after;
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_package=(kVar)in.readObject();
+		_import=(kVar)in.readObject();
+		_sc=(kVar)in.readObject();
+		_after=(Socket)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_package);
+		out.writeObject(_import);
+		out.writeObject(_sc);
+		out.writeObject(_after);
 	}
 }

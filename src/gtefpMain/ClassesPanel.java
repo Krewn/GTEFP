@@ -98,13 +98,40 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		_loadButton = new LoadButton(this, slf);
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		 _nrows = (int) in.readObject();
+		 _app = (App) in.readObject();
+		 _newClassButton = (NewClassButton) in.readObject();
+		 java.util.ArrayList<Tab> temp = (java.util.ArrayList<Tab>) in.readObject();
+		 _tabs = new kVec<Tab>();
+		 for( Object k : temp ){
+			 _tabs.que((Tab)k);
+		 } 
+		 _wp = (WorkspacePanel) in.readObject();
+		 _rowHeight = (int) in.readObject();
+		 _Q = (int) in.readObject();
+		 _frame = (GpFrame) in.readObject();
+		 _saveButton = (SaveButton) in.readObject();
+		 _loadButton = (LoadButton) in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		out.writeObject(_nrows);         //private int ;
+		out.writeObject(_app);           //private App ;
+		out.writeObject(_newClassButton);//private NewClassButton ;
+		java.util.ArrayList<Tab> temp = new java.util.ArrayList<Tab>();
+		for(Tab k : _tabs){
+			temp.add(k);
+		}
+		out.writeObject(temp);
+		out.writeObject(_wp);            //private WorkspacePanel ;
+		out.writeObject(_rowHeight);     //private int ;
+		out.writeObject(_Q);             //private int ;
+		out.writeObject(_frame);         //private GpFrame ;
+		out.writeObject(_saveButton);    //private SaveButton ;
+		out.writeObject(_loadButton);    //private LoadButton ;
+		
 	}
 }

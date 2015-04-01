@@ -13,10 +13,10 @@ public class kWhile extends Closure implements Serializable
 	private Socket _after, _eval;
 	protected kVar _pWhile;
 	
-	public kWhile() // necessary for deserialization
+	/*public kWhile() // necessary for deserialization
 	{
 		super();
-	}
+	}*/
 	
 	public kWhile(WorkspacePanel wp)
 	{
@@ -140,13 +140,19 @@ public class kWhile extends Closure implements Serializable
 		return(super.ySize()+_after.ySize());
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_after=(Socket)in.readObject();
+		_eval=(Socket)in.readObject();
+		_pWhile=(kVar)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_after);
+		out.writeObject(_eval);
+		out.writeObject(_pWhile);
 	}
 }

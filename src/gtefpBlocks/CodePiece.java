@@ -2,6 +2,11 @@ package gtefpBlocks;
 
 import gtefpMain.WorkspacePanel;
 import java.awt.Color;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+
+import util.JavaFile;
 import util.kVec;
 
 public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
@@ -23,7 +28,8 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	protected int            _yRel;
 	protected int[]          _ys;
 	protected int            _yWidth;
-	
+
+		
 	public CodePiece() {} // necessary for deserialization
 	
 	public CodePiece(WorkspacePanel wp){
@@ -85,12 +91,14 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	
 	public int getXPos()
 	{
-		return _xPos;
+		int r = _xPos;
+		return r;
 	}
 	
 	public int getYPos()
 	{
-		return _yPos;
+		int r = _yPos;
+		return r;
 	}
 	
 	public void insert(CodePiece plug){	
@@ -178,14 +186,14 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	}
 	
 	public void setRel(){
-		_xPos = _cp._xPos+_xRel*_scale;
-		_yPos = _cp._yPos+_yRel*_scale;
+		_xPos = _cp.getXPos()+_xRel*_scale;
+		_yPos = _cp.getYPos()+_yRel*_scale;
 	}
 	
 	public void setRel(int x, int y){
 		_xRel = x;_yRel = y;
-		_xPos = _cp._xPos+_xRel*_scale;
-		_yPos = _cp._yPos+_yRel*_scale;
+		_xPos = _cp.getXPos()+_xRel*_scale;
+		_yPos = _cp.getYPos()+_yRel*_scale;
 	}
 	
 	public void unplug(){
@@ -210,6 +218,59 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	
 	public int ySize(){
 		return(4);
+	}
+
+	public void writeObject(ObjectOutputStream out)throws IOException {
+		out.writeObject(_c);
+		java.util.ArrayList<Object> _temp = new java.util.ArrayList<Object>();
+		for(Maluable k : _code){_temp.add(k);}
+		out.writeObject(_temp);
+		out.writeObject(_cp);
+		out.writeObject(_isButton);
+		out.writeObject(_lastMouseLoc);
+		out.writeObject(_p);
+		out.writeObject(_scale);
+		out.writeObject(_selected);
+		out.writeObject(_sized);
+		out.writeObject(_wp);
+		out.writeObject(_xPos);
+		out.writeObject(_xRel);
+		out.writeObject(_xs);
+		out.writeObject(_yPos);
+		out.writeObject(_yRel);
+		out.writeObject(_ys);
+		out.writeObject(_yWidth);
+	}
+
+	public void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException{
+		
+		_c=(Color)in.readObject();
+		//_code=(kVec<Maluable>)in.readObject();
+		java.util.ArrayList<Object> _temp = (java.util.ArrayList<Object>)in.readObject();
+		_code = new kVec<Maluable>();
+		for(Object k:_temp){
+			_code.que((Maluable) k);
+		}
+		_cp=(CodePiece)in.readObject();
+		_isButton=(boolean)in.readObject();
+		_lastMouseLoc=(java.awt.Point)in.readObject();
+		_p=(CompPoly)in.readObject();
+		_scale=(int)in.readObject();
+		_selected=(boolean)in.readObject();
+		_sized=(boolean)in.readObject();
+		_wp=(WorkspacePanel)in.readObject();
+		_xPos=(int)in.readObject();
+		_xRel=(int)in.readObject();
+		_xs=(int[])in.readObject();
+		_yPos=(int)in.readObject();
+		_yRel=(int)in.readObject();
+		_ys=(int[])in.readObject();
+		_yWidth=(int)in.readObject();
+
+
+		_wp.addMouseListener(this);
+		_wp.addMouseMotionListener(this);
+		
 	}
 	
 	//public void mousePressed(java.awt.event.MouseEvent e){

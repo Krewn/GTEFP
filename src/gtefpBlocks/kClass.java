@@ -13,10 +13,10 @@ public class kClass extends Closure implements Serializable
 	private kVar _name;
 	private JavaFile _jf;
 	
-	public kClass() // necessary for deserialization
+	/*public kClass() // necessary for deserialization
 	{
 		super();
-	}
+	}*/
 	
 	public kClass(WorkspacePanel wp){
 		super(wp);
@@ -98,13 +98,19 @@ public class kClass extends Closure implements Serializable
 		return 0;
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_pClass=(kVar)in.readObject();
+		_name=(kVar)in.readObject();
+		_jf=(JavaFile)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_pClass);
+		out.writeObject(_name);
+		out.writeObject(_jf);
 	}
 }

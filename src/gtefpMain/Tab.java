@@ -109,13 +109,47 @@ public class Tab extends MouseInputAdapter implements Serializable
 		_sized = true;
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		//super.readObject(in);
+		_app=(App)in.readObject();
+		_c=(Color)in.readObject();
+		_fontColor=(Color)in.readObject();
+		_cp=(ClassesPanel)in.readObject();
+		_file=(JavaFile)in.readObject();
+		_font=(Font)in.readObject();
+		_point=(Point)in.readObject();
+		_poly=(Polygon)in.readObject();
+		_sized=(boolean)in.readObject();
+		_style=(String)in.readObject();
+		_text=(String)in.readObject();
+		_wp=(WorkspacePanel)in.readObject();
+		_x=(int)in.readObject();
+		_y=(int)in.readObject();
+		_w=(int)in.readObject();
+		_h=(int)in.readObject();
+		_rand=(Random)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		//super.writeObject(out);
+		out.writeObject(_app);
+		out.writeObject(_c);
+		out.writeObject(_fontColor);
+		out.writeObject(_cp);
+		out.writeObject(_file);
+		out.writeObject(_font);
+		out.writeObject(_point);
+		out.writeObject(_poly);
+		out.writeObject(_sized);
+		out.writeObject(_style);
+		out.writeObject(_text);
+		out.writeObject(_wp);
+		out.writeObject(_x);
+		out.writeObject(_y);
+		out.writeObject(_w);
+		out.writeObject(_h);
+		out.writeObject(_rand);
 	}
 }

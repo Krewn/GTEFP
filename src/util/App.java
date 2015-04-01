@@ -89,12 +89,24 @@ public class App implements Serializable
 	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		java.util.ArrayList<Object> _temp = (java.util.ArrayList<Object>)in.readObject();
+		_classes = new kVec<JavaFile>();
+		for(Object k:_temp){
+			_classes.que((JavaFile) k);
+		}
+		_currentWsClass=(int)in.readObject();
+		_wp=(WorkspacePanel)in.readObject();
 	}
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		java.util.ArrayList<Object> temp = new java.util.ArrayList<Object>();
+		for(JavaFile k : _classes){
+			temp.add((Object)k);
+		}
+		out.writeObject(temp);
+		out.writeObject(_currentWsClass);
+		out.writeObject(_wp);
 	}
 }
 

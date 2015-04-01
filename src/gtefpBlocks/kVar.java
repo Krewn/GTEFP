@@ -348,13 +348,45 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		return _after;
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
+		_text=(String)in.readObject();
+		_style=(String)in.readObject();
+		_font=(java.awt.Font)in.readObject();
+		_height=(int)in.readObject();
+		_width=(int)in.readObject();
+		_inUse=(boolean)in.readObject();
+		_OGxs=(int[])in.readObject();
+		_OGys=(int[])in.readObject();
+		_isEditable=(boolean)in.readObject();
+		_tColor=(java.awt.Color)in.readObject();
+		_after=(Socket)in.readObject();
+		_focused=(boolean)in.readObject();
+		_cursor=(java.awt.Polygon)in.readObject();
+		_cursorPos=(int)in.readObject();
+		_cursorPlace=(int)in.readObject();
+		_jf=(JavaFile)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
+		out.writeObject(_text);
+		out.writeObject(_style);
+		out.writeObject(_font);
+		out.writeObject(_height);
+		out.writeObject(_width);
+		out.writeObject(_inUse);
+		out.writeObject(_OGxs);
+		out.writeObject(_OGys);
+		out.writeObject(_isEditable);
+		out.writeObject(_tColor);
+		out.writeObject(_after);
+		out.writeObject(_focused);
+		out.writeObject(_cursor);
+		out.writeObject(_cursorPos);
+		out.writeObject(_cursorPlace);
+		out.writeObject(_jf);
 	}
 }

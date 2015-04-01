@@ -1,13 +1,20 @@
 package gtefpBlocks;
 
+import java.io.IOException;
+import java.io.Serializable;
+
 import gtefpMain.WorkspacePanel;
 
-public abstract class Closure extends CodePiece{
+public abstract class Closure extends CodePiece implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	protected kVar _curly;// {
 	protected Socket _inside; //    #
 	protected kVar _ylruc;// }
 	
-	public Closure() {} // necessary for deserialization
+	//public Closure() {} // (not) necessary for deserialization
 	
 	public Closure(WorkspacePanel wp) {
 		super(wp);
@@ -111,5 +118,21 @@ public abstract class Closure extends CodePiece{
 	@Override
 	public int ySize(){
 		return(_curly.ySize()+_inside.ySize()+_ylruc.ySize());
+	}	
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	{
+		super.readObject(in);
+		_curly=(kVar)in.readObject();
+		_inside=(Socket)in.readObject();
+		_ylruc=(kVar)in.readObject();
 	}
+	
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	{
+		super.writeObject(out);
+		out.writeObject(_curly);
+		out.writeObject(_inside);
+		out.writeObject(_ylruc);
+	}
+	
 }

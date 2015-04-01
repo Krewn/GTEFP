@@ -11,10 +11,10 @@ public class kFor extends kWhile implements Serializable
 {
 	private static final long serialVersionUID = 1L;
 	
-	public kFor() // necessary for deserialization
+	/*public kFor() // necessary for deserialization
 	{
 		super();
-	}
+	}*/
 	
 	public kFor(WorkspacePanel wp)
 	{
@@ -48,13 +48,13 @@ public class kFor extends kWhile implements Serializable
 		}
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		in.defaultReadObject();
+		super.readObject(in);
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		out.defaultWriteObject();
+		super.writeObject(out);
 	}
 }

@@ -1,5 +1,6 @@
 package gtefpMain;
 
+import gpBase.kVec;
 import gtefpBlocks.*;
 
 import java.awt.event.ActionEvent;
@@ -29,6 +30,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public  CodePiece          _temp;
 	private Polygon            _templateTray;
 	private Timer              _timer;
+	private boolean            _OkToPaint;
 	
 	public WorkspacePanel(GpFrame frame)
 	{
@@ -57,8 +59,12 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		if(arg0.getSource()==_timer)
+		if(arg0.getSource()==_timer && _OkToPaint)
 			repaint();
+	}
+	
+	public void setOkToPaint(boolean b){
+		_OkToPaint = b;
 	}
 	
 	
@@ -239,15 +245,59 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		return(r);
 	}
 	
-	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		//in.defaultReadObject();
-		in.readObject();
+		_app=(App)in.readObject();
+		_bc=(int)in.readObject();
+		_blink=(Color)in.readObject();
+		_bUp=(boolean)in.readObject();
+		_buttonSocket=(Socket)in.readObject();
+		_codeYpos=(int)in.readObject();
+		_importsYPos=(int)in.readObject();
+		_scale=(int)in.readObject();
+		_trayWidth=(int)in.readObject();
+		_cp=(ClassesPanel)in.readObject();
+		_frame=(GpFrame)in.readObject();
+		_ogT=(long)in.readObject();
+		//_sockets=(kVec<kVec<Socket>>)in.readObject();
+		java.util.ArrayList<java.util.ArrayList<Socket>> _temp = (java.util.ArrayList<java.util.ArrayList<Socket>>)in.readObject();
+		_sockets = new kVec<kVec<Socket>>();
+		for(Object k:_temp){
+			kVec<Socket> foo = new kVec<Socket>(); 
+			for(Socket k2 : (java.util.ArrayList<Socket>) k){
+				foo.que(k2);
+			}
+			_sockets.que(foo);
+		}
+		_templateTray=(Polygon)in.readObject();
+		_timer=(Timer)in.readObject();
 	}
 	
-	private void writeObject(java.io.ObjectOutputStream out) throws IOException
+	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		//out.defaultWriteObject();
-		out.writeObject(this);
+		out.writeObject(_app);
+		out.writeObject(_bc);
+		out.writeObject(_blink);
+		out.writeObject(_bUp);
+		out.writeObject(_buttonSocket);
+		out.writeObject(_codeYpos);
+		out.writeObject(_importsYPos);
+		out.writeObject(_scale);
+		out.writeObject(_trayWidth);
+		out.writeObject(_cp);
+		out.writeObject(_frame);
+		out.writeObject(_ogT);
+		//out.writeObject(_sockets);
+		java.util.ArrayList<java.util.ArrayList<Socket>> Temp= new java.util.ArrayList<java.util.ArrayList<Socket>>();
+		for(kVec<Socket> k : _sockets){
+			java.util.ArrayList<Socket> temp= new java.util.ArrayList<Socket>();
+			for(Socket k2 : k){
+				temp.add(k2);
+			}
+			Temp.add(temp);
+		}
+		out.writeObject(Temp);
+		out.writeObject(_templateTray);
+		out.writeObject(_timer);
 	}
 }
