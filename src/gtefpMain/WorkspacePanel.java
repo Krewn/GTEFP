@@ -300,4 +300,8 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		out.writeObject(_templateTray);
 		out.writeObject(_timer);
 	}
+
+	public void writeToFile(String dir) {
+		_app.writeToFile(dir);
+	}
 }

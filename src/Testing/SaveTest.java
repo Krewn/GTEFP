@@ -23,7 +23,7 @@ public class SaveTest {
 	    @Test
 	    public void save() {
 	    	_TestFrame = new GpFrame("This is just a Test.");
-	    	_TestApp = new App(_TestFrame.getWp());
+	    	//_TestApp = new App(_TestFrame.getWp());
 	    	boolean t = _TestApp.saveToFile();
 	    	assertEquals(t , true);
 	    }

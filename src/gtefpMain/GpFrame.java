@@ -48,6 +48,9 @@ public class GpFrame extends JFrame implements Serializable
 		this.repaint();
 		this.setVisible(true);
 	}
+	public void writeToFile(String dir){
+		 _Wpanel.writeToFile(dir);
+	}
 	
 	public void makeSaveAndLoadButton(SaveLoadFrame slf)
 	{

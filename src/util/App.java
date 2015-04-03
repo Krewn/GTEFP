@@ -1,7 +1,9 @@
 package util;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.Serializable;
+import java.nio.file.Path;
 
 import gpBase.kVec;
 import gtefpMain.WorkspacePanel;
@@ -75,6 +77,25 @@ public class App implements Serializable
 	public void setCurrentWsClass(int i)
 	{
 		_currentWsClass = i;
+	}
+	
+
+	//public  kVec<JavaFile> _classes;
+	public void writeToFile(String dir){
+		dir+="_";
+		File f = new File(dir);
+		if (f.isDirectory()) {
+			FileUtils.deleteDirectory(dir);
+			// Apache Commons Io
+		}
+		String Content = "";
+		String Name ="";
+		for (JavaFile k2 : _classes){
+			Content = k2.writeCode();
+			Name = k2.getClassName();
+			
+			//r.que(k2.writeCode());
+		}
 	}
 	
 	public kVec<String> writeCode()

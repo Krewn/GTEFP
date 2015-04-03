@@ -22,7 +22,14 @@ public class SaveLoadFrame implements Serializable
 		SaveLoadFrame slf = new SaveLoadFrame();
 	}
 	
-	public void saveToFile() {
+	public void writeToFile(String dir){
+		_current.writeToFile(dir);
+	}
+	public void execute(String dir){
+		
+	} 
+	
+	public void saveToFile() { // BROKEN !!!
     	fc=new javax.swing.JFileChooser();
     	int returnVal = fc.showSaveDialog(null);
 		if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){

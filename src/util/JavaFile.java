@@ -54,11 +54,6 @@ public class JavaFile implements Serializable
 		_wp.getClassesPanel().newTab(this);
 	}
 	
-	public String getClassName()
-	{
-		return _classBlock.getName();
-	}
-	
 	public void paint(java.awt.Graphics aBrush)
 	{
 		_class.setRel(0,_imports.ySize()+10);
@@ -66,6 +61,11 @@ public class JavaFile implements Serializable
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		_imports.paint(aBrush);
 		_class.paint(aBrush);
+	}
+	
+	public String getClassName()
+	{
+		return _classBlock.getName();
 	}
 	
 	public String writeCode()
@@ -81,7 +81,6 @@ public class JavaFile implements Serializable
 		_scale=(int)in.readObject();
 		_wp=(WorkspacePanel)in.readObject();
 	}
-	
 	public void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
 		out.writeObject(_imports);

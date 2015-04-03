@@ -9,11 +9,11 @@ package leap;
 \******************************************************************************/
 
 import java.lang.Math;
-import com.leapmotion.leap.*;
-import com.leapmotion.leap.Gesture.State;
+//import com.leapmotion.leap.*;
+//import com.leapmotion.leap.Gesture.State;
 
-public class SampleListener extends Listener {
-    public void onInit(Controller controller) {
+public class SampleListener /*extends Listener*/ {
+    /*public void onInit(Controller controller) {
         System.out.println("Initialized");
     }
 
@@ -151,5 +151,5 @@ public class SampleListener extends Listener {
         if (!frame.hands().isEmpty() || !gestures.isEmpty()) {
             System.out.println();
         }
-    }
+    }*/
 }
