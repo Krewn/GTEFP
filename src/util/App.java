@@ -85,7 +85,7 @@ public class App implements Serializable
 		dir+="_";
 		File f = new File(dir);
 		if (f.isDirectory()) {
-			FileUtils.deleteDirectory(dir);
+			//FileUtils.deleteDirectory(dir);
 			// Apache Commons Io
 		}
 		String Content = "";

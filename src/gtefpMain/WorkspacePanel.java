@@ -138,6 +138,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		kImport  _IMPORT  = new kImport(this); // Prepare template tray
 		kClass   _CLASS   = new kClass(this);
 		kIf      _IF      = new kIf(this);
+		kElseIf  _ELSEIF  = new kElseIf(this);
 		kVar     _VAR     = new kVar(this);
 		kPackage _PACKAGE = new kPackage(this);
 		kWhile   _WHILE   = new kWhile(this);
@@ -146,7 +147,8 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_buttonSocket.insert(_PACKAGE);
 		_PACKAGE.getAfter().insert(_IMPORT);
 		_IMPORT.getAfter().insert(_IF);
-		_IF.getAfter().insert(_VAR);
+		_IF.getAfter().insert(_ELSEIF);
+		_ELSEIF.getAfter().insert(_VAR);
 		_VAR.getAfter().insert(_WHILE);
 		_WHILE.getAfter().insert(_FOR);
 		_FOR.getAfter().insert(_CLASS);
@@ -154,6 +156,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_PACKAGE.makeButton();
 		_IMPORT.makeButton();
 		_IF.makeButton();
+		_ELSEIF.makeButton();
 		_VAR.makeButton();
 		_WHILE.makeButton();
 		_FOR.makeButton();

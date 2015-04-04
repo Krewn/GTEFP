@@ -63,9 +63,6 @@ public class kImport extends CodePiece implements Serializable
 		draw_p();
 		super.paint(aBrush);
 		draw_p();
-		//betterBrush.fillPolygon(_p);
-		//betterBrush.setColor(oldColor);
-		//super.paint(aBrush);
 		_import.paint(aBrush,new java.awt.Color(175,120,120));
 		_package.paint(aBrush);
 		_sc.paint(aBrush,new java.awt.Color(175,120,120));
@@ -75,8 +72,6 @@ public class kImport extends CodePiece implements Serializable
 	public void draw_p(){
 		int l = _import.width();
 		int h = ySize()-_after.ySize();
-		//System.out.println(_import.width());
-		System.out.println("bish");
 		_import.setRel();
 		_package.setRel(_import.width(),0);
 		_sc.setRel(_import.width()+_package.width(),0);
