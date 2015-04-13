@@ -73,7 +73,7 @@ public class JavaFile implements Serializable
 		return _imports.writeCode() + _class.writeCode();
 	}
 	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		_imports=(Socket)in.readObject();
 		_class=(Socket)in.readObject();
@@ -81,7 +81,7 @@ public class JavaFile implements Serializable
 		_scale=(int)in.readObject();
 		_wp=(WorkspacePanel)in.readObject();
 	}
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
 		out.writeObject(_imports);
 		out.writeObject(_class);

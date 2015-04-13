@@ -1,7 +1,11 @@
 package gtefpMain;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.Serializable;
 
 public class SaveLoadFrame implements Serializable
@@ -28,6 +32,42 @@ public class SaveLoadFrame implements Serializable
 	public void execute(String dir){
 		
 	} 
+	
+	/*public void saveToFile()
+	{
+		try
+		{
+			_file = new File("W:\\test.txt");
+			FileOutputStream fos = new FileOutputStream(_file);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			oos.writeObject(_current);
+			System.out.println(); // debug
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+	
+	public void loadFromFile()
+	{
+		try
+		{
+			_file = new File("W:\\test.txt");
+			FileInputStream fis = new FileInputStream(_file);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			_current = (GpFrame)ois.readObject();
+			System.out.println(); // debug
+		}
+		catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+		}
+	}*/
 	
 	public void saveToFile() { // BROKEN !!!
     	fc=new javax.swing.JFileChooser();
@@ -73,13 +113,14 @@ public class SaveLoadFrame implements Serializable
     	}
 	 // useful for saving and loading classes from a file.
 	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		_current = (GpFrame)in.readObject();
 	}
 	
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		_current.writeObject(out);
+		System.out.println("slf written!");
+		out.writeObject(_current);
 	}
 }

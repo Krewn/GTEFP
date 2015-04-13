@@ -1,15 +1,18 @@
 package gtefpBlocks;
 
 import gtefpMain.WorkspacePanel;
+
 import java.awt.Color;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 import util.JavaFile;
 import util.kVec;
 
-public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
+//public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
+public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
 {
 	protected Color          _c;
 	protected kVec<Maluable> _code;
@@ -66,7 +69,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		return true;
 	}
 	
-	public abstract void clicked();
+	public /*abstract*/ void clicked() {}
 	
 	public void draw_p(){
 		//System.out.println("!! The here tho");
@@ -131,13 +134,18 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 				int dx = e.getX()-_lastMouseLoc.x;
 				int dy = e.getY()-_lastMouseLoc.y;
 				move(dx,dy);
+				
+				if (_wp == null)
+				{
+					System.out.println(); // debug
+				}
 				_wp.repaint();
 			}
 		}
 		_lastMouseLoc = e.getPoint();
 	}
 	
-	public abstract void mousePressed(java.awt.event.MouseEvent e);
+	public /*abstract */void mousePressed(java.awt.event.MouseEvent e) {}
 	
 	public void mouseReleased(java.awt.event.MouseEvent e){
 		_selected=false;
@@ -179,7 +187,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		_selected = true;
 	}
 	
-	public abstract void setCp(CodePiece cp);
+	public /*abstract */void setCp(CodePiece cp) {}
 	
 	public void setPosition(int x,int y){
 		_xPos = x; _yPos=y;
@@ -205,7 +213,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	public void unsert(){//special method only for the socket.
 	}
 	
-	public abstract int width();
+	public /*abstract */int width() { return 0; }
 	
 	public String writeCode()
 	{
@@ -220,7 +228,7 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		return(4);
 	}
 
-	public void writeObject(ObjectOutputStream out)throws IOException {
+	private void writeObject(ObjectOutputStream out)throws IOException {
 		out.writeObject(_c);
 		java.util.ArrayList<Object> _temp = new java.util.ArrayList<Object>();
 		for(Maluable k : _code){_temp.add(k);}
@@ -242,15 +250,14 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		out.writeObject(_yWidth);
 	}
 
-	public void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException{
-		
+	private void readObject(ObjectInputStream in) throws ClassNotFoundException, IOException{
 		_c=(Color)in.readObject();
-		//_code=(kVec<Maluable>)in.readObject();
-		java.util.ArrayList<Object> _temp = (java.util.ArrayList<Object>)in.readObject();
+		java.util.ArrayList<Object> _temp = (ArrayList<Object>)in.readObject();
 		_code = new kVec<Maluable>();
 		for(Object k:_temp){
 			_code.que((Maluable) k);
 		}
+		//_code=(kVec<Maluable>)in.readObject();
 		_cp=(CodePiece)in.readObject();
 		_isButton=(boolean)in.readObject();
 		_lastMouseLoc=(java.awt.Point)in.readObject();
@@ -266,8 +273,6 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 		_yRel=(int)in.readObject();
 		_ys=(int[])in.readObject();
 		_yWidth=(int)in.readObject();
-
-
 		_wp.addMouseListener(this);
 		_wp.addMouseMotionListener(this);
 		

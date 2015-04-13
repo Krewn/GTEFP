@@ -109,7 +109,7 @@ public class Tab extends MouseInputAdapter implements Serializable
 		_sized = true;
 	}
 	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		//super.readObject(in);
 		_app=(App)in.readObject();
@@ -131,7 +131,7 @@ public class Tab extends MouseInputAdapter implements Serializable
 		_rand=(Random)in.readObject();
 	}
 	
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
 		//super.writeObject(out);
 		out.writeObject(_app);

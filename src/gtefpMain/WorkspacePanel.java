@@ -248,7 +248,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		return(r);
 	}
 	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		_app=(App)in.readObject();
 		_bc=(int)in.readObject();
@@ -276,7 +276,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_timer=(Timer)in.readObject();
 	}
 	
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
 		out.writeObject(_app);
 		out.writeObject(_bc);

@@ -57,14 +57,16 @@ public class GpFrame extends JFrame implements Serializable
 		_Cpanel.makeSaveAndLoadButton(slf);
 	}
 	
-	public void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
+	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		_Cpanel=(ClassesPanel)in.readObject();
 		_Wpanel=(WorkspacePanel)in.readObject();
 	}
 	
-	public void writeObject(java.io.ObjectOutputStream out) throws IOException
+	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
+		System.out.println("gpframe written!");
+		
 		out.writeObject(_Cpanel);
 		out.writeObject(_Wpanel);
 	}
