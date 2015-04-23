@@ -1,3 +1,7 @@
+/***********************************************************************************
+ * NewClassButton creates and opens a new class, represented by an additional Tab. *
+ ***********************************************************************************/
+
 package util;
 
 import java.awt.Polygon;
@@ -25,7 +29,7 @@ public class NewClassButton extends javax.swing.event.MouseInputAdapter implemen
 		_ys = new int[]{1,1,0,0,1,1,2,2,3,3,2,2};
 		_scale = 5;
 		_cp = cp;
-		_yPos = 0;
+		_yPos = 4;
 		_xPos = _cp.getWidth() - (_scale * 4);
 		draw_p();
 		_c = new java.awt.Color(0,210,35);

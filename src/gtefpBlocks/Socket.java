@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * Socket represents a hole in the code in which a CodePiece can be "plugged". *
+ *******************************************************************************/
+
 package gtefpBlocks;
 
 import java.awt.Color;

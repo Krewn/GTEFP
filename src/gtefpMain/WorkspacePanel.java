@@ -1,3 +1,8 @@
+/**************************************************************************************************************
+ * WorkspacePanel represents the space in which the user works on his or her code. Code blocks may be dragged *
+ * to and from locations in the WorkspacePanel.                                                               *
+ **************************************************************************************************************/
+
 package gtefpMain;
 
 import gpBase.kVec;
@@ -111,6 +116,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		return(r);
 	}
 	
+	// Initializes WorkspacePanel when a new GpFrame is loaded.
 	public void init()
 	{
 		this.setFocusable(true);
@@ -193,7 +199,6 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_buttonSocket.paint(aBrush);
 		_app.paint(aBrush);
 		if(_temp!=null){_temp.paint(aBrush);}
-		//_cp.paintComponent(aBrush);
 	}
 	
 	public void removeSocket(Socket s)

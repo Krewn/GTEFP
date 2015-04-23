@@ -1,3 +1,9 @@
+/***********************************************************************************************
+ * GpFrame is the window that contains the ClassesPanel and WorkspacePanel. A GpFrame can also *
+ * be loosely interpreted as a Java project. SaveLoadFrame maintains a reference to only       *
+ * the GpFrame currently being edited.                                                         *
+ ***********************************************************************************************/
+
 package gtefpMain;
 
 import gtefpBlocks.*;

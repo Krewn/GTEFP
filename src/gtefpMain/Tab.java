@@ -1,3 +1,8 @@
+/*****************************************************************************************
+ * A Tab is a button representing a class that can be edited. Clicking on the Tab causes *
+ * its class to be displayed to the user.                                                *
+ *****************************************************************************************/
+
 package gtefpMain;
 
 import java.awt.FontMetrics;
@@ -111,7 +116,6 @@ public class Tab extends MouseInputAdapter implements Serializable
 	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
-		//super.readObject(in);
 		_app=(App)in.readObject();
 		_c=(Color)in.readObject();
 		_fontColor=(Color)in.readObject();
@@ -133,7 +137,6 @@ public class Tab extends MouseInputAdapter implements Serializable
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		//super.writeObject(out);
 		out.writeObject(_app);
 		out.writeObject(_c);
 		out.writeObject(_fontColor);

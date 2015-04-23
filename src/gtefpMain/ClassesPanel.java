@@ -1,3 +1,8 @@
+/***************************************************************************************
+ * ClassesPanel maintains Tabs for each class that the user is currently working with. *
+ * ClassesPanel allows the user to switch between classes while coding.                *
+ ***************************************************************************************/
+
 package gtefpMain;
 import java.awt.Dimension;
 import java.io.IOException;

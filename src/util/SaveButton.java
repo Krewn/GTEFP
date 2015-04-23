@@ -1,3 +1,8 @@
+/*************************************************************************
+ * The SaveButton opens a dialog prompting the user for a file location. *
+ * The current GpFrame is then saved to that location.                   *
+ *************************************************************************/
+
 package util;
 
 import java.io.IOException;
@@ -16,7 +21,7 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 	protected int[] _xs;
 	protected int[] _ys;
 	protected ClassesPanel _cp;
-	private java.awt.Color _c;
+	protected java.awt.Color _c;
 	protected java.awt.Polygon _plusButton;
 	protected SaveLoadFrame _slf;
 	
@@ -30,7 +35,7 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 		_yPos = 0;
 		_xPos = _cp.getWidth() - (_scale * 8);
 		draw_p();
-		_c = new java.awt.Color(0,210,35);
+		_c = new java.awt.Color(0,0,255);
 		_cp.addMouseListener(this);
 		_cp.repaint();
 	}
@@ -38,7 +43,9 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 	public void draw_p(){
 		int [] xs = new int[_xs.length];
 		int [] ys = new int[_ys.length];
-		_xPos = _cp.getWidth() - (_scale * 4);
+		_xPos = _cp.getWidth() - 40;
+		_yPos = 5;
+		
 		for(int k = 0 ; k < xs.length ; k++){
 			xs[k]=_xPos+_xs[k]*_scale;
 			ys[k]=_yPos+_ys[k]*_scale;

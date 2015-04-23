@@ -1,3 +1,7 @@
+/**************************************************************************
+ * A Closure is a CodePiece that is necessarily enclosed by curly braces. *
+ **************************************************************************/
+
 package gtefpBlocks;
 
 import java.awt.Color;
@@ -16,8 +20,6 @@ public /*abstract */class Closure extends CodePiece implements Serializable{
 	protected kVar _curly;// {
 	protected Socket _inside; //    #
 	protected kVar _ylruc;// }
-	
-	//public Closure() {} // (not) necessary for deserialization
 	
 	public Closure(WorkspacePanel wp) {
 		super(wp);

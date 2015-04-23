@@ -1,3 +1,7 @@
+/*****************************************************************
+ * kVec is a data structure containing a vector of Java classes. *
+ *****************************************************************/
+
 package util;
 
 import gtefpMain.WorkspacePanel;

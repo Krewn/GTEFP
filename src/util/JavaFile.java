@@ -1,3 +1,7 @@
+/********************************************************************
+ * JavaFile represents a Java file in a form compatible with GTEFP. *
+ ********************************************************************/
+
 package util;
 
 import java.io.IOException;
@@ -27,18 +31,6 @@ public class JavaFile implements Serializable
 		_imports.place(wp._trayWidth, 0);
 		_imports.scale(_wp.getScale());
 		_imports.draw_p();
-		/*
-		_class = new Socket(wp);
-		_class.setCp(_imports);
-		_class.setRel(0,_imports.ySize()+10);
-		_class.scale(_wp.getScale());
-		_class.draw_p();
-		_classBlock = new kClass(_wp);
-		_classBlock.setJavaFile(this);
-		_class.insert(_classBlock);
-		
-		_wp.getClassesPanel().newTab(this);
-		*/
 	}
 	
 	public void setup(){

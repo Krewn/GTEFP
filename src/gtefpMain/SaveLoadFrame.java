@@ -1,3 +1,8 @@
+/************************************************************************************************************************
+ * SaveLoadFrame maintains a reference to the current GpFrame (i.e. the current Java project that the user is editing). *
+ * SaveLoadFrame also handles the saving and loading of Java projects.                                                  *
+ ************************************************************************************************************************/
+
 package gtefpMain;
 
 import java.io.File;
@@ -31,45 +36,10 @@ public class SaveLoadFrame implements Serializable
 	}
 	public void execute(String dir){
 		
-	} 
-	
-	/*public void saveToFile()
-	{
-		try
-		{
-			_file = new File("W:\\test.txt");
-			FileOutputStream fos = new FileOutputStream(_file);
-			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(_current);
-			System.out.println(); // debug
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
 	}
 	
-	public void loadFromFile()
-	{
-		try
-		{
-			_file = new File("W:\\test.txt");
-			FileInputStream fis = new FileInputStream(_file);
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			_current = (GpFrame)ois.readObject();
-			System.out.println(); // debug
-		}
-		catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-		}
-	}*/
-	
-	public void saveToFile() { // BROKEN !!!
+	// Saves current project to file specified by the user.
+	public void saveToFile() {
     	fc=new javax.swing.JFileChooser();
     	int returnVal = fc.showSaveDialog(null);
 		if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
@@ -85,6 +55,8 @@ public class SaveLoadFrame implements Serializable
     		e.printStackTrace();
     	}
 	}
+	
+	// Loads file specified by user into memory.
 	public void loadFromFile(){
 		_current.setOkToPaint(false);
     	fc=new javax.swing.JFileChooser();
@@ -111,7 +83,6 @@ public class SaveLoadFrame implements Serializable
     	_current.revalidate();
     	_current.repaint();
     	}
-	 // useful for saving and loading classes from a file.
 	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
