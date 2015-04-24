@@ -91,12 +91,6 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		return _rowHeight;
 	}
 	
-	public void drawTabs()
-	{
-		for (Tab t : _tabs)
-			t.draw_p();
-	}
-	
 	public void makeSaveAndLoadButton(SaveLoadFrame slf)
 	{
 		_saveButton = new SaveButton(this, slf);

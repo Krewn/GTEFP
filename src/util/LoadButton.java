@@ -5,6 +5,7 @@
 
 package util;
 
+import java.awt.Color;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -25,6 +26,8 @@ public class LoadButton extends SaveButton implements Serializable
 		_c = new java.awt.Color(255,0,0);
 		draw_p();
 		_cp.repaint();
+		_font = new java.awt.Font("Arial", java.awt.Font.BOLD, 12);
+		_fontColor = new Color(0, 255, 0);
 	}
 	
 	@Override
@@ -47,6 +50,19 @@ public class LoadButton extends SaveButton implements Serializable
 		java.awt.Point p = e.getPoint();
 		if(_plusButton.contains(p))
 			_slf.loadFromFile();
+	}
+	
+	@Override
+	public void paint(java.awt.Graphics aBrush){
+		java.awt.Color oldColor = aBrush.getColor();
+		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
+		this.draw_p();
+		betterBrush.setColor(_c);
+		betterBrush.fillPolygon(_plusButton);
+		betterBrush.setColor(oldColor);
+		aBrush.setFont(_font);
+		aBrush.setColor(_fontColor);
+		aBrush.drawString("L", _xPos + 5, _yPos + 11);
 	}
 	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException

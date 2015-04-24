@@ -29,12 +29,11 @@ public class MyPanel extends javax.swing.JPanel{
 		
 		this.setBackground(new java.awt.Color(42,42,42));
 		
-		 javax.swing.JPanel buttonPanel;
-		 buttonPanel = new javax.swing.JPanel();
-		 _cb = new ColorButton(new java.awt.Color(0,0,0),_cp,_Group,true);
-		 buttonPanel.add(_cb);
-		 this.add(buttonPanel);
-		//MyMouseListener myMouseListener = new MyMouseListener(this);
+		javax.swing.JPanel buttonPanel;
+		buttonPanel = new javax.swing.JPanel();
+		_cb = new ColorButton(new java.awt.Color(0,0,0),_cp,_Group,true);
+		buttonPanel.add(_cb);
+		this.add(buttonPanel);
 		this.repaint();
 	}
 	public void paintComponent (java.awt.Graphics aBrush){
@@ -47,38 +46,4 @@ public class MyPanel extends javax.swing.JPanel{
 		_trailer2.paint(betterBrush);
 		_cp.paint(aBrush);
 	}
-	/*
-	public void saveToFile() {
-    	fc=new javax.swing.JFileChooser();
-    	int returnVal = fc.showSaveDialog(this);
-    	if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
-    		file = fc.getSelectedFile();
-    	}else return;
-    	try{java.io.ObjectOutputStream os = new java.io.ObjectOutputStream(new java.io.FileOutputStream(file));
-    		os.writeObject(_circles);
-    		os.close();
-    	}
-    	catch(java.io.IOException e){
-    		System.out.println("IO Exception reading file");
-    	}
-	}
-	public void loadFromFile(){
-    	fc=new javax.swing.JFileChooser();
-    	int returnVal = fc.showOpenDialog(this);
-    	if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
-    		file = fc.getSelectedFile();
-    	}else return;
-    	try{java.io.ObjectInputStream is = new java.io.ObjectInputStream(new java.io.FileInputStream(file));
-    		_circles = (java.util.ArrayList<SmartEllipse>)is.readObject();
-    		is.close();
-    	}
-    	catch(java.io.IOException e){
-    		System.out.println("IO Exception reading file");
-    	}
-    	catch(ClassNotFoundException e){
-    		System.out.println("Class Not Found Exception");
-    	}
-    	repaint();
-    	}
-	*/ // useful for saving and loading classes from a file.
 }

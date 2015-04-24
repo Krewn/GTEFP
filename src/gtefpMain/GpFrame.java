@@ -6,8 +6,6 @@
 
 package gtefpMain;
 
-import gtefpBlocks.*;
-
 import java.awt.*;
 import java.io.IOException;
 import java.io.Serializable;
@@ -38,7 +36,7 @@ public class GpFrame extends JFrame implements Serializable
 		_Wpanel.setMinimumSize(new Dimension(100, 42));     // hardCoded sizing
 		
 		_Cpanel = _Wpanel.getClassesPanel();
-		_Cpanel.setPreferredSize(new Dimension(780,30));    // hardCoded sizing
+		_Cpanel.setPreferredSize(new Dimension(780, 30));   // hardCoded sizing
 		_Cpanel.setMaximumSize(new Dimension(3000, 300));   // hardCoded sizing
 		_Cpanel.setMinimumSize(new Dimension(100, 20));     // hardCoded sizing
 		_Cpanel.setApp(_Wpanel.getApp());
@@ -71,8 +69,6 @@ public class GpFrame extends JFrame implements Serializable
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		System.out.println("gpframe written!");
-		
 		out.writeObject(_Cpanel);
 		out.writeObject(_Wpanel);
 	}

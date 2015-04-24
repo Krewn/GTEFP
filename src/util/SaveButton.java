@@ -5,6 +5,8 @@
 
 package util;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.io.IOException;
 import java.io.Serializable;
 
@@ -21,9 +23,10 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 	protected int[] _xs;
 	protected int[] _ys;
 	protected ClassesPanel _cp;
-	protected java.awt.Color _c;
+	protected java.awt.Color _c, _fontColor;
 	protected java.awt.Polygon _plusButton;
 	protected SaveLoadFrame _slf;
+	protected Font _font;
 	
 	public SaveButton(ClassesPanel cp, SaveLoadFrame slf)
 	{
@@ -38,6 +41,8 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 		_c = new java.awt.Color(0,0,255);
 		_cp.addMouseListener(this);
 		_cp.repaint();
+		_font = new java.awt.Font("Arial", java.awt.Font.BOLD, 12);
+		_fontColor = new Color(255, 0, 0);
 	}
 	
 	public void draw_p(){
@@ -60,6 +65,9 @@ public class SaveButton extends javax.swing.event.MouseInputAdapter implements S
 		betterBrush.setColor(_c);
 		betterBrush.fillPolygon(_plusButton);
 		betterBrush.setColor(oldColor);
+		aBrush.setFont(_font);
+		aBrush.setColor(_fontColor);
+		aBrush.drawString("S", _xPos + 3, _yPos + 12);
 	}
 	
 	@Override
