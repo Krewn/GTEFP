@@ -16,11 +16,6 @@ public class kWhile extends Closure implements Serializable
 	protected Socket _after, _eval;
 	protected kVar _pWhile;
 	
-	/*public kWhile() // necessary for deserialization
-	{
-		super();
-	}*/
-	
 	public kWhile(WorkspacePanel wp)
 	{
 		super(wp);

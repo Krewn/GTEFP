@@ -18,11 +18,6 @@ public class kIf extends Closure implements Serializable
 	private Socket _eval; // soemthing has to be evaluated in the iff ... if(_name){_inside}
 	private Socket _after;
 	
-/* (not)	public kIf() // necessary for deserialization
-	{
-		super();
-	}*/
-	
 	public kIf(WorkspacePanel wp)
 	{
 		super(wp);
@@ -33,7 +28,6 @@ public class kIf extends Closure implements Serializable
 		_eval = new Socket(wp);
 		_eval.setCp(this);
 		_eval.setRel(_pIf.width(),0);
-		//_code.cut(_pIf);
 		_after = new Socket(wp);
 		_after.setCp(this);
 		_after.setRel(0,_pIf.ySize()+_inside.ySize());
@@ -141,7 +135,6 @@ public class kIf extends Closure implements Serializable
 	}
 	@Override
 	public int width() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
