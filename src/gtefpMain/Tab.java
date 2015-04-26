@@ -60,11 +60,11 @@ public class Tab extends MouseInputAdapter implements Serializable
 	
 	public void draw_p()
 	{
-		int cpw = _cp.getWidth() - 20;
+		int classesPanelWidth = _cp.getWidth() - 20;
 		int i = _app.getIndexOfJavaFile(_file);
-		_x = (cpw/GlobalConsts.TABS_PER_ROW)*(i % GlobalConsts.TABS_PER_ROW) + 5;
+		_x = (classesPanelWidth/GlobalConsts.TABS_PER_ROW)*(i % GlobalConsts.TABS_PER_ROW) + 5;
 		_y = _h * (i / GlobalConsts.TABS_PER_ROW) + 5;
-		_w = (cpw - 40) / GlobalConsts.TABS_PER_ROW;
+		_w = (classesPanelWidth - 40) / GlobalConsts.TABS_PER_ROW;
 		_h = _cp.getRowHeight() - 10;
 		int[] xs = new int[]{_x, _x+_w, _x+_w, _x};
 		int[] ys = new int[]{_y + 5, _y + 5, _y+_h, _y+_h};
@@ -97,7 +97,7 @@ public class Tab extends MouseInputAdapter implements Serializable
 		if(_sized==false)
 			prefHeight(aBrush,_h);
 		aBrush.setColor(_fontColor);
-		aBrush.drawString(_text,  _x , _y + _h);
+		aBrush.drawString(_text,  _x + 3, _y + _h - 3);
 	}
 	
 	public void prefHeight(java.awt.Graphics g,int h){
