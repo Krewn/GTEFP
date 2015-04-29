@@ -50,6 +50,7 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		_app = app;
 		this.setBackground(new java.awt.Color(90,90,90));
 		_newClassButton = new NewClassButton(this);
+		_exButton = new WriteAndExcecuteButton(this);
 		_tabs = new kVec<Tab>();
 		this.repaint();
 		_wp = wp;
