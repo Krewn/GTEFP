@@ -5,8 +5,8 @@
 			<attribute name="org.eclipse.jdt.launching.CLASSPATH_ATTR_LIBRARY_PATH_ENTRY" value="/home/kevin/Desktop/Leap/LeapDeveloperKit_2.2.2+24469_linux/LeapSDK/lib/x64"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="src/junit-4.12.jar"/>
-	<classpathentry kind="lib" path="src/hamcrest-core-1.3.jar"/>
 	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="W:/Downloads/hamcrest-core-1.3.jar"/>
+	<classpathentry kind="lib" path="W:/Downloads/junit-4.12.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
