@@ -20,6 +20,7 @@ public class kImport extends CodePiece implements Serializable
 	{
 		super();
 	}
+
 	
 	public kImport(WorkspacePanel wp) {
 		super(wp);
@@ -140,6 +141,13 @@ public class kImport extends CodePiece implements Serializable
 	public int width() {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+	
+	public String getName(){
+		return(_package.getText());
+	}
+	public void setName(String Name){
+		_package.setText(Name);
 	}
 	
 	public Socket getAfter()

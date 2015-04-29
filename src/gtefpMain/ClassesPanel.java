@@ -12,7 +12,9 @@ import util.App;
 import util.JavaFile;
 import util.LoadButton;
 import util.NewClassButton;
+import util.ReadableSRC;
 import util.SaveButton;
+import util.WriteAndExcecuteButton;
 import gpBase.kVec;
 
 public class ClassesPanel extends javax.swing.JPanel implements Serializable{
@@ -27,11 +29,14 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 	private GpFrame _frame;
 	private SaveButton _saveButton;
 	private LoadButton _loadButton;
+	private WriteAndExcecuteButton _exButton;
+	private java.io.File _file;
 	public ClassesPanel(WorkspacePanel wp, GpFrame frame){
 		super();
 		_nrows = 1;
 		this.setBackground(new java.awt.Color(90,90,90));
 		_newClassButton = new NewClassButton(this);
+		_exButton = new WriteAndExcecuteButton(this);
 		_tabs = new kVec<Tab>();
 		this.repaint();
 		_wp = wp;
@@ -65,6 +70,9 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		if (_loadButton != null)
 			_loadButton.paint(aBrush);
 		
+		if(_exButton != null)
+			_exButton.paint(aBrush);
+		
 		for (Tab t : _tabs)
 			t.paintComponent(aBrush);
 	}
@@ -97,6 +105,42 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		_loadButton = new LoadButton(this, slf);
 	}
 	
+	public void WriteAndRun() { // Writes a readable src file and runs the code.
+		kVec<ReadableSRC> Readables = _wp.GetReadables();
+		javax.swing.JFileChooser fc=new javax.swing.JFileChooser();
+    	int returnVal = fc.showSaveDialog(null);
+		if(returnVal== javax.swing.JFileChooser.APPROVE_OPTION){
+			_file = fc.getSelectedFile();
+    	}else return;
+		System.out.println(_file.getName());
+		System.out.println(_file.getPath());
+		System.out.println(_file.getParentFile());
+		boolean success = (new java.io.File(_file.getPath())).mkdirs();
+		if (!success) {
+		    System.out.print("Wtf Fail on File Creation.");
+		}else{
+			kVec<String> packages = new kVec<String>();
+			for(ReadableSRC k : Readables){
+				if(!packages.contains(k.pack)){
+					packages.add(k.pack);
+				}
+			}
+			for(String k : packages ){
+				System.out.println("Makeing file"+_file.getPath()+_file.separator+k);
+				success = (new java.io.File(_file.getPath()+_file.separator+k)).mkdirs();
+			}
+			for(ReadableSRC k : Readables){
+				System.out.println("|||"+_file.getPath()+_file.separator+k.pack+_file.separator+k.name);
+				try(java.io.PrintWriter out = new java.io.PrintWriter(_file.getPath()+_file.separator+k.pack+_file.separator+k.name)){
+					out.println(k.file);
+					out.close();
+				}catch(IOException e){
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException
 	{
 		 _nrows = (int) in.readObject();
@@ -113,6 +157,8 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		 _frame = (GpFrame) in.readObject();
 		 _saveButton = (SaveButton) in.readObject();
 		 _loadButton = (LoadButton) in.readObject();
+		 _exButton = (WriteAndExcecuteButton) in.readObject();
+		 _file = (java.io.File) in.readObject();
 	}
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException
@@ -131,6 +177,8 @@ public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 		out.writeObject(_frame);         //private GpFrame ;
 		out.writeObject(_saveButton);    //private SaveButton ;
 		out.writeObject(_loadButton);    //private LoadButton ;
+		out.writeObject(_exButton);
+		out.writeObject(_file); 
 		
 	}
 }

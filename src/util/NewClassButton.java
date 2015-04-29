@@ -17,12 +17,12 @@ public class NewClassButton extends javax.swing.event.MouseInputAdapter implemen
 	public int _xPos;
 	public int _yPos;
 	public int _scale;
-	private int[] _xs;
-	private int[] _ys;
-	private ClassesPanel _cp;
-	private java.awt.Color _c;
+	protected int[] _xs;
+	protected int[] _ys;
+	protected ClassesPanel _cp;
+	protected java.awt.Color _c;
+	protected java.awt.Polygon _plusButton;
 	
-	private java.awt.Polygon _plusButton;
 	public NewClassButton(ClassesPanel cp)
 	{
 		_xs = new int[]{0,1,1,2,2,3,3,2,2,1,1,0};

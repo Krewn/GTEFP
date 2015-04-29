@@ -31,12 +31,12 @@ public class SaveLoadFrame implements Serializable
 		SaveLoadFrame slf = new SaveLoadFrame();
 	}
 	
-	public void writeToFile(String dir){
+	/*public void writeToFile(String dir){
 		_current.writeToFile(dir);
-	}
-	public void execute(String dir){
+	}*/
+	/*public void execute(String dir){
 		
-	}
+	}*/ // Handled by Classes panel for some reason.
 	
 	// Saves current project to file specified by the user.
 	public void saveToFile() {

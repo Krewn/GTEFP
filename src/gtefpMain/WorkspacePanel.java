@@ -201,6 +201,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public void paintComponent (java.awt.Graphics aBrush)
 	{
 		super.paintComponent(aBrush);
+		System.out.println("This is not a break.");
 		this.setBackground(new java.awt.Color(200,200,201));
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		betterBrush.setColor(new java.awt.Color(233,233,240));
@@ -318,7 +319,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		out.writeObject(_timer);
 	}
 
-	public void writeToFile(String dir) {
-		_app.writeToFile(dir);
+	public kVec<ReadableSRC> GetReadables() {
+		return(_app.writeCode());
 	}
 }

@@ -75,8 +75,10 @@ public class Tab extends MouseInputAdapter implements Serializable
 	public void mouseClicked(MouseEvent e)
 	{
 		_point = e.getPoint();
-		if (_poly.contains(_point))
+		if (_poly.contains(_point)){
 			_wp.setCurrentWsClass(_app.getIndexOfJavaFile(_file));
+			_wp.repaint();
+		}
 	}
 	
 	public void paintComponent(java.awt.Graphics aBrush)

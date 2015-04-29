@@ -31,7 +31,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 	private int _cursorPlace;
 	private JavaFile _jf;
 	
-	public kVar() // necessary for deserialization
+	public kVar() // necessary for deserialization // really tho?
 	{
 		super();
 	}
@@ -105,6 +105,12 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 		//java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		//betterBrush.setFont(_font);
 		_cursorPos = metrics.stringWidth(_text.substring(0,_cursorPlace));
+		if(!_inUse){
+			java.awt.Polygon _blank = new java.awt.Polygon(new int []{_xPos+_cursorPos,_xPos+_cursorPos+1,_xPos+_cursorPos+1,_xPos+_cursorPos},new int []{_yPos,_yPos,_yPos+ height(),_yPos+ height()},4);
+			java.awt.Graphics2D someBrush = (java.awt.Graphics2D) aBrush;
+			aBrush.setColor(new java.awt.Color(70,0,10));
+			someBrush.fillPolygon(_blank);
+		}
 		//Draw_p();
 		super.paint(aBrush);
 		_after.paint(aBrush);
@@ -295,6 +301,7 @@ public class kVar extends CodePiece implements Relative, Buttonable, java.awt.ev
 			}else{
 				_inUse=false;
 			}
+			_wp.repaint();
 		}
 	}
 	@Override

@@ -9,6 +9,7 @@ import java.io.Serializable;
 
 import gtefpBlocks.Socket;
 import gtefpBlocks.kClass;
+import gtefpBlocks.kPackage;
 import gtefpMain.ClassesPanel;
 import gtefpMain.WorkspacePanel;
 
@@ -18,6 +19,7 @@ public class JavaFile implements Serializable
 	public  Socket         _imports;
 	private Socket         _class;
 	private kClass         _classBlock;
+	private kPackage       _packBlock;
 	private int            _scale;
 	private WorkspacePanel _wp;
 	
@@ -41,6 +43,9 @@ public class JavaFile implements Serializable
 		_class.draw_p();
 		_classBlock = new kClass(_wp);
 		_classBlock.setJavaFile(this);
+		_packBlock = new kPackage(_wp);
+		_packBlock.setName("DefaultPackage");
+		_imports.insert(_packBlock);
 		_class.insert(_classBlock);
 		
 		_wp.getClassesPanel().newTab(this);
@@ -60,9 +65,16 @@ public class JavaFile implements Serializable
 		return _classBlock.getName();
 	}
 	
-	public String writeCode()
-	{
-		return _imports.writeCode() + _class.writeCode();
+	public String getPackageName(){
+		return _packBlock.getName();
+	}
+	
+	public ReadableSRC writeCode(){
+		return(new ReadableSRC()
+			.setPack(getPackageName())
+			.setName(getClassName())
+			.setFile(_imports.writeCode() + _class.writeCode())
+		);
 	}
 	
 	private void readObject(java.io.ObjectInputStream in) throws ClassNotFoundException, IOException

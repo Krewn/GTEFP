@@ -81,7 +81,7 @@ public class App implements Serializable
 	
 
 	//public  kVec<JavaFile> _classes;
-	public void writeToFile(String dir){
+/*	public void writeToFile(String dir){ // Code writing is now on APP
 		dir+="_";
 		File f = new File(dir);
 		if (f.isDirectory()) {
@@ -96,15 +96,13 @@ public class App implements Serializable
 			
 			//r.que(k2.writeCode());
 		}
-	}
+	}*/
 	
-	public kVec<String> writeCode()
+	public kVec<ReadableSRC> writeCode()
 	{
-		kVec<String> r = new kVec<String>();
-		
+		kVec<ReadableSRC> r = new kVec<ReadableSRC>(); 
 		for (JavaFile k2 : _classes)
 			r.que(k2.writeCode());
-		
 		return r;
 	}
 	
