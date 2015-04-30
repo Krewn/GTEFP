@@ -69,7 +69,7 @@ public class kElse extends Closure implements Serializable
 		_pElse.paint(aBrush);
 		_eval.paint(aBrush);
 		_after.paint(aBrush);
-		_curly.setRel(_pElse.width() + _eval.width(), 0); // No need to divide by scale 
+		_curly.setRel(_pElse.width() + _eval.width(), 0); // No need to divide by scale
 	}
 	
 	@Override
