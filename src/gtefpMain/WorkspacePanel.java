@@ -152,6 +152,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		kFor     _FOR     = new kFor(this);
 		kSwitch  _SWITCH  = new kSwitch(this);
 		kCase    _CASE    = new kCase(this);
+		kMethod _METHOD = new kMethod(this);
 
 		_buttonSocket.insert(_PACKAGE);
 		_PACKAGE.getAfter().insert(_IMPORT);
@@ -163,7 +164,8 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_WHILE.getAfter().insert(_FOR);
 		_FOR.getAfter().insert(_SWITCH);
 		_SWITCH.getAfter().insert(_CASE);
-		_CASE.getAfter().insert(_CLASS);
+		_CASE.getAfter().insert(_METHOD);
+		_METHOD.getAfter().insert(_CLASS);
 		
 		_PACKAGE.makeButton();
 		_IMPORT.makeButton();
@@ -175,6 +177,7 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		_FOR.makeButton();
 		_SWITCH.makeButton();
 		_CASE.makeButton();
+		_METHOD.makeButton();
 		_CLASS.makeButton();
 		
 		_timer = new javax.swing.Timer(100, this);
