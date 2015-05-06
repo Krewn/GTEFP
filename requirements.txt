@@ -1,0 +1,12 @@
+functional-
+- GTEFP must allow the user to write code by providing draggable code blocks representing all of the common coding elements of Java
+- GTEFP must allow the user to save and load Java projects from/to memory.
+- GTEFP must allow the user to save a compilable/runnable project file
+- GTEFP must provide sockets in which the user can type the desired code (e.g. inside the conditional parentheses of an if statement)
+
+quality of service-
+- GTEFP must be able to run smoothly on low end machines
+- GTEFP must be available at all times
+- GTEFP must not exhibit any unexpected behavior (e.g. dropping the wrong block onto the workspace)
+- GTEFP is assumed not at any risk of security threats, as it will not contain any valuable information or other assets
+- GTEFP is assumed not at any risk of safety threats, as it is not a safety-critical system
