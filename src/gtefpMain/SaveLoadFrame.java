@@ -83,7 +83,6 @@ public class SaveLoadFrame implements Serializable
 	
 	private void writeObject(java.io.ObjectOutputStream out) throws IOException
 	{
-		System.out.println("slf written!");
 		out.writeObject(_current);
 	}
 }

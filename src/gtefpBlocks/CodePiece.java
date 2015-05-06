@@ -181,7 +181,6 @@ public abstract class CodePiece extends javax.swing.event.MouseInputAdapter impl
 	}
 	
 	public void select(){
-		System.out.println("truth");
 		_selected = true;
 	}
 	
