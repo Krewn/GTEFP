@@ -19,17 +19,17 @@ public class SaveTest {
 	 * @author user@example.com (John Doe)
 	 */
 	//Usually, tests with JUnit4 do not need to extend anything
-
-	    @Test
-	    public void save() {
-	    	_TestFrame = new GpFrame("This is just a Test.");
-	    	//_TestApp = new App(_TestFrame.getWp());
-	    	boolean t = _TestApp.saveToFile();
-	    	assertEquals(t , true);
-	    }
-
-	    @Test
-	    @Ignore
-	    public void thisIsIgnored() {
-	    }
+		
+	// tests that a GpFrame is saved to a file
+	@Test
+	public void save() {
+	_TestFrame = new GpFrame("This is just a Test.");
+	boolean t = _TestApp.saveToFile();
+	assertEquals(t , true);
 	}
+
+	@Test
+	@Ignore
+	public void thisIsIgnored() {
+	}
+}

@@ -15,7 +15,7 @@ import util.NewClassButton;
 import util.ReadableSRC;
 import util.SaveButton;
 import util.WriteAndExcecuteButton;
-import gpBase.kVec;
+import util.kVec;
 
 public class ClassesPanel extends javax.swing.JPanel implements Serializable{
 	private static final long serialVersionUID = 1L;

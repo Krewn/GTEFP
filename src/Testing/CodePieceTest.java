@@ -12,7 +12,7 @@ import junit.framework.TestCase;
 
 public class CodePieceTest extends TestCase
 {
-	@Test
+	@Test // Tests that there are an even number of each type of bracket in the CodePiece.
 	public void testForBracketMatching() throws Exception
 	{
 		GpFrame        gf      = new GpFrame("CodePieceTest");
@@ -54,7 +54,7 @@ public class CodePieceTest extends TestCase
 		assertEquals(bracketCount[6], bracketCount[7]);
 	}
 	
-	@Test
+	@Test // Tests that the writeCode method returns the CodePiece in the form of a String.
 	public void testForReturnType() throws Exception
 	{
 		GpFrame        gf = new GpFrame("CodePieceTest");
@@ -64,7 +64,7 @@ public class CodePieceTest extends TestCase
 		assertTrue(s instanceof String);
 	}
 	
-	@Test
+	@Test // Tests to ensure that all Sockets contain CodePieces.
 	public void testSocketsForCodePieces() throws Exception
 	{
 		GpFrame        gf      = new GpFrame("CodePieceTest");

@@ -22,46 +22,8 @@ public class kFor extends kWhile implements Serializable
 		super(wp);
 		_pWhile.setText("for(");
 		_c = new java.awt.Color(40, 170, 31);
-				
-		/*_pFor = new kVar(wp, "for(");
-		_pFor.setEditable(false);
-		_pFor.setCp(this);
-		_eval1 = new Socket(wp);
-		_eval1.setCp(this);
-		_eval1.setRel(_pFor.width(),0);
-		_sc1 = new kVar(wp, "; ");
-		_sc1.setEditable(false);
-		_sc1.setCp(this);
-		_eval2 = new Socket(wp);
-		_eval2.setCp(this);
-		_eval2.setRel(_pFor.width()+_eval1.width()+_sc1.width(),0);
-		_sc2 = new kVar(wp, "; ");
-		_sc2.setEditable(false);
-		_sc2.setCp(this);
-		_eval3 = new Socket(wp);
-		_eval3.setCp(this);
-		_eval3.setRel(_pFor.width()+_eval1.width()+_sc1.width()+_eval2.width()+_sc2.width(),0);
-		_after = new Socket(wp);
-		_after.setCp(this);
-		_after.setRel(0,_pFor.ySize()+_inside.ySize());*/
-		
 		_code.que(_pFor); _code.que(_eval1); _code.que(_sc1); _code.que(_eval2); _code.que(_sc2); _code.que(_eval3); _code.que(_curly); _code.que(_ylruc); _code.que(_after);
-		//_code.fifoPop(); _code.fifoPop(); _code.fifoPop(); _code.fifoPop(); _code.fifoPop(); // Removes elements of _code that are unnecessary for kFor
-		
-		System.out.println("debug");
 	}
-	
-	/*@Override
-	public void draw_p()
-	{
-		int[] w = new int[]{_curly.width() + _pWhile.width() + _eval.width()+1, 8, _ylruc.width()};
-		int[] h = new int[]{_curly.ySize(), _curly.ySize() + _inside.ySize(), _curly.ySize() + _inside.ySize() + _ylruc.ySize()};
-		super.draw_p(w, h);
-		_eval.setRel(_pWhile.width(),0);
-		_curly.setRel(_pWhile.width()+_eval.width(),0);
-		_pWhile.setRel();
-		_after.setRel(0,_pWhile.ySize()+_inside.ySize()+_ylruc.ySize());
-	}*/
 	
 	@Override
 	public void mousePressed(MouseEvent e)

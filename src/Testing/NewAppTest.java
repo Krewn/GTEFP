@@ -23,7 +23,7 @@ public class NewAppTest extends TestCase{
 		assertNotNull(newApp);		//if new app is created, test will pass
 	}
 	
-	
+	// tests that an App is successfully saved to a file
 	public void testSaveToFile(){
 		_wp = new WorkspacePanel(_gpf);
 		App newApp = new App(_wp);

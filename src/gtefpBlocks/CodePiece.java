@@ -12,7 +12,7 @@ import util.JavaFile;
 import util.kVec;
 
 //public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
-public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
+public abstract class CodePiece extends javax.swing.event.MouseInputAdapter implements Maluable, Buttonable
 {
 	protected Color          _c;
 	protected kVec<Maluable> _code;
@@ -69,10 +69,9 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 		return true;
 	}
 	
-	public /*abstract*/ void clicked() {}
+	public abstract void clicked();
 	
 	public void draw_p(){
-		//System.out.println("!! The here tho");
 		int [] xs = new int[_xs.length];
 		int [] ys = new int[_ys.length];
 		for(int k = 0 ; k < xs.length ; k++){
@@ -145,7 +144,7 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 		_lastMouseLoc = e.getPoint();
 	}
 	
-	public /*abstract */void mousePressed(java.awt.event.MouseEvent e) {}
+	public abstract void mousePressed(java.awt.event.MouseEvent e);
 	
 	public void mouseReleased(java.awt.event.MouseEvent e){
 		_selected=false;
@@ -159,7 +158,6 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 	}
 	
 	public void paint(java.awt.Graphics aBrush){
-		//System.out.println("CodePiecePrint");
 		java.awt.Color oldColor = aBrush.getColor();
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		betterBrush.setColor(_c);
@@ -187,7 +185,7 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 		_selected = true;
 	}
 	
-	public /*abstract */void setCp(CodePiece cp) {}
+	public abstract void setCp(CodePiece cp);
 	
 	public void setPosition(int x,int y){
 		_xPos = x; _yPos=y;
@@ -205,7 +203,6 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 	}
 	
 	public void unplug(){
-		//_cp = (Socket) _cp;
 		_cp.unsert();
 		_wp.setTemp(this);
 	}
@@ -213,7 +210,7 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 	public void unsert(){//special method only for the socket.
 	}
 	
-	public /*abstract */int width() { return 0; }
+	public abstract int width();
 	
 	public String writeCode()
 	{
@@ -257,7 +254,6 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 		for(Object k:_temp){
 			_code.que((Maluable) k);
 		}
-		//_code=(kVec<Maluable>)in.readObject();
 		_cp=(CodePiece)in.readObject();
 		_isButton=(boolean)in.readObject();
 		_lastMouseLoc=(java.awt.Point)in.readObject();
@@ -277,9 +273,4 @@ public /*abstract*/ class CodePiece extends javax.swing.event.MouseInputAdapter 
 		_wp.addMouseMotionListener(this);
 		
 	}
-	
-	//public void mousePressed(java.awt.event.MouseEvent e){
-	//	_lastMouseLoc = e.getPoint();
-	//	if(_p.contains(_lastMouseLoc )){_selected=true;}
-	//}
 }

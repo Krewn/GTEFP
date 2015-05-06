@@ -5,7 +5,7 @@
 
 package gtefpMain;
 
-import gpBase.kVec;
+import util.kVec;
 import gtefpBlocks.*;
 
 import java.awt.event.ActionEvent;
@@ -54,25 +54,13 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		this.init();
 		_frame = frame;
 	}
-	public JavaFile curJF(){
-		try{ 
-			return(_app.curJF());
-		}catch(java.lang.NullPointerException e){
-			return(null);
-		}
-	}
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
 		if(arg0.getSource()==_timer && _OkToPaint)
 			repaint();
 	}
-	
-	public void setOkToPaint(boolean b){
-		_OkToPaint = b;
-	}
-	
-	
 	
 	public void addSocket(Socket s)
 	{
@@ -84,6 +72,19 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 		{
 			_sockets.elementAt(0).add(s);
 		}
+	}
+	
+	public JavaFile curJF(){
+		try{ 
+			return(_app.curJF());
+		}catch(java.lang.NullPointerException e){
+			return(null);
+		}
+	}
+
+	
+	public void setOkToPaint(boolean b){
+		_OkToPaint = b;
 	}
 	
 	public Color blink()
@@ -204,7 +205,6 @@ public class WorkspacePanel extends javax.swing.JPanel implements java.awt.event
 	public void paintComponent (java.awt.Graphics aBrush)
 	{
 		super.paintComponent(aBrush);
-		System.out.println("This is not a break.");
 		this.setBackground(new java.awt.Color(200,200,201));
 		java.awt.Graphics2D betterBrush = (java.awt.Graphics2D) aBrush;
 		betterBrush.setColor(new java.awt.Color(233,233,240));

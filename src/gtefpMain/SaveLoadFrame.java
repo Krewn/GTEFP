@@ -31,13 +31,6 @@ public class SaveLoadFrame implements Serializable
 		SaveLoadFrame slf = new SaveLoadFrame();
 	}
 	
-	/*public void writeToFile(String dir){
-		_current.writeToFile(dir);
-	}*/
-	/*public void execute(String dir){
-		
-	}*/ // Handled by Classes panel for some reason.
-	
 	// Saves current project to file specified by the user.
 	public void saveToFile() {
     	fc=new javax.swing.JFileChooser();
@@ -71,7 +64,6 @@ public class SaveLoadFrame implements Serializable
     		temp.setVisible(true);
     		_current = temp;
     		is.close();
-    		System.out.println("File Loaded");
     	}
     	catch(java.io.IOException e){
     		System.out.println(e.getStackTrace());

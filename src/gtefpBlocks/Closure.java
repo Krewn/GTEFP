@@ -12,10 +12,7 @@ import java.util.ArrayList;
 import util.kVec;
 import gtefpMain.WorkspacePanel;
 
-public /*abstract */class Closure extends CodePiece implements Serializable{
-	/**
-	 * 
-	 */
+public abstract class Closure extends CodePiece implements Serializable{
 	private static final long serialVersionUID = 1L;
 	protected kVar _curly;// {
 	protected Socket _inside; //    #
@@ -31,7 +28,6 @@ public /*abstract */class Closure extends CodePiece implements Serializable{
 		_ylruc = new kVar(wp,"}");
 		_ylruc.setEditable(false);
 		_ylruc.setCp(this);
-		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
@@ -43,7 +39,6 @@ public /*abstract */class Closure extends CodePiece implements Serializable{
 	public void draw_p(){
 		int[] w = new int[]{_curly.width(),16,_ylruc.width()};
 		int[] h = new int[]{_curly.ySize(),(_curly.ySize()+_inside.ySize()),(_curly.ySize()+_inside.ySize()+_ylruc.ySize())};
-		//System.out.println(_import.width());
 		_curly.setRel();
 		_ylruc.setRel(0,ySize());
 		_inside.place(_xPos+30,_yPos+_curly.ySize());
@@ -59,9 +54,6 @@ public /*abstract */class Closure extends CodePiece implements Serializable{
 	}
 	
 	public void draw_p(int[] w, int[] h){
-		//int[] w = new int[]{_curly.width(),16,_ylruc.width()};
-		//int[] h = new int[]{_curly.ysize(),_curly.ysize()+_inside.ysize(),_curly.ysize()+_inside.ysize()+_ylruc.ysize()};
-		//System.out.println(_import.width());
 		_curly.setRel();
 		_ylruc.setRel(0,_curly.ySize()+_inside.ySize());
 		_inside.setRel(8,_curly.ySize());
@@ -105,9 +97,6 @@ public /*abstract */class Closure extends CodePiece implements Serializable{
 		draw_p();
 		super.paint(aBrush);
 		draw_p();
-		//betterBrush.fillPolygon(_p);
-		//betterBrush.setColor(oldColor);
-		//super.paint(aBrush);
 		_curly.paint(aBrush);
 		_ylruc.paint(aBrush);
 		_inside.paint(aBrush);

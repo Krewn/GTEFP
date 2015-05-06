@@ -1,7 +1,7 @@
 package gtefpBlocks;
 
 public interface Buttonable {
-	void makeButton();
-	boolean isButton();
 	void clicked();
+	boolean isButton();
+	void makeButton();
 }
